@@ -33,9 +33,8 @@ function aa_core_form_alter(&$form, FormStateInterface $form_state, $form_id) {
 
 }
 
-
 /**
- * Implements hook_ENTITY_TYPE_presave().
+ * Implements hook_ENTITY_TYPE_insert().
  */
 function aa_core_user_insert(UserInterface $user) {
   // Assign "Cédula de Identidad o DNI" as the password.
