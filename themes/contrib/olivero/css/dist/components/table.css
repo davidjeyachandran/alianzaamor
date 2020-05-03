@@ -1,0 +1,165 @@
+table{
+  display:block;
+  overflow-x:auto;
+  width:-webkit-fit-content;
+  width:-moz-fit-content;
+  width:fit-content;
+  max-width:100%;
+  border-spacing:0;
+  color:#313637;
+  border-collapse:collapse;
+  font-family:"metropolis"
+,
+sans-serif;
+  font-size:16px;
+  line-height:27px;
+  -webkit-overflow-scrolling:touch;
+}[dir] table{
+  margin:36px 0;
+  border:0;
+}
+
+.content-bleed table{
+    width:100%;
+  }
+
+table caption{
+    color:#313637;
+    font-family:"Lora"
+,
+"georgia"
+,
+serif;
+    font-size:14px;
+    font-style:italic;
+    line-height:18px;
+  }
+
+[dir] table caption{
+    margin-bottom:18px;
+  }
+
+[dir=ltr] table caption{
+  text-align:left;
+  }
+
+[dir=rtl] table caption{
+    text-align:right;
+  }
+
+[dir] table tr:last-child td{
+        border-bottom:0;
+      }
+
+table td,
+  table th{
+    vertical-align:top;
+  }
+
+[dir=ltr] table td, [dir=ltr] table th{
+  padding:18px 18px 18px 0;
+  }
+
+[dir=rtl] table td, [dir=rtl] table th{
+    padding:18px 0 18px 18px;
+  }
+
+table th{
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:#0d1214;
+    font-family:"metropolis"
+,
+sans-serif;
+    font-size:14px;
+  }
+
+[dir] table th{
+    margin:0;
+    border-bottom:2px solid #2494db;
+  }
+
+[dir=ltr] table th{
+  text-align:left;
+  }
+
+[dir=rtl] table th{
+    text-align:right;
+  }
+
+table td{
+    min-width:250px;
+    white-space:normal;
+  }
+
+[dir] table td{
+    border-bottom:2px solid #98abb9;
+  }
+
+@media (min-width: 700px){
+
+.content-bleed{
+    width:calc(12*(100vw - 504px)/14 + 324px)
+}
+  }
+
+@media (min-width: 1000px){
+
+.content-bleed{
+    width:calc(10*(100vw - 519px)/14 + 324px)
+}
+  }
+
+@media (min-width: 1200px){
+
+.content-bleed{
+    width:calc(10*(100vw - 645px)/14 + 324px)
+}
+  }
+
+@media (min-width: 1440px){
+
+.content-bleed{
+    width:902.57143px
+}
+  }
+
+[dir=ltr] table{
+    background:linear-gradient(90deg, white 0%, rgba(255,255,255,0)),
+         -gradient(-90deg, white 0%, rgba(255,255,255,0)) 100% 0,
+            -gradient(
+              s      t 0% 50%,
+              2),        
+                                        ),
+        r       ent(
+                 de       50%,
+                 0.2),
+                      ,         ) 100% 0%;
+  }
+
+@media screen and (-ms-high-contrast: active){
+
+[dir=ltr] table{
+      background:none
+  }
+    }
+
+[dir=rtl] table{
+    background:linear-gradient(-90deg, white 0%, rgba(255,255,255,0)),
+         -gradient(90deg, white 0%, rgba(255,255,255,0)) 0 100%,
+            -gradient(
+              s      t 0% 50%,
+              2),        
+                                        ),
+        r       ent(
+                 de       50%,
+                 0.2),
+                      ,         ) 100% 0%;
+  }
+
+[dir=ltr] table, [dir=rtl] table{
+    background-color:white;
+    background-repeat:no-repeat;
+    background-attachment:local, local, scroll, scroll;
+    background-size:100px 100%, 100px 100%, 14px 100%, 14px 100%;
+  }

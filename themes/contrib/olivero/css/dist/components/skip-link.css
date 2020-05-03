@@ -1,0 +1,43 @@
+.skip-link{
+  z-index:1;
+  text-decoration:none;
+  color:#fff;
+  outline:0;
+}[dir] .skip-link{
+  padding:9px 18px;
+  border:solid 1px rgba(255, 255, 255, 0.5);
+  border-radius:2px;
+  background-color:#0d77b5;
+}
+
+.skip-link:after{
+    content:"\0020	➔";
+  }
+
+@media (min-width: 1200px){
+
+[dir] .skip-link{
+    margin-top:9px
+}
+
+[dir=ltr] .skip-link{
+    margin-left:95px
+}
+
+[dir=rtl] .skip-link{
+    margin-right:95px
+}
+  }
+
+.skip-link.visually-hidden.focusable:focus{
+  position:absolute !important;
+  top:0;
+}
+
+[dir=ltr] .skip-link.visually-hidden.focusable:focus{
+  left:0;
+}
+
+[dir=rtl] .skip-link.visually-hidden.focusable:focus{
+  right:0;
+}
