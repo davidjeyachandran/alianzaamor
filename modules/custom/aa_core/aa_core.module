@@ -43,7 +43,6 @@ function aa_core_user_insert(UserInterface $user) {
     !$user->hasRole('equipo') ||
     !$user->hasRole('administrator' ||
     !$user->hasRole('misionero'))) {
-    exit();
     $user->pass->value = $user->label();
     $user->save();
   }
