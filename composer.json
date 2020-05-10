@@ -22,9 +22,13 @@
         "drupal/core-project-message": "^8.8",
         "drupal/core-recommended": "^8.8",
         "drupal/core-vendor-hardening": "^8.8",
+        "drupal/field_permissions": "^1.0@RC",
         "drupal/geolocation": "^1.11",
         "drupal/noreqnewpass": "^1.1",
         "drupal/pathauto": "^1.6",
+        "drupal/simple_user_management": "^1.4",
+        "drupal/views_autosubmit": "^1.1",
+        "drupal/views_data_export": "^1.0@RC",
         "drush/drush": "^10.2"
     },
     "conflict": {
