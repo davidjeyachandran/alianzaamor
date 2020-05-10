@@ -41,7 +41,7 @@ class DeliveryController extends ControllerBase {
     if (!$user->isAuthenticated()) {
       throw new NotFoundHttpException();
     }
-
+    // Route for redirecting back.
     $route = Url::fromRoute('view.miembros.page_users_to_deliver', [
       'arg_0' => $node->id(),
     ]);
@@ -59,9 +59,15 @@ class DeliveryController extends ControllerBase {
       $response->send();
       return [];
     }
+    // Adding a user if delivered food.
     try {
       $node->field_delivered[] = $user->id();
       $node->save();
+
+      // In Spanish so far since we are doing for spanish.
+      $user->field_delivery_date->value = $node->field_time->value;
+      $user->save();
+
       $message = t('A member with cedula/dni %id has been delivered food', [
         '%id' => $user->getAccountName(),
       ]);
