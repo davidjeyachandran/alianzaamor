@@ -1,0 +1,11 @@
+aa_core.to_deliver:
+  path: '/to-deliver/{node}/{user}'
+  defaults:
+    _controller: '\Drupal\aa_core\Controller\DeliveryController::toDeliver'
+  requirements:
+    # @TODO: update permission for team leaders.
+    # We should create a custom permission.
+    _permission: 'access content'
+    node: \d+
+    user: \d+
+
