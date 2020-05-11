@@ -8,4 +8,3 @@ aa_core.to_deliver:
     _permission: 'deliver food'
     node: \d+
     user: \d+
-

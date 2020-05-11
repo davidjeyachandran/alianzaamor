@@ -43,7 +43,7 @@ class DeliveryController extends ControllerBase {
     }
     // Route for redirecting back.
     $route = Url::fromRoute('view.miembros.page_users_to_deliver', [
-      'arg_0' => $node->id(),
+      'node' => $node->id(),
     ]);
     $response = new RedirectResponse($route->toString());
 
@@ -59,6 +59,7 @@ class DeliveryController extends ControllerBase {
       $response->send();
       return [];
     }
+
     // Adding a user if delivered food.
     try {
       $node->field_delivered[] = $user->id();
