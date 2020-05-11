@@ -6,6 +6,6 @@ aa_core.to_deliver:
     # @TODO: update permission for team leaders.
     # We should create a custom permission.
     _permission: 'deliver food'
-    #node: \d+
+    node: \d+
     user: \d+
 
