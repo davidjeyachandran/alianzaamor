@@ -1,0 +1,7 @@
+/* Style fields in the to-deliver field  */
+.field--name-field-users-to-deliver .views-field {
+  display: inline-block;
+  margin-right: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
