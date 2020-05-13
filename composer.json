@@ -29,8 +29,8 @@
         "drupal/noreqnewpass": "^1.1",
         "drupal/pathauto": "^1.6",
         "drupal/simple_user_management": "^1.4",
-        "drupal/views_autosubmit": "^1.1",
         "drupal/views_data_export": "^1.0@RC",
+        "drupal/views_field_formatter": "^1.10",
         "drush/drush": "^10.2"
     },
     "conflict": {

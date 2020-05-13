@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "caaa4c9acbbde1fbbe96ef83adb4d2b6",
+    "content-hash": "ac910f5d43721d1ca5640872e7dad5b4",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2784,62 +2784,6 @@
             }
         },
         {
-            "name": "drupal/views_autosubmit",
-            "version": "1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/views_autosubmit.git",
-                "reference": "8.x-1.1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/views_autosubmit-8.x-1.1.zip",
-                "reference": "8.x-1.1",
-                "shasum": "3fd23024e3a03bcde240e01767f5d8eec8f4ee57"
-            },
-            "require": {
-                "drupal/core": "*"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "drupal": {
-                    "version": "8.x-1.1",
-                    "datestamp": "1584964760",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "anshu_tiwari",
-                    "homepage": "https://www.drupal.org/user/3598362"
-                },
-                {
-                    "name": "aritra.ghosh",
-                    "homepage": "https://www.drupal.org/user/1830998"
-                },
-                {
-                    "name": "i-trokhanenko",
-                    "homepage": "https://www.drupal.org/user/3546872"
-                },
-                {
-                    "name": "sandeep_jangra",
-                    "homepage": "https://www.drupal.org/user/3468193"
-                }
-            ],
-            "description": "Views exposed filter Autosubmit for drupal 8",
-            "homepage": "https://www.drupal.org/project/views_autosubmit",
-            "support": {
-                "source": "https://git.drupalcode.org/project/views_autosubmit"
-            }
-        },
-        {
             "name": "drupal/views_data_export",
             "version": "1.0.0-rc1",
             "source": {
@@ -2906,6 +2850,65 @@
             "homepage": "https://www.drupal.org/project/views_data_export",
             "support": {
                 "source": "https://git.drupalcode.org/project/views_data_export"
+            }
+        },
+        {
+            "name": "drupal/views_field_formatter",
+            "version": "1.10.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/views_field_formatter.git",
+                "reference": "8.x-1.10"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/views_field_formatter-8.x-1.10.zip",
+                "reference": "8.x-1.10",
+                "shasum": "a6a81dfdf1d1a6af1c76b5a95cba8eeb379b2b0e"
+            },
+            "require": {
+                "drupal/core": "*"
+            },
+            "require-dev": {
+                "drupol/drupal-conventions": "^1.4"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.10",
+                    "datestamp": "1563469386",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                },
+                "grumphp": {
+                    "config-default-path": "vendor/drupol/drupal-conventions/config/drupal8/grumphp.yml"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "scripts": {
+                "grumphp": [
+                    "./vendor/bin/grumphp run"
+                ]
+            },
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Pol Dellaiera",
+                    "homepage": "https://www.drupal.org/user/47194",
+                    "email": "pol.dellaiera@protonmail.com"
+                }
+            ],
+            "description": "Provide a new field formatter: 'View' for each field types and allows you to select a View and to use its result instead of the original field value.",
+            "homepage": "https://drupal.org/project/views_field_formatter",
+            "support": {
+                "source": "https://git.drupalcode.org/project/views_field_formatter"
             }
         },
         {
