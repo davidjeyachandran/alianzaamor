@@ -25,6 +25,11 @@ Slack: drupalappforfood.slack.com (for communicating with dev team members use p
 We highly suggest create a branch (any name we don't have convention now). Send a PR and someone can review(ping any person edutrul, heilop, david, etc). If too hard then push to master but with caution please since we don't have DEV environment.
 We are not using site configuration (config ymls), so all changes will be done manually in PRODUCTION (if you could write your changes in trello we'd appreciate).
 If a contrib module is necessary please add it with composer:
-    $ composer require drupal/contrib_module
+
+    composer require drupal/contrib_module
+When you push please pull down (if you have access) else ask a member to do pull of your changes. If you are doing a lot of pushes then we may consider giving you access to server.
+
+Again THANK YOU so much for contributing to this project.
+
 
 
