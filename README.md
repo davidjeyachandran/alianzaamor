@@ -16,6 +16,15 @@ Database: We use currently backup and migrate contrib module to generate backups
 
 # Communication
 
-Trello: https://trello.com/b/8QaalXQV/alianza-de-amor
+Trello: https://trello.com/b/8QaalXQV/alianza-de-amor (for all dev tasks)
 
-Slack: drupalappforfood.slack.com
+Slack: drupalappforfood.slack.com (for communicating with dev team members use please #alianza-de-amor slack channel)
+
+# Local Development
+
+We highly suggest create a branch (any name we don't have convention now). Send a PR and someone can review(ping any person edutrul, heilop, david, etc). If too hard then push to master but with caution please since we don't have DEV environment.
+We are not using site configuration (config ymls), so all changes will be done manually in PRODUCTION (if you could write your changes in trello we'd appreciate).
+If a contrib module is necessary please add it with composer:
+    $ composer require drupal/contrib_module
+
+
