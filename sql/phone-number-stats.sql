@@ -1,3 +1,5 @@
+-- USE `drupal8_ada`
+
 SELECT "Total phone records", COUNT(`field_celular_value`) FROM `user__field_celular`;
 
 SELECT "Phone records with spaces", COUNT(`field_celular_value`)
