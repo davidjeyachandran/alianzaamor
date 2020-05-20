@@ -27,6 +27,7 @@
     "drupal/field_permissions": "^1.0@RC",
     "drupal/geolocation": "^1.11",
     "drupal/noreqnewpass": "^1.1",
+    "drupal/olivero": "^1.0@alpha",
     "drupal/pathauto": "^1.6",
     "drupal/redirect": "^1.6",
     "drupal/simple_user_management": "^1.4",

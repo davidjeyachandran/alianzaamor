@@ -1,0 +1,3 @@
+deliver food:
+  title: 'Deliver food to members'
+  restrict access: true

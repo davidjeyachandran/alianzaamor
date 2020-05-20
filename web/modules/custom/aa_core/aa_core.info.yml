@@ -1,0 +1,5 @@
+name: Alianza de Amor Core
+type: module
+description: Any customization to AA
+package: Custom
+core: 8.x

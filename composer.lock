@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b916e01ba858322683ba7977dbaa1fb2",
+    "content-hash": "06f8d093ab23cfa88339f4de03e597e9",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2542,6 +2542,59 @@
             "homepage": "https://www.drupal.org/project/noreqnewpass",
             "support": {
                 "source": "https://git.drupalcode.org/project/noreqnewpass"
+            }
+        },
+        {
+            "name": "drupal/olivero",
+            "version": "1.0.0-alpha1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/olivero.git",
+                "reference": "8.x-1.0-alpha1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/olivero-8.x-1.0-alpha1.zip",
+                "reference": "8.x-1.0-alpha1",
+                "shasum": "5090833aba54cc91ce862d132a5f3a92695b9a21"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9"
+            },
+            "type": "drupal-theme",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.0-alpha1",
+                    "datestamp": "1589571702",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "mherchel",
+                    "homepage": "https://www.drupal.org/user/118428"
+                },
+                {
+                    "name": "mtift",
+                    "homepage": "https://www.drupal.org/user/751908"
+                },
+                {
+                    "name": "proeung",
+                    "homepage": "https://www.drupal.org/user/1785940"
+                }
+            ],
+            "description": "A clean, modern, and accessible Drupal default theme.",
+            "homepage": "https://www.drupal.org/project/olivero",
+            "support": {
+                "source": "https://git.drupalcode.org/project/olivero",
+                "issues": "https://www.drupal.org/project/issues/olivero"
             }
         },
         {
@@ -9185,6 +9238,7 @@
     "stability-flags": {
         "drupal/better_exposed_filters": 10,
         "drupal/field_permissions": 5,
+        "drupal/olivero": 15,
         "drupal/views_data_export": 5
     },
     "prefer-stable": true,
