@@ -23,6 +23,14 @@ Slack: drupalappforfood.slack.com (for communicating with dev team members use p
 We highly suggest create a branch (any name we don't have convention now). Send a PR and someone can review(ping any person edutrul, heilop, david, etc). If too hard then push to master but with caution please since we don't have DEV environment.
 We are not using site configuration (config ymls), so all changes will be done manually in PRODUCTION (if you could write your changes in trello we'd appreciate).
 
+## Quick start
+
+* Set domain: `alianzadeamoraqp.local`
+* Copy `web/sites/default/default.settings.local.php` to 
+  `web/sites/default/settings.local.php` and update DB details.
+
+## Modules and themes
+
 To add (upgrade or remove) new module or theme (e.g. bootstrap4) run composer command.
 
 ```
