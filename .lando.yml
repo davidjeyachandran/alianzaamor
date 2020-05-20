@@ -1,0 +1,4 @@
+name: alianza-amor
+recipe: drupal8
+config:
+  webroot: ./web
