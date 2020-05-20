@@ -11,6 +11,8 @@ $databases['default']['default'] = [
   'driver' => 'mysql',
 ];
 
+$settings['hash_salt'] = 'tze8UND4ZX6fFD83mTRKMhNhLrDVarjCUPgZWghxtJrJNLlpkvl_sVkPAFTeF4I1ev_E3lmJTw';
+
 /* Useful settings for development: */
 if (isset($config_directories[CONFIG_SYNC_DIRECTORY])) {
   unset($config_directories[CONFIG_SYNC_DIRECTORY]);
