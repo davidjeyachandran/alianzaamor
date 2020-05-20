@@ -1,0 +1,14 @@
+uuid: 032da53b-399a-4390-9144-d55a9a954895
+langcode: es
+status: true
+dependencies:
+  config:
+    - user.role.misionero
+  module:
+    - user
+id: user_remove_role_action.misionero
+label: 'Elimina el rol Misionero al(los) usuario(s) seleccionado(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: misionero
