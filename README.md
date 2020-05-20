@@ -43,6 +43,9 @@ Make sure you commit `vendor`, `core` and `web` folders as Pantheon doesn't supp
 
 When you push please pull down (if you have access) else ask a member to do pull of your changes. If you are doing a lot of pushes then we may consider giving you access to server.
 
+# Hacks
+- Hide block title on `/mi-entrega` because the title is on views header.
+
 Again THANK YOU so much for contributing to this project.
 
 ## Links
