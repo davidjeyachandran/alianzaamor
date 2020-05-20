@@ -30,6 +30,7 @@
     "drupal/olivero": "^1.0@alpha",
     "drupal/pathauto": "^1.6",
     "drupal/redirect": "^1.6",
+    "drupal/redirect_after_login": "^2.6",
     "drupal/simple_user_management": "^1.4",
     "drupal/views_data_export": "^1.0@RC",
     "drupal/views_field_formatter": "^1.10",
