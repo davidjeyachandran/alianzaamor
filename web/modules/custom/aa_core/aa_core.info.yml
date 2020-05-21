@@ -3,3 +3,6 @@ type: module
 description: Any customization to AA
 package: Custom
 core: 8.x
+
+libraries:
+  - 'aa_core/global-styling'

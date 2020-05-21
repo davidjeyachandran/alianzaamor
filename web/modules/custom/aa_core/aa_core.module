@@ -15,7 +15,7 @@ function aa_core_form_alter(&$form, FormStateInterface $form_state, $form_id) {
 
   if ($form_id === 'user_register_form') {
     $form['account']['mail']['#description'] = t("Una dirección de correo electrónico válida.");
-    $form['account']['name']['#description'] = t("La Cédula de identidad para Venezolanos o DNI para Peruanos.");
+    $form['account']['name']['#description'] = t("La Cédula de identidad para Venezolanos o DNI para Peruanos. Por favor SIN letras o puntos");
     $form['account']['pass']['#required'] = FALSE;
     $form['account']['pass']['#access'] = FALSE;
   }

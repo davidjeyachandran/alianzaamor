@@ -41,6 +41,10 @@ composer require drupal/bootstrap4
 
 Make sure you commit `vendor`, `core` and `web` folders as Pantheon doesn't support composer workflow.
 
+## Theming and CSS
+
+* Custom CSS was moved to `web/modules/custom/aa_core/css/style.css`
+
 When you push please pull down (if you have access) else ask a member to do pull of your changes. If you are doing a lot of pushes then we may consider giving you access to server.
 
 # Hacks
