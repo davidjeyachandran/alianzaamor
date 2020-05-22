@@ -1,0 +1,43 @@
+uuid: 53b382c4-275e-4471-815c-e7596dd1f318
+langcode: es
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:6f114111-c173-441d-b727-be0a05c247fb'
+  module:
+    - block_content
+    - node
+    - user
+  theme:
+    - olivero
+id: todeliver
+theme: olivero
+region: content
+weight: -6
+provider: null
+plugin: 'block_content:6f114111-c173-441d-b727-be0a05c247fb'
+settings:
+  id: 'block_content:6f114111-c173-441d-b727-be0a05c247fb'
+  label: 'To Deliver'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      delivery: delivery
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+  user_role:
+    id: user_role
+    roles:
+      administrator: administrator
+      equipo: equipo
+      misionero: misionero
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

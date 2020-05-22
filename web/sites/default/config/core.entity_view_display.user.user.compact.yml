@@ -1,0 +1,58 @@
+uuid: 50731f72-27e2-4bf9-949e-3f9a0e983c9d
+langcode: es
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.user.compact
+    - field.field.user.user.field_address
+    - field.field.user.user.field_celular
+    - field.field.user.user.field_country
+    - field.field.user.user.field_delivery_date
+    - field.field.user.user.field_district
+    - field.field.user.user.field_distrito
+    - field.field.user.user.field_first_names
+    - field.field.user.user.field_grupo
+    - field.field.user.user.field_hostal
+    - field.field.user.user.field_image_carnet
+    - field.field.user.user.field_last_names
+    - field.field.user.user.field_nombre_completa
+    - field.field.user.user.field_numero_de_ninos
+    - field.field.user.user.field_ubicacion
+    - field.field.user.user.user_picture
+    - image.style.thumbnail
+  module:
+    - image
+    - user
+_core:
+  default_config_hash: '-cLsS3M3JycipXQt9rEb81_HxKneReoGuRh8ijcOPXs'
+id: user.user.compact
+targetEntityType: user
+bundle: user
+mode: compact
+content:
+  user_picture:
+    type: image
+    weight: 0
+    region: content
+    settings:
+      image_style: thumbnail
+      image_link: content
+    third_party_settings: {  }
+    label: hidden
+hidden:
+  field_address: true
+  field_celular: true
+  field_country: true
+  field_delivery_date: true
+  field_district: true
+  field_distrito: true
+  field_first_names: true
+  field_grupo: true
+  field_hostal: true
+  field_image_carnet: true
+  field_last_names: true
+  field_nombre_completa: true
+  field_numero_de_ninos: true
+  field_ubicacion: true
+  langcode: true
+  member_for: true

@@ -1,0 +1,24 @@
+uuid: 295b8060-928c-422b-919b-7c2c01cd432b
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_numero_de_ninos
+  module:
+    - user
+id: user.user.field_numero_de_ninos
+field_name: field_numero_de_ninos
+entity_type: user
+bundle: user
+label: 'Número de hijos en Perú'
+description: 'Despues vamos a verificar estos datos'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

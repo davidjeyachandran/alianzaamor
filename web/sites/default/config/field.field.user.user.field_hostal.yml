@@ -1,0 +1,20 @@
+uuid: 94a4f96e-ab36-4a19-baab-7dccf1b9052a
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_hostal
+  module:
+    - user
+id: user.user.field_hostal
+field_name: field_hostal
+entity_type: user
+bundle: user
+label: Hostal
+description: 'Deja el campo vacio si no es hostal'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

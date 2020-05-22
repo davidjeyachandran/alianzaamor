@@ -1,0 +1,7 @@
+login_redirection:
+  anonymous: null
+  authenticated: /mi-entrega
+  administrator: /
+  equipo: /
+  misionero: /
+exclude_urls: ''

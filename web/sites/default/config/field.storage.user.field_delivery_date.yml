@@ -1,0 +1,21 @@
+uuid: 764a1b95-1843-4888-8c08-c9c01bab3044
+langcode: es
+status: true
+dependencies:
+  module:
+    - user
+id: user.field_delivery_date
+field_name: field_delivery_date
+entity_type: user
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
