@@ -42,6 +42,17 @@
   "conflict": {
     "drupal/drupal": "*"
   },
+  "scripts": {
+    "drush:cr": [
+      "./vendor/bin/drush -l default cache:rebuild"
+    ],
+    "drush:cim": [
+      "./vendor/bin/drush -l default config:import -y"
+    ],
+    "drush:cex": [
+      "./vendor/bin/drush -l default config:export -y"
+    ]
+  },
   "minimum-stability": "dev",
   "prefer-stable": true,
   "config": {
