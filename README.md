@@ -66,8 +66,10 @@ Again THANK YOU so much for contributing to this project.
 
 # Pantheon
 
+Run the following command on the release.
+
 ```
 terminus drush alianzadeamoraqp.dev status
 terminus drush alianzadeamoraqp.dev config:import -y
-terminus drush alianzadeamoraqp.dev -l default cache:rebuild
+terminus drush alianzadeamoraqp.dev cache:rebuild
 ```
