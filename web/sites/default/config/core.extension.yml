@@ -2,6 +2,7 @@ module:
   aa_core: 0
   admin_toolbar: 0
   admin_toolbar_tools: 0
+  auto_entitylabel: 0
   automated_cron: 0
   backup_migrate: 0
   better_exposed_filters: 0
@@ -11,9 +12,7 @@ module:
   breakpoint: 0
   ckeditor: 0
   color: 0
-  comment: 0
   config: 0
-  contact: 0
   contextual: 0
   csv_serialization: 0
   ctools: 0
