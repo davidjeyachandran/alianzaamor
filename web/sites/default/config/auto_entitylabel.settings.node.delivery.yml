@@ -1,5 +1,5 @@
 status: 1
-pattern: '[node:field_time:date:custom:YmdHi] - [node:field_location]'
+pattern: '[node:field_location] - [node:field_time:date:custom:D m F H:ia] '
 escape: false
 dependencies:
   config:
