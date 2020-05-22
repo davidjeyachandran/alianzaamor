@@ -43,6 +43,9 @@
     "drupal/drupal": "*"
   },
   "scripts": {
+    "fix-permissions": [
+      "chmod 777 web/sites && chmod 777 web/sites/default && chmod 777 web/sites/default/settings.php && chmod 777 web/sites/default/default.services.yml && chmod 777 web/sites/default/services.yml"
+    ],
     "drush:cr": [
       "./vendor/bin/drush -l default cache:rebuild"
     ],
