@@ -1,0 +1,21 @@
+uuid: 5393dc2e-fc97-42fb-9e0b-9e5254697451
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_time
+    - node.type.delivery
+  module:
+    - datetime
+id: node.delivery.field_time
+field_name: field_time
+entity_type: node
+bundle: delivery
+label: Time
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

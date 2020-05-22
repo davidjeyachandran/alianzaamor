@@ -1,0 +1,25 @@
+uuid: 7f197a2c-436f-429e-a57d-e5eb5243f10b
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_users_to_deliver
+    - node.type.delivery
+id: node.delivery.field_users_to_deliver
+field_name: field_users_to_deliver
+entity_type: node
+bundle: delivery
+label: 'Users to Deliver'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: miembros
+      display_name: entity_reference_1
+      arguments: {  }
+field_type: entity_reference

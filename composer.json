@@ -42,6 +42,20 @@
   "conflict": {
     "drupal/drupal": "*"
   },
+  "scripts": {
+    "fix-permissions": [
+      "chmod 777 web/sites && chmod 777 web/sites/default && chmod 777 web/sites/default/settings.php && chmod 777 web/sites/default/default.services.yml && chmod 777 web/sites/default/services.yml"
+    ],
+    "drush:cr": [
+      "./vendor/bin/drush -l default cache:rebuild"
+    ],
+    "drush:cim": [
+      "./vendor/bin/drush -l default config:import -y"
+    ],
+    "drush:cex": [
+      "./vendor/bin/drush -l default config:export -y"
+    ]
+  },
   "minimum-stability": "dev",
   "prefer-stable": true,
   "config": {

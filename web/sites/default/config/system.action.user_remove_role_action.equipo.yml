@@ -1,0 +1,14 @@
+uuid: 0428ede7-5467-4720-936c-dfbbe45aa765
+langcode: es
+status: true
+dependencies:
+  config:
+    - user.role.equipo
+  module:
+    - user
+id: user_remove_role_action.equipo
+label: 'Elimina el rol Equipo al(los) usuario(s) seleccionado(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: equipo
