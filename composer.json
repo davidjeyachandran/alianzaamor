@@ -17,6 +17,7 @@
   "require": {
     "composer/installers": "^1.2",
     "drupal/admin_toolbar": "^2.2",
+    "drupal/auto_entitylabel": "dev-3.x",
     "drupal/backup_migrate": "^4.1",
     "drupal/better_exposed_filters": "^4.0@beta",
     "drupal/core-composer-scaffold": "^8.8",

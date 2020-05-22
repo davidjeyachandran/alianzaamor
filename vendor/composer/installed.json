@@ -2240,6 +2240,70 @@
         }
     },
     {
+        "name": "drupal/auto_entitylabel",
+        "version": "dev-3.x",
+        "version_normalized": "dev-3.x",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupalcode.org/project/auto_entitylabel.git",
+            "reference": "e0b8ab3b66b64607f6ae83bb0cc9d74803512a9d"
+        },
+        "require": {
+            "drupal/core": "^8 || ^9"
+        },
+        "type": "drupal-module",
+        "extra": {
+            "branch-alias": {
+                "dev-3.x": "3.x-dev"
+            },
+            "drupal": {
+                "version": "8.x-3.0-beta2+4-dev",
+                "datestamp": "1587802004",
+                "security-coverage": {
+                    "status": "not-covered",
+                    "message": "Dev releases are not covered by Drupal security advisories."
+                }
+            }
+        },
+        "installation-source": "source",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "Pravin Ajaaz",
+                "homepage": "https://www.drupal.org/user/2910049"
+            },
+            {
+                "name": "RenatoG",
+                "homepage": "https://www.drupal.org/user/3326031"
+            },
+            {
+                "name": "bforchhammer",
+                "homepage": "https://www.drupal.org/user/216396"
+            },
+            {
+                "name": "colan",
+                "homepage": "https://www.drupal.org/user/58704"
+            },
+            {
+                "name": "diqidoq",
+                "homepage": "https://www.drupal.org/user/1001934"
+            },
+            {
+                "name": "purushotam.rai",
+                "homepage": "https://www.drupal.org/user/3193859"
+            }
+        ],
+        "description": "Allows hiding of entity label fields and automatic label creation.",
+        "homepage": "https://www.drupal.org/project/auto_entitylabel",
+        "support": {
+            "source": "https://git.drupalcode.org/project/auto_entitylabel",
+            "issues": "https://www.drupal.org/project/issues/auto_entitylabel"
+        }
+    },
+    {
         "name": "drupal/backup_migrate",
         "version": "4.1.0",
         "version_normalized": "4.1.0.0",
