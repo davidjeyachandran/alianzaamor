@@ -56,3 +56,11 @@ Again THANK YOU so much for contributing to this project.
 
 * [GitHub](https://github.com/davidjeyachandran/alianzaamor/)
 * [Trello](https://trello.com/b/8QaalXQV/alianza-de-amor (for all dev tasks))
+
+# Pantheon
+
+```
+terminus drush alianzadeamoraqp.dev status
+terminus drush alianzadeamoraqp.dev config:import -y
+terminus drush alianzadeamoraqp.dev -l default cache:rebuild
+```

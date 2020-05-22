@@ -2251,7 +2251,6 @@
         "require": {
             "drupal/core": "^8 || ^9"
         },
-        "time": "2020-05-10T22:25:01+00:00",
         "type": "drupal-module",
         "extra": {
             "branch-alias": {
