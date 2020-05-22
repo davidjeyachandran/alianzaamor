@@ -41,6 +41,13 @@ composer require drupal/bootstrap4
 
 Make sure you commit `vendor`, `core` and `web` folders as Pantheon doesn't support composer workflow.
 
+To remove git dependencies run 
+
+```
+(find ./vendor -type d -name '.git' | xargs rm -rf)
+(find ./web -type d -name '.git' | xargs rm -rf)
+```
+
 ## Theming and CSS
 
 * Custom CSS was moved to `web/modules/custom/aa_core/css/style.css`
