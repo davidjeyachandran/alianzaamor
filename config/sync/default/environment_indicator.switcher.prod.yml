@@ -1,0 +1,10 @@
+uuid: 83b66061-0ff0-4556-929f-e055466049e2
+langcode: es
+status: true
+dependencies: {  }
+machine: prod
+description: null
+name: Prod
+url: 'https://alianzadeamoraqp.org'
+fg_color: '#d0d0d0'
+bg_color: '#de3327'

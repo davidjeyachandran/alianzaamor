@@ -1,0 +1,141 @@
+uuid: 67236ffb-27b0-4364-a91a-ed5f172e19dd
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.user.user.field_address
+    - field.field.user.user.field_celular
+    - field.field.user.user.field_country
+    - field.field.user.user.field_delivery_date
+    - field.field.user.user.field_district
+    - field.field.user.user.field_distrito
+    - field.field.user.user.field_first_names
+    - field.field.user.user.field_grupo
+    - field.field.user.user.field_hostal
+    - field.field.user.user.field_image_carnet
+    - field.field.user.user.field_last_names
+    - field.field.user.user.field_nombre_completa
+    - field.field.user.user.field_numero_de_ninos
+    - field.field.user.user.field_ubicacion
+    - field.field.user.user.user_picture
+  module:
+    - geolocation
+    - user
+_core:
+  default_config_hash: K-1rBM8mTIkFp9RqOC2tMRUukOQ1xbRCfSKK8dEddnA
+id: user.user.default
+targetEntityType: user
+bundle: user
+mode: default
+content:
+  account:
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_address:
+    weight: 7
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_celular:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_country:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_district:
+    weight: 8
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_first_names:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_hostal:
+    type: string_textfield
+    weight: 6
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_last_names:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_numero_de_ninos:
+    weight: 5
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  field_ubicacion:
+    weight: 9
+    settings:
+      default_longitude: ''
+      default_latitude: ''
+      auto_client_location: '1'
+      auto_client_location_marker: '1'
+      google_map_settings:
+        height: 400px
+        width: 100%
+        type: ROADMAP
+        zoom: '10'
+        maxZoom: 18
+        minZoom: 0
+        mapTypeControl: 1
+        streetViewControl: 1
+        zoomControl: 1
+        scrollwheel: 1
+        gestureHandling: auto
+        draggable: 1
+        style: ''
+        info_auto_display: 1
+        marker_icon_path: ''
+        disableAutoPan: 1
+        rotateControl: 0
+        fullscreenControl: 0
+        preferScrollingToZooming: 0
+        disableDoubleClickZoom: 0
+      allow_override_map_settings: 0
+      populate_address_field: ''
+      target_address_field: null
+      explicite_actions_address_field: ''
+    third_party_settings: {  }
+    type: geolocation_googlegeocoder
+    region: content
+hidden:
+  contact: true
+  field_delivery_date: true
+  field_distrito: true
+  field_grupo: true
+  field_image_carnet: true
+  field_nombre_completa: true
+  langcode: true
+  language: true
+  path: true
+  timezone: true
+  user_picture: true

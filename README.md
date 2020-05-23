@@ -10,9 +10,7 @@ Domain site: https://alianzadeamoraqp.org/
 
 Username and password: (Request in slack channel to @david Jeyachandran)
 
-
 Database: We use currently backup and migrate contrib module to generate backups so please generate a backup in https://alianzadeamoraqp.org/ and download it. Once you install drupal site then restore the database.
-
 
 # Communication
 
@@ -24,9 +22,36 @@ Slack: drupalappforfood.slack.com (for communicating with dev team members use p
 
 We highly suggest create a branch (any name we don't have convention now). Send a PR and someone can review(ping any person edutrul, heilop, david, etc). If too hard then push to master but with caution please since we don't have DEV environment.
 We are not using site configuration (config ymls), so all changes will be done manually in PRODUCTION (if you could write your changes in trello we'd appreciate).
-If a contrib module is necessary please add it with composer:
 
-    composer require drupal/contrib_module
+## Quick start
+
+* Set domain: `alianzadeamoraqp.local`
+* Copy `web/sites/default/default.settings.local.php` to 
+  `web/sites/default/settings.local.php` and update DB details.
+
+## Modules and themes
+
+To add (upgrade or remove) new module or theme (e.g. bootstrap4) run composer command.
+
+```
+composer require drupal/bootstrap4
+# composer update drupal/bootstrap4 --with-dependencies
+# composer remove drupal/bootstrap4
+```
+
+Make sure you commit `vendor`, `core` and `web` folders as Pantheon doesn't support composer workflow.
+
+To remove git dependencies run 
+
+```
+(find ./vendor -type d -name '.git' | xargs rm -rf)
+(find ./web -type d -name '.git' | xargs rm -rf)
+```
+
+## Theming and CSS
+
+* Custom CSS was moved to `web/modules/custom/aa_core/css/style.css`
+
 When you push please pull down (if you have access) else ask a member to do pull of your changes. If you are doing a lot of pushes then we may consider giving you access to server.
 
 # Hacks
@@ -34,5 +59,17 @@ When you push please pull down (if you have access) else ask a member to do pull
 
 Again THANK YOU so much for contributing to this project.
 
+## Links
 
+* [GitHub](https://github.com/davidjeyachandran/alianzaamor/)
+* [Trello](https://trello.com/b/8QaalXQV/alianza-de-amor (for all dev tasks))
 
+# Pantheon
+
+Run the following command on the release.
+
+```
+terminus drush alianzadeamoraqp.dev status
+terminus drush alianzadeamoraqp.dev config:import -y
+terminus drush alianzadeamoraqp.dev cache:rebuild
+```

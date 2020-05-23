@@ -1,0 +1,30 @@
+uuid: 58924448-a35a-4979-a75a-9cce94e5d2a3
+langcode: es
+status: true
+dependencies:
+  module:
+    - file
+    - image
+    - user
+id: user.field_image_carnet
+field_name: field_image_carnet
+entity_type: user
+type: image
+settings:
+  uri_scheme: public
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+  target_type: file
+  display_field: false
+  display_default: false
+module: image
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
