@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "99c3e76d4668814586d5a5da44ecba27",
+    "content-hash": "e080f0a31cf248abd72393083f3229e4",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1688,8 +1688,7 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/auto_entitylabel",
                 "issues": "https://www.drupal.org/project/issues/auto_entitylabel"
-            },
-            "time": "2020-05-10T22:25:01+00:00"
+            }
         },
         {
             "name": "drupal/backup_migrate",
@@ -2544,6 +2543,80 @@
             "homepage": "https://www.drupal.org/project/geolocation",
             "support": {
                 "source": "https://git.drupalcode.org/project/geolocation"
+            }
+        },
+        {
+            "name": "drupal/masquerade",
+            "version": "2.0.0-beta3",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/masquerade.git",
+                "reference": "8.x-2.0-beta3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/masquerade-8.x-2.0-beta3.zip",
+                "reference": "8.x-2.0-beta3",
+                "shasum": "125c53931a0658b4ef9f66abb696db7c98d43985"
+            },
+            "require": {
+                "drupal/core": "^8.7.7 || ^9"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-2.x": "2.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-2.0-beta3",
+                    "datestamp": "1579041783",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Andrey Postnikov (andypost)",
+                    "homepage": "https://www.drupal.org/u/andypost",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "David Norman (deekayen)",
+                    "homepage": "https://www.drupal.org/u/deekayen",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Mark Shropshire (shrop)",
+                    "homepage": "https://www.drupal.org/u/shrop",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Daniel Kudwien (sun)",
+                    "homepage": "https://www.drupal.org/u/sun",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Andrew Berry (deviantintegral)",
+                    "homepage": "https://www.drupal.org/u/deviantintegral",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "sun",
+                    "homepage": "https://www.drupal.org/user/54136"
+                }
+            ],
+            "description": "Allows privileged users to masquerade as another user.",
+            "homepage": "https://www.drupal.org/project/masquerade",
+            "support": {
+                "source": "https://git.drupal.org/project/masquerade.git",
+                "issues": "https://www.drupal.org/project/issues/masquerade",
+                "irc": "irc://irc.freenode.org/drupal-contribute"
             }
         },
         {
@@ -9361,6 +9434,7 @@
         "drupal/auto_entitylabel": 20,
         "drupal/better_exposed_filters": 10,
         "drupal/field_permissions": 5,
+        "drupal/masquerade": 10,
         "drupal/olivero": 15,
         "drupal/views_data_export": 5
     },

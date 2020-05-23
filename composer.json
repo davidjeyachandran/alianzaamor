@@ -27,6 +27,7 @@
     "drupal/environment_indicator": "^3.7",
     "drupal/field_permissions": "^1.0@RC",
     "drupal/geolocation": "^1.11",
+    "drupal/masquerade": "^2.0@beta",
     "drupal/noreqnewpass": "^1.1",
     "drupal/olivero": "^1.0@alpha",
     "drupal/pathauto": "^1.6",
