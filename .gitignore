@@ -47,6 +47,7 @@
 #web/update.php
 #web/web.config
 settings.local.php
+services.local.yml
 
 # Add directories containing build assets below.
 # Keep all additions above the "cut" line.
