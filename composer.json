@@ -55,6 +55,12 @@
     ],
     "drush:cex": [
       "./vendor/bin/drush -l default config:export -y"
+    ],
+    "drush:restore-db": [
+      "PROJECTDIR=$(pwd) && BACKUPDIR=$(pwd)/_db && ./vendor/bin/drush -l default sql:query --file=$BACKUPDIR/$(ls -1t $BACKUPDIR | head -1)"
+    ],
+    "drush:uli-local": [
+      "./vendor/bin/drush -l default user:login --uri='http://alianzadeamoraqp.local'"
     ]
   },
   "minimum-stability": "dev",
