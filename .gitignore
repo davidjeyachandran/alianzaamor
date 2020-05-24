@@ -118,3 +118,4 @@ Thumbs.db
 .sass-cache
 
 _db/
+private/
