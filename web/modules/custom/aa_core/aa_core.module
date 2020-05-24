@@ -2,6 +2,8 @@
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\user\UserInterface;
+use Drupal\Core\Url;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
  * @file
@@ -66,7 +68,10 @@ function aa_core_user_login_validate_pass(array $form, FormStateInterface $form_
 function aa_core_user_login(UserInterface $account) {
   // @TODO: Update to hasRole to make sure members who just need help
   // are the ones who ONLY have "authenticated" and not any other role name.
-  if ($account->hasRole('authenticated')) {
+  if ($account->hasRole('authenticated') && 
+    !$account->hasRole('equipo') && 
+    !$account->hasRole('misionero') && 
+    !$account->hasRole('administrator')) {
     // Redirect to home since nothing to do.
     $route = Url::fromRoute('entity.user.edit_form', [
       'user' => $account->id()]
