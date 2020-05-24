@@ -37,6 +37,7 @@
     "drupal/redirect_after_login": "^2.6",
     "drupal/rfv": "^1.5",
     "drupal/simple_user_management": "^1.4",
+    "drupal/username_validation": "^1.0",
     "drupal/views_data_export": "^1.0@RC",
     "drupal/views_field_formatter": "^1.10",
     "drush/drush": "^10.2"
