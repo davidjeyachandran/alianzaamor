@@ -48,9 +48,10 @@ composer drush:uli-local
 
 ### Configuration export/import
 
-To export configuration run `composer drush:cex`
+Configuration is located in `web/sites/default/config/`.
 
-To import configuration run `composer drush:cim`
+* To export configuration run `composer drush:cex`
+* To import configuration run `composer drush:cim`
 
 When committing to codebase make sure you commit only relevant configuration changes.
 
@@ -95,4 +96,5 @@ Run the following command on the release.
 terminus drush alianzadeamoraqp.dev status
 terminus drush alianzadeamoraqp.dev config:import -y
 terminus drush alianzadeamoraqp.dev cache:rebuild
+terminus drush alianzadeamoraqp.dev user:login
 ```
