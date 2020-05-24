@@ -1,0 +1,36 @@
+uuid: 3bfeb5b9-a2f6-45e1-99f4-c85dac0e23a8
+langcode: en
+status: true
+dependencies:
+  module:
+    - aa_report
+    - system
+    - user
+  theme:
+    - olivero
+id: olivero_aa_report_users_deliveries_total_block
+theme: olivero
+region: content
+weight: -4
+provider: null
+plugin: aa_report_user_deliveries_total_block
+settings:
+  id: aa_report_user_deliveries_total_block
+  label: 'Deliveries total'
+  provider: aa_report
+  label_display: visible
+visibility:
+  request_path:
+    id: request_path
+    pages: /delivery-totals-report
+    negate: false
+    context_mapping: {  }
+  user_role:
+    id: user_role
+    roles:
+      administrator: administrator
+      equipo: equipo
+      misionero: misionero
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
