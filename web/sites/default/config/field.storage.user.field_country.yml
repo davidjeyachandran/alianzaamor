@@ -1,0 +1,39 @@
+uuid: f6744d58-4ab4-424a-94e4-056c8b814320
+langcode: es
+status: true
+dependencies:
+  module:
+    - options
+    - user
+id: user.field_country
+field_name: field_country
+entity_type: user
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: Argentina
+      label: Argentina
+    -
+      value: Bolivia
+      label: Bolivia
+    -
+      value: Colombia
+      label: Colombia
+    -
+      value: Ecuador
+      label: Ecuador
+    -
+      value: Perú
+      label: Perú
+    -
+      value: Venezuela
+      label: Venezuela
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

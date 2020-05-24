@@ -5,3 +5,7 @@
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+
+.node-delivery-form .field-multiple-drag {
+  display: none;
+}

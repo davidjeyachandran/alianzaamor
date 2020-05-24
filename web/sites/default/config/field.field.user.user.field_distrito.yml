@@ -1,0 +1,20 @@
+uuid: 44261ece-82db-4d66-a13c-c3d14a6f571c
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_distrito
+  module:
+    - user
+id: user.user.field_distrito
+field_name: field_distrito
+entity_type: user
+bundle: user
+label: Distrito
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

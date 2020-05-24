@@ -1,3 +1,4 @@
+-- USE `drupal8_ada`
 
 -- UPDATE `user__field_celular`
 UPDATE `user__field_celular` SET `field_celular_value` = TRIM(`field_celular_value`);

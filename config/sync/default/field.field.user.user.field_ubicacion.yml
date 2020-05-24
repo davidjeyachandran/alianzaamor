@@ -1,0 +1,30 @@
+uuid: a1507550-465e-4da9-a75b-f31c5253036e
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_ubicacion
+  module:
+    - geolocation
+    - user
+id: user.user.field_ubicacion
+field_name: field_ubicacion
+entity_type: user
+bundle: user
+label: 'Ubicación con mapa'
+description: 'IMPORTANTE: Elige tu ubicación en el mapa. Usamos este ubicación para organizar las entregas.'
+required: true
+translatable: false
+default_value:
+  -
+    controls:
+      location: ''
+    lat: '-16.4135174'
+    lng: '-71.51303279999999'
+    lat_sin: null
+    lat_cos: null
+    lng_rad: null
+    data: null
+default_value_callback: ''
+settings: {  }
+field_type: geolocation

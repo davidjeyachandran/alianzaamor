@@ -1,0 +1,29 @@
+uuid: a01633c5-1291-49f6-9c3a-b7777d7e5e65
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_delivered
+    - node.type.delivery
+id: node.delivery.field_delivered
+field_name: field_delivered
+entity_type: node
+bundle: delivery
+label: Delivered
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    include_anonymous: true
+    filter:
+      type: _none
+    target_bundles: null
+    sort:
+      field: uid
+      direction: ASC
+    auto_create: false
+field_type: entity_reference

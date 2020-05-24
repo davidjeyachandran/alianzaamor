@@ -1,0 +1,20 @@
+uuid: a418fcad-53bc-4919-a197-059962de6dd5
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_delivery_date
+  module:
+    - user
+id: user.user.field_delivery_date
+field_name: field_delivery_date
+entity_type: user
+bundle: user
+label: 'Delivery Date'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
