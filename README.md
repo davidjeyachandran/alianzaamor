@@ -1,35 +1,60 @@
 # alianzaamor
 
 Distribute food to people in Arequipa City
-
-# How to setup local environment?
-
-    git clone git@github.com:davidjeyachandran/alianzaamor.git    
-
 Domain site: https://alianzadeamoraqp.org/
-
 Username and password: (Request in slack channel to @david Jeyachandran)
 
-Database: We use currently backup and migrate contrib module to generate backups so please generate a backup in https://alianzadeamoraqp.org/ and download it. Once you install drupal site then restore the database.
+## Communication
 
-# Communication
+* [GitHub](https://github.com/davidjeyachandran/alianzaamor/)
+* [Trello](https://trello.com/b/8QaalXQV/alianza-de-amor) (for all dev tasks)
+* [Slack](https://drupalappforfood.slack.com) (for communicating with dev team members use please #alianza-de-amor slack channel)
 
-Trello: https://trello.com/b/8QaalXQV/alianza-de-amor (for all dev tasks)
+## Contribution
 
-Slack: drupalappforfood.slack.com (for communicating with dev team members use please #alianza-de-amor slack channel)
+THANK YOU so much for contributing to this project:
 
-# Local Development
+- Clone this repository
+- Pick a task in Trello
+- Create your own branch for your task
+- Export configuration, commit any changes to `vendor`, `core` and `web` folders as Pantheon doesn't support composer workflow.
+- Send a PR and someone can review (ping any person edutrul, heilop, david, etc). 
 
-We highly suggest create a branch (any name we don't have convention now). Send a PR and someone can review(ping any person edutrul, heilop, david, etc). If too hard then push to master but with caution please since we don't have DEV environment.
-We are not using site configuration (config ymls), so all changes will be done manually in PRODUCTION (if you could write your changes in trello we'd appreciate).
+Again THANK YOU so much for contributing to this project.
 
-## Quick start
+## Local Development
 
-* Set domain: `alianzadeamoraqp.local`
-* Copy `web/sites/default/default.settings.local.php` to 
-  `web/sites/default/settings.local.php` and update DB details.
+### How to setup local environment
 
-## Modules and themes
+To run locally you may use lando or MAMP:
+
+* Create host: `alianzadeamoraqp.local`
+* Create database: `drupal8_ada`
+
+```
+git clone git@github.com:davidjeyachandran/alianzaamor.git    
+cd alianzaamor
+composer install
+cp web/sites/default/default.settings.local.php web/sites/default/settings.local.php
+cp web/sites/default.services.yml web/sites/services.local.yml
+```
+
+Database: We use backup and migrate contrib module to generate backups so please generate a backup in https://alianzadeamoraqp.org/ and download it. Once you install drupal site then restore the database. Save DB backup file to `_db` folder and run;
+
+```
+composer drush:restore-db
+composer drush:uli-local
+```
+
+### Configuration export/import
+
+To export configuration run `composer drush:cex`
+
+To import configuration run `composer drush:cim`
+
+When committing to codebase make sure you commit only relevant configuration changes.
+
+### Modules and themes
 
 To add (upgrade or remove) new module or theme (e.g. bootstrap4) run composer command.
 
@@ -48,23 +73,21 @@ To remove git dependencies run
 (find ./web -type d -name '.git' | xargs rm -rf)
 ```
 
-## Theming and CSS
+### Theming and CSS
 
 * Custom CSS was moved to `web/modules/custom/aa_core/css/style.css`
 
 When you push please pull down (if you have access) else ask a member to do pull of your changes. If you are doing a lot of pushes then we may consider giving you access to server.
 
-# Hacks
+## Hacks
 - Hide block title on `/mi-entrega` because the title is on views header.
 
-Again THANK YOU so much for contributing to this project.
-
-## Links
+### Links
 
 * [GitHub](https://github.com/davidjeyachandran/alianzaamor/)
 * [Trello](https://trello.com/b/8QaalXQV/alianza-de-amor (for all dev tasks))
 
-# Pantheon
+## Pantheon
 
 Run the following command on the release.
 
