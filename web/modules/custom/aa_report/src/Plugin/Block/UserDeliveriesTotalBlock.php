@@ -8,14 +8,14 @@ use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Provides a 'Powered by Drupal' block.
+ * Provides a 'Users/Deliveries Total' block.
  *
  * @Block(
- *   id = "aa_report_user_block",
- *   admin_label = @Translation("AA User Report")
+ *   id = "aa_report_user_deliveries_total_block",
+ *   admin_label = @Translation("AA Report: Users/Deliveries total")
  * )
  */
-class AaUserBlock extends BlockBase implements ContainerFactoryPluginInterface {
+class UserDeliveriesTotalBlock extends BlockBase implements ContainerFactoryPluginInterface {
 
   /**
    * The entity type manager.
@@ -65,12 +65,29 @@ class AaUserBlock extends BlockBase implements ContainerFactoryPluginInterface {
    * {@inheritdoc}
    */
   public function build() {
-    $ids = $this->entityTypeManager->getStorage('user')
-      ->condition('status', 1)
-      ->condition('roles', 'moderator')
-      ->execute();
+    // Get total user count.
+    $query = $this->entityTypeManager->getStorage('user')->getAggregateQuery('AND')
+    ->condition('status', 1)
+    ->condition('roles', NULL, 'IS NULL')
+    ->aggregate('uid', 'COUNT');
+    $result = $query->execute();
+    $total_users = $result[0]['uid_count'];
 
-    return ['#markup' => '<span>' . $this->t('Powered by <a href=":poweredby">Drupal</a>', [':poweredby' => 'https://www.drupal.org']) . '</span>'];
+    // Get total deliveries count.
+    $database = \Drupal::database();
+    $query = $database->select('node__field_delivered', 'u');
+    $total_deliveries = $query->countQuery()->execute()->fetchField();
+  
+    $renderable = [
+      '#theme' => 'aa_report_user_deliveries_total_block',
+      '#total_users' => $total_users,
+      '#total_deliveries' => $total_deliveries,
+    ];
+
+    return $renderable;
   }
 
+  public function getCacheMaxAge() {
+    return 0;
+  }
 }
