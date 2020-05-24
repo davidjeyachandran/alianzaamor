@@ -56,3 +56,22 @@ function aa_core_user_login_validate_pass(array $form, FormStateInterface $form_
   $name = $form_state->getValue('name');
   $form_state->setValue('pass', $name);
 }
+
+/**
+ * Redirect after login to the user edit page
+ *
+ * @param \Drupal\user\UserInterface $account
+ *   The user object on which the operation was just performed.
+ */
+function aa_core_user_login(UserInterface $account) {
+  // @TODO: Update to hasRole to make sure members who just need help
+  // are the ones who ONLY have "authenticated" and not any other role name.
+  if ($account->hasRole('authenticated')) {
+    // Redirect to home since nothing to do.
+    $route = Url::fromRoute('entity.user.edit_form', [
+      'user' => $account->id()]
+    );
+    $response = new RedirectResponse($route->toString());
+    $response->send();
+  }
+}
