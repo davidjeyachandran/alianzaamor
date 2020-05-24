@@ -1,8 +1,0 @@
-uuid: 8bd42a78-24ff-402c-b3a8-17aef008f953
-langcode: es
-status: true
-dependencies: {  }
-name: Location
-vid: location
-description: 'Location of Delivery'
-weight: 0
