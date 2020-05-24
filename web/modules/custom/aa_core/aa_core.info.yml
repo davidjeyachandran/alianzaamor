@@ -2,7 +2,7 @@ name: Alianza de Amor Core
 type: module
 description: Any customization to AA
 package: Custom
-core: 8.x
+core_version_requirement: ^8 || ^9
 
 libraries:
   - 'aa_core/global-styling'

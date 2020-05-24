@@ -1,0 +1,5 @@
+name: Alianza de Amor Report
+type: module
+description: AA reports
+package: Custom
+core_version_requirement: ^8 || ^9
