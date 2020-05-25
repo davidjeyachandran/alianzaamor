@@ -1,0 +1,8 @@
+name: Views custom REGEX
+type: module
+description: "Allows to add Custom Regular expression in views for filters."
+package: custom
+core: '8.x'
+core_version_requirement: ^8 || ^9
+dependencies:
+  - drupal:views

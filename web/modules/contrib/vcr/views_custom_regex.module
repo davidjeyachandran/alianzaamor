@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * @file
+ * Contains custom code.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_plugins_filter_alter().
+ */
+function views_custom_regex_views_plugins_filter_alter(array &$plugins) {
+  // Overriding class of string filter handler from StringFilter
+  // to RegularExpressionStringFilter.
+  $plugins['string']['class'] = 'Drupal\views_custom_regex\Plugin\views\filter\RegularExpressionStringFilter';
+  // Overriding class of numeric filter handler from NumericFilter
+  // to RegularExpressionNumericFilter.
+  $plugins['numeric']['class'] = 'Drupal\views_custom_regex\Plugin\views\filter\RegularExpressionNumericFilter';
+  // Overriding class of combine filter handler from Combine
+  // to RegularExpressionCombinedFilter.
+  $plugins['combine']['class'] = 'Drupal\views_custom_regex\Plugin\views\filter\RegularExpressionCombinedFilter';
+}
+
+/**
+ * Implements hook_help().
+ */
+function views_custom_regex_help($route_name, RouteMatchInterface $route_match) {
+  // Main module help for the views_custom_regex module.
+  if ($route_name == 'help.page.views_custom_regex') {
+    $output .= '<h3>' . t('About') . '</h3>';
+    $output .= '<p>' . t('View Custom Regex intends to improve default operator option regular expression i.e. it enables the developer to add its own regular expression. This regular expression has been given the flexibility to be added as prefix Or suffix and accordingly the Drupal filter query are modified.') . '</p>';
+    $output .= '<p>' . t('Based on field type 3 filter options are provided. Numeric filter, string filter and combined filter.') . '</p>';
+    return $output;
+  }
+}
