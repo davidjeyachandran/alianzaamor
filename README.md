@@ -93,21 +93,37 @@ When you push please pull down (if you have access) else ask a member to do pull
 Run the following command on the release.
 
 ```
+#############
+# Development
 terminus drush alianzadeamoraqp.dev status
 terminus drush alianzadeamoraqp.dev config:import
 terminus drush alianzadeamoraqp.dev updb
 terminus drush alianzadeamoraqp.dev cache:rebuild
 terminus drush alianzadeamoraqp.dev user:login
 
+# Continious import 
+terminus drush alianzadeamoraqp.dev pm:enable aa_content
+terminus drush alianzadeamoraqp.dev migrate:status
+terminus drush alianzadeamoraqp.dev migrate:import migrate_aa_user_csv
+
+#############
+# Stage
 terminus drush alianzadeamoraqp.test status
 terminus drush alianzadeamoraqp.test config:import
 terminus drush alianzadeamoraqp.test updb
 terminus drush alianzadeamoraqp.test cache:rebuild
 terminus drush alianzadeamoraqp.test user:login
 
+#############
+# Production
 terminus drush alianzadeamoraqp.live status
 terminus drush alianzadeamoraqp.live config:import
 terminus drush alianzadeamoraqp.live updb
 terminus drush alianzadeamoraqp.live cache:rebuild
 terminus drush alianzadeamoraqp.live user:login
+
+# Continious import 
+terminus drush alianzadeamoraqp.live pm:enable aa_content
+terminus drush alianzadeamoraqp.live migrate:status
+terminus drush alianzadeamoraqp.live migrate:import migrate_aa_user_csv --update
 ```
