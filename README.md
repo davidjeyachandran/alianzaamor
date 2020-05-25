@@ -94,7 +94,20 @@ Run the following command on the release.
 
 ```
 terminus drush alianzadeamoraqp.dev status
-terminus drush alianzadeamoraqp.dev config:import -y
+terminus drush alianzadeamoraqp.dev config:import
+terminus drush alianzadeamoraqp.dev updb
 terminus drush alianzadeamoraqp.dev cache:rebuild
 terminus drush alianzadeamoraqp.dev user:login
+
+terminus drush alianzadeamoraqp.test status
+terminus drush alianzadeamoraqp.test config:import
+terminus drush alianzadeamoraqp.test updb
+terminus drush alianzadeamoraqp.test cache:rebuild
+terminus drush alianzadeamoraqp.test user:login
+
+terminus drush alianzadeamoraqp.live status
+terminus drush alianzadeamoraqp.live config:import
+terminus drush alianzadeamoraqp.live updb
+terminus drush alianzadeamoraqp.live cache:rebuild
+terminus drush alianzadeamoraqp.live user:login
 ```

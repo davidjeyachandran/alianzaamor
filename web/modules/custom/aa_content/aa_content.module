@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * @file
+ * Contains aa_content.module.
+ */
+
+/**
+ * Implements hook_migration_plugins_alter().
+ */
+function aa_content_migration_plugins_alter(&$definitions) {
+  $definitions['migrate_aa_user_csv']['source']['path'] = drupal_get_path('module', 'aa_content') . $definitions['migrate_aa_user_csv']['source']['path'];
+}

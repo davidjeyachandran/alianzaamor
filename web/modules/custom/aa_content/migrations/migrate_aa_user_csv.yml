@@ -1,0 +1,27 @@
+id: migrate_aa_user_csv
+migration_tags:
+  - CSV
+label: 'AA CSV user migration'
+source:
+  plugin: csv
+  path: /data/users_20200524.csv
+  ids: [name]
+  constants:
+    emaildomain: 'alianzadeamoraqp.org'
+process:
+  name: name
+  field_celular: field_celular
+  status:
+    plugin: default_value
+    default_value: 1
+  mail:
+    plugin: concat
+    source:
+      - name
+      - constants/emaildomain
+    delimiter: '@'
+destination:
+  plugin: 'entity:user'
+migration_dependencies:
+  required: {  }
+  optional: {  }
