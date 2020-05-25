@@ -30,6 +30,7 @@
     "drupal/geolocation": "^1.11",
     "drupal/mask": "^1.0@alpha",
     "drupal/masquerade": "^2.0@beta",
+    "drupal/migrate_source_csv": "^3.4",
     "drupal/noreqnewpass": "^1.1",
     "drupal/olivero": "^1.0@alpha",
     "drupal/pathauto": "^1.6",
@@ -60,6 +61,9 @@
     ],
     "drush:cex": [
       "./vendor/bin/drush -l default config:export -y"
+    ],
+    "drush:updb": [
+      "./vendor/bin/drush -l default updatedb -y"
     ],
     "drush:restore-db": [
       "PROJECTDIR=$(pwd) && BACKUPDIR=$(pwd)/_db && ./vendor/bin/drush -l default sql:query --file=$BACKUPDIR/$(ls -1t $BACKUPDIR | head -1)"
