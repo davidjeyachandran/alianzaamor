@@ -69,10 +69,34 @@ display:
           summary: ''
           description: ''
           columns:
-            title: title
+            nid: nid
+            field_time: field_time
+            field_location: field_location
+            field_users_to_deliver: field_users_to_deliver
             field_delivered: field_delivered
           info:
-            title:
+            nid:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_time:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_location:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_users_to_deliver:
               sortable: false
               default_sort_order: asc
               align: ''
@@ -80,6 +104,8 @@ display:
               empty_column: false
               responsive: ''
             field_delivered:
+              sortable: false
+              default_sort_order: asc
               align: ''
               separator: ''
               empty_column: false
@@ -474,6 +500,7 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - url.query_args
         - 'user.node_grants:view'
         - user.roles
       tags:
@@ -498,6 +525,7 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - url.query_args
         - 'user.node_grants:view'
         - user.roles
       tags:
@@ -516,6 +544,7 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - url.query_args
         - 'user.node_grants:view'
         - user.roles
       tags:
