@@ -19,6 +19,7 @@ settings:
   label: 'Deliveries total'
   provider: aa_report
   label_display: visible
+  initial_deliveries_count: '4791'
 visibility:
   request_path:
     id: request_path
