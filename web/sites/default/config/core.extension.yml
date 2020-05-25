@@ -36,6 +36,7 @@ module:
   link: 0
   locale: 0
   mask: 0
+  masquerade: 0
   menu_ui: 0
   node: 0
   noreqnewpass: 0
