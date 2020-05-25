@@ -1,0 +1,6 @@
+status: 1
+pattern: 'User import: [current-date]'
+escape: false
+dependencies:
+  config:
+    - feeds.feed_type.users

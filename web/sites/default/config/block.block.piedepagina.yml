@@ -16,9 +16,9 @@ provider: null
 plugin: 'system_menu_block:footer'
 settings:
   id: 'system_menu_block:footer'
-  label: 'Más información'
+  label: 'Pie de página'
   provider: system
-  label_display: visible
+  label_display: '0'
   level: 1
   depth: 0
   expand_all_items: false

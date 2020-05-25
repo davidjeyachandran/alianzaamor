@@ -148,7 +148,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Actualización masiva'
+          label: 'Bulk update'
           exclude: false
           alter:
             alter_text: false
@@ -469,7 +469,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Operaciones
+          label: Operations
           exclude: false
           alter:
             alter_text: false
@@ -882,6 +882,20 @@ display:
         groups:
           1: AND
       display_extenders: {  }
+      header:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: false
+          tokenize: false
+          content:
+            value: 'Results: [view:total-rows]'
+            format: basic_html
+          plugin_id: text
     cache_metadata:
       contexts:
         - 'languages:language_content'
