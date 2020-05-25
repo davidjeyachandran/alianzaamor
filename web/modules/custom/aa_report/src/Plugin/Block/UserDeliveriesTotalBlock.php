@@ -6,7 +6,7 @@ use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-
+use Drupal\Core\Form\FormStateInterface;
 /**
  * Provides a 'Users/Deliveries Total' block.
  *
@@ -58,7 +58,31 @@ class UserDeliveriesTotalBlock extends BlockBase implements ContainerFactoryPlug
    * {@inheritdoc}
    */
   public function defaultConfiguration() {
-    return ['label_display' => FALSE];
+    return [
+      'label_display' => FALSE,
+      'initial_deliveries_count' => 0,
+    ];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function blockForm($form, FormStateInterface $form_state) {
+    $form['aa_report']['initial_deliveries_count'] = [
+      '#type' => 'number',
+      '#title' => t('Initial deliveries count'),
+      '#default_value' => $this->configuration['initial_deliveries_count'],
+    ];
+
+    return $form;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function blockSubmit($form, FormStateInterface $form_state) {
+    $totals_block = $form_state->getValue('aa_report');
+    $this->configuration['initial_deliveries_count'] = $totals_block['initial_deliveries_count'];
   }
 
   /**
@@ -76,7 +100,7 @@ class UserDeliveriesTotalBlock extends BlockBase implements ContainerFactoryPlug
     // Get total deliveries count.
     $database = \Drupal::database();
     $query = $database->select('node__field_delivered', 'u');
-    $total_deliveries = $query->countQuery()->execute()->fetchField();
+    $total_deliveries = $this->configuration['initial_deliveries_count'] + $query->countQuery()->execute()->fetchField();
   
     $renderable = [
       '#theme' => 'aa_report_user_deliveries_total_block',
