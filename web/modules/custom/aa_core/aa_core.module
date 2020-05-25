@@ -35,23 +35,6 @@ function aa_core_form_alter(&$form, FormStateInterface $form_state, $form_id) {
     }
   }
 
-  if($form_id === 'user_form') {
-    $account = \Drupal::service('current_route_match')->getParameter('user');
-
-    if (isLoggedinWithoutRoles($account)) {
-      // Show username field but hide password and email field.
-      $form['account']['name']['#access'] = TRUE;
-      $form['account']['pass']['#access'] = FALSE;
-      $form['account']['current_pass']['#access'] = FALSE;
-      $form['account']['mail']['#access'] = FALSE;
-      $form['account']['name']['#description'] = t("UNICAMENTE la Cédula de identidad para Venezolanos - no su Carnet de Extranjeria, PTP, ni su pasaporte - o DNI para Peruanos. Por favor SIN letras o puntos.");
-    }
-  }
-
-  if($form_id === 'user_profile_form') {
-    exit();
-  }
-
 }
 
 /**
@@ -85,7 +68,10 @@ function aa_core_user_login_validate_pass(array $form, FormStateInterface $form_
 function aa_core_user_login(UserInterface $account) {
   // @TODO: Update to hasRole to make sure members who just need help
   // are the ones who ONLY have "authenticated" and not any other role name.
-  if (isLoggedinWithoutRoles($account)) {
+  if ($account->hasRole('authenticated') && 
+    !$account->hasRole('equipo') && 
+    !$account->hasRole('misionero') && 
+    !$account->hasRole('administrator')) {
     // Redirect to home since nothing to do.
     $route = Url::fromRoute('entity.user.edit_form', [
       'user' => $account->id()]
@@ -93,17 +79,4 @@ function aa_core_user_login(UserInterface $account) {
     $response = new RedirectResponse($route->toString());
     $response->send();
   }
-}
-
-function isLoggedinWithoutRoles($account) {
-  if(
-    $account->hasRole('authenticated') && 
-    !$account->hasRole('equipo') && 
-    !$account->hasRole('misionero') && 
-    !$account->hasRole('administrator')
-    ) {
-      return TRUE;
-    } else {
-      return FALSE;
-    }
 }
