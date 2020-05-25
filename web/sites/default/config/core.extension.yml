@@ -46,7 +46,6 @@ module:
   path_alias: 0
   quickedit: 0
   rdf: 0
-  redirect_after_login: 0
   regex_field_validation: 0
   rest: 0
   search: 0
