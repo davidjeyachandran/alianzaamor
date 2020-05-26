@@ -1,0 +1,27 @@
+uuid: 25740e5c-d3ab-4379-b06c-5915f349a136
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - user
+id: user.field_embarazada
+field_name: field_embarazada
+entity_type: user
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: Sí
+      label: Sí
+    -
+      value: 'No'
+      label: 'No'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

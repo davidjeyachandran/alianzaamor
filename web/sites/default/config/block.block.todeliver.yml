@@ -13,7 +13,7 @@ dependencies:
 id: todeliver
 theme: olivero
 region: content
-weight: -6
+weight: -7
 provider: null
 plugin: 'block_content:6f114111-c173-441d-b727-be0a05c247fb'
 settings:

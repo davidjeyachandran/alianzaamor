@@ -1,0 +1,21 @@
+uuid: 6bf1380a-317c-4383-806f-a007c8eaa41e
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: user.field_esposo
+field_name: field_esposo
+entity_type: user
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

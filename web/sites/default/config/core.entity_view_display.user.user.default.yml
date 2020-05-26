@@ -6,17 +6,24 @@ dependencies:
     - field.field.user.user.feeds_item
     - field.field.user.user.field_address
     - field.field.user.user.field_celular
+    - field.field.user.user.field_comunidad
     - field.field.user.user.field_country
     - field.field.user.user.field_delivery_date
+    - field.field.user.user.field_discapacidad
     - field.field.user.user.field_district
     - field.field.user.user.field_distrito
+    - field.field.user.user.field_embarazada
+    - field.field.user.user.field_enfermedad
+    - field.field.user.user.field_esposo
     - field.field.user.user.field_first_names
     - field.field.user.user.field_grupo
     - field.field.user.user.field_hostal
+    - field.field.user.user.field_iglesia
     - field.field.user.user.field_image_carnet
     - field.field.user.user.field_last_names
     - field.field.user.user.field_nombre_completa
     - field.field.user.user.field_numero_de_ninos
+    - field.field.user.user.field_sexo
     - field.field.user.user.field_ubicacion
     - field.field.user.user.user_picture
     - image.style.thumbnail
@@ -48,6 +55,13 @@ content:
     third_party_settings: {  }
     type: string
     region: content
+  field_comunidad:
+    weight: 52
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
   field_country:
     weight: 9
     label: above
@@ -63,6 +77,13 @@ content:
     third_party_settings: {  }
     type: string
     region: content
+  field_discapacidad:
+    weight: 54
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
   field_district:
     weight: 15
     label: above
@@ -72,6 +93,29 @@ content:
     region: content
   field_distrito:
     weight: 5
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_embarazada:
+    weight: 53
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_enfermedad:
+    weight: 55
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_esposo:
+    weight: 57
     label: above
     settings:
       link_to_entity: false
@@ -101,6 +145,13 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
+  field_iglesia:
+    weight: 51
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
     region: content
   field_image_carnet:
     weight: 3
@@ -135,6 +186,13 @@ content:
       prefix_suffix: true
     third_party_settings: {  }
     type: number_integer
+    region: content
+  field_sexo:
+    weight: 56
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
     region: content
   field_ubicacion:
     weight: 6

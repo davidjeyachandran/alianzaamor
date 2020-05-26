@@ -1,0 +1,36 @@
+uuid: a1066aaf-64ba-4873-b94b-343b76b7bc7c
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - user
+id: user.field_discapacidad
+field_name: field_discapacidad
+entity_type: user
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: Visual
+      label: Visual
+    -
+      value: Auditiva
+      label: Auditiva
+    -
+      value: Motora
+      label: Motora
+    -
+      value: Cognitiva
+      label: Cognitiva
+    -
+      value: Multiple
+      label: Multiple
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

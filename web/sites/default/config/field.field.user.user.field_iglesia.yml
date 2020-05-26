@@ -1,0 +1,21 @@
+uuid: 63028760-9e53-4cb0-a6ab-e9617db1638d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_iglesia
+  module:
+    - options
+    - user
+id: user.user.field_iglesia
+field_name: field_iglesia
+entity_type: user
+bundle: user
+label: '¿Te gustaría asistir a alguna iglesía cristiana?'
+description: 'Si usted quiere, podemos conectarse con una iglesia cerca'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

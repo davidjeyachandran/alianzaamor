@@ -1,0 +1,21 @@
+uuid: 152440bd-5731-4bbb-aeed-80c75b455055
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_embarazada
+  module:
+    - options
+    - user
+id: user.user.field_embarazada
+field_name: field_embarazada
+entity_type: user
+bundle: user
+label: '¿Estas Embarazada?'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,21 @@
+uuid: 23c33f3e-2eb7-406f-a545-84232a75878d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_discapacidad
+  module:
+    - options
+    - user
+id: user.user.field_discapacidad
+field_name: field_discapacidad
+entity_type: user
+bundle: user
+label: '¿Tienes Alguna Discapacidad?'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,21 @@
+uuid: 18671697-0c5e-45ae-8d38-bd32e6f0e18b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_sexo
+  module:
+    - options
+    - user
+id: user.user.field_sexo
+field_name: field_sexo
+entity_type: user
+bundle: user
+label: Sexo
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

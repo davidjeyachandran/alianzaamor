@@ -6,17 +6,24 @@ dependencies:
     - field.field.user.user.feeds_item
     - field.field.user.user.field_address
     - field.field.user.user.field_celular
+    - field.field.user.user.field_comunidad
     - field.field.user.user.field_country
     - field.field.user.user.field_delivery_date
+    - field.field.user.user.field_discapacidad
     - field.field.user.user.field_district
     - field.field.user.user.field_distrito
+    - field.field.user.user.field_embarazada
+    - field.field.user.user.field_enfermedad
+    - field.field.user.user.field_esposo
     - field.field.user.user.field_first_names
     - field.field.user.user.field_grupo
     - field.field.user.user.field_hostal
+    - field.field.user.user.field_iglesia
     - field.field.user.user.field_image_carnet
     - field.field.user.user.field_last_names
     - field.field.user.user.field_nombre_completa
     - field.field.user.user.field_numero_de_ninos
+    - field.field.user.user.field_sexo
     - field.field.user.user.field_ubicacion
     - field.field.user.user.user_picture
   module:
@@ -30,12 +37,12 @@ bundle: user
 mode: default
 content:
   account:
-    weight: 4
+    weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }
   field_address:
-    weight: 7
+    weight: 9
     settings:
       size: 60
       placeholder: ''
@@ -50,17 +57,51 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
+  field_comunidad:
+    weight: 13
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
   field_country:
-    weight: 3
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_discapacidad:
+    weight: 15
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   field_district:
-    weight: 8
+    weight: 10
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
+  field_embarazada:
+    weight: 14
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_enfermedad:
+    weight: 16
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_esposo:
+    weight: 6
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
     region: content
   field_first_names:
     weight: 0
@@ -72,12 +113,18 @@ content:
     region: content
   field_hostal:
     type: string_textfield
-    weight: 6
+    weight: 8
     region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_iglesia:
+    weight: 12
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
   field_last_names:
     weight: 1
     settings:
@@ -87,14 +134,20 @@ content:
     type: string_textfield
     region: content
   field_numero_de_ninos:
-    weight: 5
+    weight: 7
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: number
     region: content
+  field_sexo:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
   field_ubicacion:
-    weight: 9
+    weight: 11
     settings:
       default_longitude: ''
       default_latitude: ''

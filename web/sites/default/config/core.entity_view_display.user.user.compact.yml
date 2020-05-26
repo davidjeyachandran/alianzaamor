@@ -7,17 +7,24 @@ dependencies:
     - field.field.user.user.feeds_item
     - field.field.user.user.field_address
     - field.field.user.user.field_celular
+    - field.field.user.user.field_comunidad
     - field.field.user.user.field_country
     - field.field.user.user.field_delivery_date
+    - field.field.user.user.field_discapacidad
     - field.field.user.user.field_district
     - field.field.user.user.field_distrito
+    - field.field.user.user.field_embarazada
+    - field.field.user.user.field_enfermedad
+    - field.field.user.user.field_esposo
     - field.field.user.user.field_first_names
     - field.field.user.user.field_grupo
     - field.field.user.user.field_hostal
+    - field.field.user.user.field_iglesia
     - field.field.user.user.field_image_carnet
     - field.field.user.user.field_last_names
     - field.field.user.user.field_nombre_completa
     - field.field.user.user.field_numero_de_ninos
+    - field.field.user.user.field_sexo
     - field.field.user.user.field_ubicacion
     - field.field.user.user.user_picture
     - image.style.thumbnail
@@ -49,17 +56,24 @@ hidden:
   feeds_item: true
   field_address: true
   field_celular: true
+  field_comunidad: true
   field_country: true
   field_delivery_date: true
+  field_discapacidad: true
   field_district: true
   field_distrito: true
+  field_embarazada: true
+  field_enfermedad: true
+  field_esposo: true
   field_first_names: true
   field_grupo: true
   field_hostal: true
+  field_iglesia: true
   field_image_carnet: true
   field_last_names: true
   field_nombre_completa: true
   field_numero_de_ninos: true
+  field_sexo: true
   field_ubicacion: true
   langcode: true
   member_for: true

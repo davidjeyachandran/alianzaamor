@@ -1,0 +1,27 @@
+uuid: 20fc1330-b426-4ed2-a62e-3655036a0e10
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - user
+id: user.field_iglesia
+field_name: field_iglesia
+entity_type: user
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: Sí
+      label: Sí
+    -
+      value: 'No'
+      label: 'No'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
