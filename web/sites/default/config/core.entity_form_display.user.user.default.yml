@@ -22,12 +22,16 @@ dependencies:
     - field.field.user.user.field_image_carnet
     - field.field.user.user.field_last_names
     - field.field.user.user.field_nombre_completa
+    - field.field.user.user.field_notes
     - field.field.user.user.field_numero_de_ninos
     - field.field.user.user.field_sexo
     - field.field.user.user.field_ubicacion
     - field.field.user.user.user_picture
+    - image.style.thumbnail
   module:
     - geolocation
+    - image
+    - text
     - user
 _core:
   default_config_hash: K-1rBM8mTIkFp9RqOC2tMRUukOQ1xbRCfSKK8dEddnA
@@ -125,6 +129,14 @@ content:
     third_party_settings: {  }
     type: options_select
     region: content
+  field_image_carnet:
+    type: image_image
+    weight: 17
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
   field_last_names:
     weight: 1
     settings:
@@ -132,6 +144,14 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
+  field_notes:
+    weight: 19
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
     region: content
   field_numero_de_ninos:
     weight: 7
@@ -181,16 +201,27 @@ content:
     third_party_settings: {  }
     type: geolocation_googlegeocoder
     region: content
+  google_analytics:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  user_picture:
+    type: image_image
+    weight: 18
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
 hidden:
   contact: true
   feeds_item: true
   field_delivery_date: true
   field_distrito: true
   field_grupo: true
-  field_image_carnet: true
   field_nombre_completa: true
   langcode: true
   language: true
   path: true
   timezone: true
-  user_picture: true
