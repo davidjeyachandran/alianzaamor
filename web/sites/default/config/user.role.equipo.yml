@@ -16,3 +16,4 @@ permissions:
   - 'deliver food'
   - 'edit any delivery content'
   - 'edit own delivery content'
+  - 'select account cancellation method'

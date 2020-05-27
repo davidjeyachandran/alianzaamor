@@ -66,23 +66,15 @@ display:
           text_input_required_format: basic_html
           bef:
             general:
-              autosubmit: false
+              autosubmit: true
               autosubmit_exclude_textfield: false
               autosubmit_textfield_delay: 500
-              autosubmit_hide: false
+              autosubmit_hide: true
               input_required: false
               allow_secondary: false
               secondary_label: 'Opciones avanzadas'
               secondary_open: false
             filter:
-              uid:
-                plugin_id: default
-                advanced:
-                  placeholder_text: ''
-                  rewrite:
-                    filter_rewrite_values: ''
-                  collapsible: false
-                  is_secondary: false
               status:
                 plugin_id: default
                 advanced:
@@ -91,15 +83,13 @@ display:
                     filter_rewrite_values: ''
                   collapsible: false
                   is_secondary: false
-              roles_target_id:
+              field_last_names_value:
                 plugin_id: default
                 advanced:
-                  sort_options: false
-                  rewrite:
-                    filter_rewrite_values: ''
+                  placeholder_text: ''
                   collapsible: false
                   is_secondary: false
-              field_district_value:
+              roles_target_id:
                 plugin_id: default
                 advanced:
                   sort_options: false
@@ -1767,16 +1757,140 @@ display:
         arguments: false
         relationships: false
         header: false
+        sorts: false
       style:
-        type: default
+        type: table
         options:
           grouping: {  }
           row_class: ''
           default_row_class: true
+          override: true
+          sticky: false
+          caption: ''
+          summary: ''
+          description: ''
+          columns:
+            name: name
+            field_first_names: field_first_names
+            field_last_names: field_last_names
+            field_location: field_location
+            field_time: field_time
+            field_celular: field_celular
+          info:
+            name:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_first_names:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_last_names:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_location:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_time:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_celular:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+          default: '-1'
+          empty_table: false
       row:
         type: fields
         options: {  }
       fields:
+        uid:
+          id: uid
+          table: users_field_data
+          field: uid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: number_integer
+          settings:
+            thousand_separator: ''
+            prefix_suffix: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          entity_type: user
+          entity_field: uid
+          plugin_id: field
         name:
           id: name
           table: users_field_data
@@ -1913,7 +2027,7 @@ display:
           group_type: group
           admin_label: ''
           label: ''
-          exclude: false
+          exclude: true
           alter:
             alter_text: false
             text: ''
@@ -2108,7 +2222,7 @@ display:
             alter_text: false
             text: ''
             make_link: true
-            path: 'https://wa.me/{{ field_celular }}?text=Hola {{ field_first_names }}, Tu proxima entrega de víveres es {{ field_time }} %0A Lugar: {{ field_location }}. %0A No. {{ name }} %0A'
+            path: 'https://wa.me/{{ field_celular }}?text=Hola {{ field_first_names }}, Tu proxima entrega de víveres es *{{ field_time }}* %0A Lugar: *{{ field_location }}*. %0A Por favor ven con tu Cédula: *{{ name }}* %0A Tu numero es: *{{ uid }}*'
             absolute: false
             external: false
             replace_spaces: false
@@ -2119,7 +2233,7 @@ display:
             link_class: ''
             prefix: ''
             suffix: '  <i class="fa fa-whatsapp" style="color: green; font-size:24px"></i>'
-            target: ''
+            target: _blank
             nl2br: false
             max_length: 0
             word_boundary: true
@@ -2277,6 +2391,14 @@ display:
             value: "<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\">\r\n<style>\r\n  .fa-whatsapp {\r\n    color: green;\r\n     font-size:24px\r\n  }\r\n</style>"
             format: full_html
           plugin_id: text
+      sorts:
+        uid:
+          id: uid
+          table: users_field_data
+          field: uid
+          entity_type: user
+          entity_field: uid
+          plugin_id: standard
     cache_metadata:
       max-age: -1
       contexts:
@@ -2309,26 +2431,26 @@ display:
         context: '0'
         menu_name: main
       filters:
-        uid:
-          id: uid
-          table: users_field_data
-          field: uid
+        field_last_names_value:
+          id: field_last_names_value
+          table: user__field_last_names
+          field: field_last_names_value
           relationship: none
           group_type: group
           admin_label: ''
-          operator: in
-          value: {  }
+          operator: contains
+          value: ''
           group: 1
           exposed: true
           expose:
-            operator_id: uid_op
-            label: Cédula
+            operator_id: field_last_names_value_op
+            label: Apellidos
             description: ''
             use_operator: false
-            operator: uid_op
+            operator: field_last_names_value_op
             operator_limit_selection: false
             operator_list: {  }
-            identifier: uid
+            identifier: field_last_names_value
             required: false
             remember: false
             multiple: false
@@ -2338,7 +2460,7 @@ display:
               administrator: '0'
               equipo: '0'
               misionero: '0'
-            reduce: false
+            placeholder: ''
           is_grouped: false
           group_info:
             label: ''
@@ -2351,9 +2473,7 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          entity_type: user
-          entity_field: uid
-          plugin_id: user_name
+          plugin_id: string
         status:
           id: status
           table: users_field_data

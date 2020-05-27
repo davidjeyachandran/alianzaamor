@@ -1,8 +1,9 @@
-uuid: 67236ffb-27b0-4364-a91a-ed5f172e19dd
+uuid: 9dff29f8-0a8e-4ff7-a8b2-f978ef287642
 langcode: es
 status: true
 dependencies:
   config:
+    - core.entity_form_mode.user.register
     - field.field.user.user.feeds_item
     - field.field.user.user.field_address
     - field.field.user.user.field_celular
@@ -26,17 +27,15 @@ dependencies:
     - field.field.user.user.field_sexo
     - field.field.user.user.field_ubicacion
     - field.field.user.user.user_picture
-    - image.style.thumbnail
   module:
     - geolocation
-    - image
     - user
 _core:
   default_config_hash: K-1rBM8mTIkFp9RqOC2tMRUukOQ1xbRCfSKK8dEddnA
-id: user.user.default
+id: user.user.register
 targetEntityType: user
 bundle: user
-mode: default
+mode: register
 content:
   account:
     weight: 5
@@ -127,14 +126,6 @@ content:
     third_party_settings: {  }
     type: options_select
     region: content
-  field_image_carnet:
-    type: image_image
-    weight: 17
-    region: content
-    settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
-    third_party_settings: {  }
   field_last_names:
     weight: 1
     settings:
@@ -191,22 +182,16 @@ content:
     third_party_settings: {  }
     type: geolocation_googlegeocoder
     region: content
-  user_picture:
-    type: image_image
-    weight: 18
-    region: content
-    settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
-    third_party_settings: {  }
 hidden:
   contact: true
   feeds_item: true
   field_delivery_date: true
   field_distrito: true
   field_grupo: true
+  field_image_carnet: true
   field_nombre_completa: true
   langcode: true
   language: true
   path: true
   timezone: true
+  user_picture: true
