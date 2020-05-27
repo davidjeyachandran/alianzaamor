@@ -28,6 +28,7 @@
     "drupal/feeds": "^3.0@alpha",
     "drupal/field_permissions": "^1.0@RC",
     "drupal/geolocation": "^1.11",
+    "drupal/google_analytics": "^3.0",
     "drupal/mask": "^1.0@alpha",
     "drupal/masquerade": "^2.0@beta",
     "drupal/migrate_plus": "^5.0",
