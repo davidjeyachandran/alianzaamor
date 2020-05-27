@@ -22,6 +22,7 @@ dependencies:
     - field.field.user.user.field_image_carnet
     - field.field.user.user.field_last_names
     - field.field.user.user.field_nombre_completa
+    - field.field.user.user.field_notes
     - field.field.user.user.field_numero_de_ninos
     - field.field.user.user.field_sexo
     - field.field.user.user.field_ubicacion
@@ -30,6 +31,7 @@ dependencies:
   module:
     - geolocation
     - image
+    - text
     - user
 _core:
   default_config_hash: K-1rBM8mTIkFp9RqOC2tMRUukOQ1xbRCfSKK8dEddnA
@@ -143,6 +145,14 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
+  field_notes:
+    weight: 19
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
   field_numero_de_ninos:
     weight: 7
     settings:
@@ -190,6 +200,11 @@ content:
       explicite_actions_address_field: ''
     third_party_settings: {  }
     type: geolocation_googlegeocoder
+    region: content
+  google_analytics:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
     region: content
   user_picture:
     type: image_image

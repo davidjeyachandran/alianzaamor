@@ -23,6 +23,7 @@ dependencies:
     - field.field.user.user.field_image_carnet
     - field.field.user.user.field_last_names
     - field.field.user.user.field_nombre_completa
+    - field.field.user.user.field_notes
     - field.field.user.user.field_numero_de_ninos
     - field.field.user.user.field_sexo
     - field.field.user.user.field_ubicacion
@@ -72,6 +73,7 @@ hidden:
   field_image_carnet: true
   field_last_names: true
   field_nombre_completa: true
+  field_notes: true
   field_numero_de_ninos: true
   field_sexo: true
   field_ubicacion: true
