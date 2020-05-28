@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.user.compact
-    - field.field.user.user.feeds_item
     - field.field.user.user.field_address
     - field.field.user.user.field_celular
     - field.field.user.user.field_comunidad
@@ -54,7 +53,6 @@ content:
     third_party_settings: {  }
     label: hidden
 hidden:
-  feeds_item: true
   field_address: true
   field_celular: true
   field_comunidad: true
