@@ -125,5 +125,11 @@ terminus drush alianzadeamoraqp.live user:login
 # Continious import 
 terminus drush alianzadeamoraqp.live pm:enable aa_content
 terminus drush alianzadeamoraqp.live migrate:status
-terminus drush alianzadeamoraqp.live migrate:import migrate_aa_user_csv --update
+terminus drush alianzadeamoraqp.live migrate:import migrate_aa_user_csv
+
+# SQL scripts.
+echo "$(cat sql/phone-number-stats.sql)" | terminus drush alianzadeamoraqp.live sql:cli
+echo "$(cat sql/phone-number-fix.sql)" | terminus drush alianzadeamoraqp.live sql:cli
+
+(terminus drush alianzadeamoraqp.live) | grep backup
 ```
