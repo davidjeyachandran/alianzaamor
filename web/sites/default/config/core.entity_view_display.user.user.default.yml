@@ -3,7 +3,6 @@ langcode: es
 status: true
 dependencies:
   config:
-    - field.field.user.user.feeds_item
     - field.field.user.user.field_address
     - field.field.user.user.field_celular
     - field.field.user.user.field_comunidad
@@ -256,5 +255,4 @@ content:
     third_party_settings: {  }
     label: hidden
 hidden:
-  feeds_item: true
   langcode: true
