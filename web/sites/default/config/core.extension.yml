@@ -66,7 +66,6 @@ module:
   tour: 0
   update: 0
   user: 0
-  username_validation: 0
   views_custom_regex: 0
   views_data_export: 0
   views_field_formatter: 0
