@@ -72,6 +72,8 @@ To remove git dependencies run
 ```
 (find ./vendor -type d -name '.git' | xargs rm -rf)
 (find ./web -type d -name '.git' | xargs rm -rf)
+git add vendor/ web/core/ web/modules/contrib/ composer.*
+git commit -m "Updated dependencies."
 ```
 
 ### Theming and CSS
@@ -121,6 +123,8 @@ terminus drush alianzadeamoraqp.live -- config:import -y
 terminus drush alianzadeamoraqp.live updb
 terminus drush alianzadeamoraqp.live cache:rebuild
 terminus drush alianzadeamoraqp.live user:login
+
+terminus drush alianzadeamoraqp.live -- user:login --uid 3492
 
 # Continious import 
 terminus drush alianzadeamoraqp.live pm:enable aa_content

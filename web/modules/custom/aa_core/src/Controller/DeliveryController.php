@@ -52,7 +52,9 @@ class DeliveryController extends ControllerBase {
     $users_found = array_filter($users, static function (UserInterface $user_reference) use ($user) {
       return $user_reference->id() === $user->id();
     });
+
     if (!empty($users_found)) {
+      // When user was added previously to the field.
       $message = $this->t('A member with cedula/dni %id is duplicated', [
         '%id' => $user->getAccountName(),
       ]);
@@ -87,15 +89,18 @@ class DeliveryController extends ControllerBase {
             ]);
             $this->messenger()->addError($message);
           }
-          break;
 
           // Route for redirecting back.
           $route = Url::fromRoute('view.miembros.page_users_to_deliver', [
             'node' => $node->id(),
           ]);
+
+          break;
+
         case 'field_users_check_in':
           // Update user when confirmation response received.
           break;
+
         case 'field_users_opt_out':
           // Update user when rejection response received.
           break;

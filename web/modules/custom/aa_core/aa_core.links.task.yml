@@ -2,3 +2,9 @@ view.miembros.page_users_to_deliver:
   route_name: view.miembros.page_users_to_deliver
   base_route: entity.node.canonical
   title: 'To Deliver'
+
+entity.user.logout:
+  route_name: user.logout
+  base_route: entity.user.canonical
+  title: Logout
+  weight: 20

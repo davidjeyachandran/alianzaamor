@@ -8,3 +8,26 @@ aa_core.to_deliver:
     _permission: 'deliver food'
     node: \d+
     user: \d+
+    _csrf_token: 'TRUE'
+
+aa_core.delivery_confirm:
+  path: '/user/delivery/{node}/confirm/{user}'
+  defaults:
+    _controller: '\Drupal\aa_core\Controller\DeliveryController::updateDelivery'
+    field_name: 'field_users_check_in'
+  requirements:
+    _entity_access: 'user.view'
+    node: \d+
+    user: \d+
+    _csrf_token: 'TRUE'
+
+aa_core.delivery_reject:
+  path: '/user/delivery/{node}/reject/{user}'
+  defaults:
+    _controller: '\Drupal\aa_core\Controller\DeliveryController::updateDelivery'
+    field_name: 'field_users_opt_out'
+  requirements:
+    _entity_access: 'user.view'
+    node: \d+
+    user: \d+
+    _csrf_token: 'TRUE'
