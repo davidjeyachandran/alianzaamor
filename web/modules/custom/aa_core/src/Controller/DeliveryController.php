@@ -4,7 +4,6 @@ namespace Drupal\aa_core\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Entity\EntityStorageException;
-use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\node\NodeInterface;
 use Drupal\user\UserInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -39,6 +38,7 @@ class DeliveryController extends ControllerBase {
     if ($node->bundle() !== 'delivery') {
       throw new NotFoundHttpException;
     }
+
     if (!$user->isAuthenticated()) {
       throw new NotFoundHttpException();
     }
@@ -62,36 +62,34 @@ class DeliveryController extends ControllerBase {
       $message = $this->t('A member with cedula/dni %id is duplicated', [
         '%id' => $user->getAccountName(),
       ]);
-      $this->messenger()->addMessage($message, MessengerInterface::TYPE_WARNING);
-      $response->send();
-      return [];
+      $this->messenger()->addWarning($message);
     }
+    else {
 
-    // Adding a user if delivered food.
-    try {
-      $node->$field_name[] = $user->id();
-      $node->save();
+      // Adding a user if delivered food.
+      try {
+        $node->$field_name[] = $user->id();
+        $node->save();
 
-      // In Spanish so far since we are doing for spanish.
-      $user->field_delivery_date->value = $node->field_time->value;
-      $user->save();
+        // In Spanish so far since we are doing for spanish.
+        $user->field_delivery_date->value = $node->field_time->value;
+        $user->save();
 
-      $message = t('A member with cedula/dni %id has been delivered food', [
-        '%id' => $user->getAccountName(),
-      ]);
-      $this->messenger()->addMessage($message);
-    }
-    catch (EntityStorageException $exception) {
-      $message = t('A member with cedula/dni %id COULD NOT been delivered food', [
-        '%id' => $user->getAccountName(),
-      ]);
-      $this->messenger()->addError($message);
+        $message = t('A member with cedula/dni %id has been delivered food', [
+          '%id' => $user->getAccountName(),
+        ]);
+        $this->messenger()->addMessage($message);
+      } catch (EntityStorageException $exception) {
+        $message = t('A member with cedula/dni %id COULD NOT been delivered food', [
+          '%id' => $user->getAccountName(),
+        ]);
+        $this->messenger()->addError($message);
+      }
     }
 
     $response->send();
-
     return [
-      '#markup' => 'Delivering...',
+      '#markup' => 'Processing...',
     ];
   }
 
