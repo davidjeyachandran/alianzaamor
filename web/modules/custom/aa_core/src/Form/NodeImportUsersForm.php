@@ -7,7 +7,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\node\NodeInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-
+use Drupal\Core\Access\AccessResult;
 /**
  * 
  */
@@ -53,6 +53,18 @@ class NodeImportUsersForm extends FormBase {
     return 'node_import_users_form';
   }
 
+  /**
+   * CheckAccess 
+   * this  form to be displayed for Delivery content type only
+   */
+  public function checkAccess($node) {
+    $actualNode = $this->entityTypeManager->getStorage('node')->load($node);
+    return AccessResult::allowedIf($actualNode->bundle() === 'delivery');
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function buildForm(array $form, FormStateInterface $form_state, NodeInterface $node = NULL) {
     $this->node = $node;
 
@@ -60,7 +72,7 @@ class NodeImportUsersForm extends FormBase {
       '#type' => 'textarea',
       '#required' => TRUE,
       '#title' => $this->t('Usernames (UNICAMENTE la Cédula de identidad para Venezolanos)'),
-      '#description' => $this->t('Usernames can be comma separated or number per new line.'),
+      '#description' => $this->t('Usernames can be comma separated values or numeric value per new line.'),
     );
 
     $form['actions']['#type'] = 'actions';
@@ -102,7 +114,7 @@ class NodeImportUsersForm extends FormBase {
     
     // Load current delivery.
     $users_to_deliver = $this->node->field_users_to_deliver->referencedEntities();
-    $users_to_deliver_ids = array_map(function($user) { return $user->getDisplayName() ;}, $users_to_deliver);
+    $users_to_deliver_ids = array_map(function($user) { return $user->getDisplayName() ; }, $users_to_deliver);
     
     // Check if some users are already in the delivery list.
     $users_intersect = array_intersect($new_users_to_deliver_ids, $users_to_deliver_ids);

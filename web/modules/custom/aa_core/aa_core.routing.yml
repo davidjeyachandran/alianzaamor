@@ -8,7 +8,7 @@ aa_core.to_deliver:
     _permission: 'deliver food'
     node: \d+
     user: \d+
-    
+
 aa_core.import_users:
   path: '/node/{node}/edit/import-users'
   defaults:
@@ -19,8 +19,10 @@ aa_core.import_users:
       node:
         type: entity:node
   requirements:
+    _custom_access: '\Drupal\aa_core\Form\NodeImportUsersForm::checkAccess'
     # @TODO: update permission for team leaders.
     # We should create a custom permission.
     _permission: 'deliver food'
     node: \d+
+
     
