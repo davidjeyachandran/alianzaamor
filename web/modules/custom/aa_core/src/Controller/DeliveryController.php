@@ -17,7 +17,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class DeliveryController extends ControllerBase {
 
   /**
-   * Page for executing deliverying
+   * Page for executing delivering
    *
    * Receive the delivery node id and user id. The delivery node will be
    * updated with a new user value for field "field_delivered".
@@ -52,10 +52,10 @@ class DeliveryController extends ControllerBase {
       return $user_reference->id() === $user->id();
     });
     if (!empty($users_found)) {
-      $message = t('A member with cedula/dni %id is duplicated', [
+      $message = $this->t('A member with cedula/dni %id is duplicated', [
         '%id' => $user->getAccountName(),
       ]);
-      \Drupal::messenger()->addMessage($message, MessengerInterface::TYPE_WARNING);
+      $this->messenger()->addMessage($message, MessengerInterface::TYPE_WARNING);
       $response->send();
       return [];
     }
@@ -72,13 +72,13 @@ class DeliveryController extends ControllerBase {
       $message = t('A member with cedula/dni %id has been delivered food', [
         '%id' => $user->getAccountName(),
       ]);
-      \Drupal::messenger()->addMessage($message);
+      $this->messenger()->addMessage($message);
     }
     catch (EntityStorageException $exception) {
       $message = t('A member with cedula/dni %id COULD NOT been delivered food', [
         '%id' => $user->getAccountName(),
       ]);
-      \Drupal::messenger()->addMessage($message, MessengerInterface::TYPE_ERROR);
+      $this->messenger()->addError($message);
     }
 
     $response->send();
