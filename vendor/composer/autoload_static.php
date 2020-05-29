@@ -38,6 +38,10 @@ class ComposerStaticInit6b04e0d8e0953067aaf9091b2d3f45ff
         array (
             'phpDocumentor\\Reflection\\' => 25,
         ),
+        'c' => 
+        array (
+            'cweagans\\Composer\\' => 18,
+        ),
         'Z' => 
         array (
             'Zumba\\Mink\\Driver\\' => 18,
@@ -181,6 +185,7 @@ class ComposerStaticInit6b04e0d8e0953067aaf9091b2d3f45ff
         array (
             'Behat\\Mink\\Driver\\' => 18,
             'Behat\\Mink\\' => 11,
+            'BalBuf\\DrupalLibrariesInstaller\\' => 32,
         ),
         'A' => 
         array (
@@ -194,6 +199,10 @@ class ComposerStaticInit6b04e0d8e0953067aaf9091b2d3f45ff
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
             1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+        ),
+        'cweagans\\Composer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/cweagans/composer-patches/src',
         ),
         'Zumba\\Mink\\Driver\\' => 
         array (
@@ -580,6 +589,10 @@ class ComposerStaticInit6b04e0d8e0953067aaf9091b2d3f45ff
         'Behat\\Mink\\' => 
         array (
             0 => __DIR__ . '/..' . '/behat/mink/src',
+        ),
+        'BalBuf\\DrupalLibrariesInstaller\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/balbuf/drupal-libraries-installer/src',
         ),
         'Asm89\\Stack\\' => 
         array (
