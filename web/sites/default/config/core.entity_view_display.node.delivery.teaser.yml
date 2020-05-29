@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.delivery.field_location
     - field.field.node.delivery.field_time
     - field.field.node.delivery.field_users_check_in
+    - field.field.node.delivery.field_users_opt_out
     - field.field.node.delivery.field_users_to_deliver
     - node.type.delivery
   module:
@@ -37,5 +38,6 @@ hidden:
   field_location: true
   field_time: true
   field_users_check_in: true
+  field_users_opt_out: true
   field_users_to_deliver: true
   langcode: true

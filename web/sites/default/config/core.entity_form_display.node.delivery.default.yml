@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.delivery.field_location
     - field.field.node.delivery.field_time
     - field.field.node.delivery.field_users_check_in
+    - field.field.node.delivery.field_users_opt_out
     - field.field.node.delivery.field_users_to_deliver
     - node.type.delivery
   module:
@@ -32,9 +33,32 @@ content:
     region: content
   field_time:
     weight: 8
-    settings: {  }
+    settings:
+      increment: 15
+      date_order: YMD
+      time_type: '24'
     third_party_settings: {  }
-    type: datetime_default
+    type: datetime_datelist
+    region: content
+  field_users_check_in:
+    type: entity_reference_autocomplete_tags
+    weight: 12
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_users_opt_out:
+    weight: 11
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete_tags
     region: content
   field_users_to_deliver:
     weight: 10
@@ -101,4 +125,3 @@ content:
 hidden:
   body: true
   field_delivered: true
-  field_users_check_in: true
