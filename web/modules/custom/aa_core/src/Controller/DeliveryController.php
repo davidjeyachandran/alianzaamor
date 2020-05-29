@@ -48,12 +48,6 @@ class DeliveryController extends ControllerBase {
       throw new NotFoundHttpException;
     }
 
-    // Route for redirecting back.
-    $route = Url::fromRoute('view.miembros.page_users_to_deliver', [
-      'node' => $node->id(),
-    ]);
-    $response = new RedirectResponse($route->toString());
-
     $users = $node->$field_name->referencedEntities();
     $users_found = array_filter($users, static function (UserInterface $user_reference) use ($user) {
       return $user_reference->id() === $user->id();
@@ -66,28 +60,52 @@ class DeliveryController extends ControllerBase {
     }
     else {
 
-      // Adding a user if delivered food.
-      try {
-        $node->$field_name[] = $user->id();
-        $node->save();
+      // Updating field.
+      $node->$field_name[] = $user->id();
+      $node->save();
 
-        // In Spanish so far since we are doing for spanish.
-        $user->field_delivery_date->value = $node->field_time->value;
-        $user->save();
+      // Define default route.
+      $route = Url::fromRoute('user.view', [
+        'user' => $user->id(),
+      ]);
 
-        $message = t('A member with cedula/dni %id has been delivered food', [
-          '%id' => $user->getAccountName(),
-        ]);
-        $this->messenger()->addMessage($message);
-      } catch (EntityStorageException $exception) {
-        $message = t('A member with cedula/dni %id COULD NOT been delivered food', [
-          '%id' => $user->getAccountName(),
-        ]);
-        $this->messenger()->addError($message);
+      switch ($field_name) {
+        case 'field_delivered':
+          // Update user when food was delivered.
+          try {
+            // In Spanish so far since we are doing for spanish.
+            $user->field_delivery_date->value = $node->field_time->value;
+            $user->save();
+
+            $message = t('A member with cedula/dni %id has been delivered food', [
+              '%id' => $user->getAccountName(),
+            ]);
+            $this->messenger()->addMessage($message);
+          } catch (EntityStorageException $exception) {
+            $message = t('A member with cedula/dni %id COULD NOT been delivered food', [
+              '%id' => $user->getAccountName(),
+            ]);
+            $this->messenger()->addError($message);
+          }
+          break;
+
+          // Route for redirecting back.
+          $route = Url::fromRoute('view.miembros.page_users_to_deliver', [
+            'node' => $node->id(),
+          ]);
+        case 'field_users_check_in':
+          // Update user when confirmation response received.
+          break;
+        case 'field_users_opt_out':
+          // Update user when rejection response received.
+          break;
       }
+
     }
 
+    $response = new RedirectResponse($route->toString());
     $response->send();
+
     return [
       '#markup' => 'Processing...',
     ];
