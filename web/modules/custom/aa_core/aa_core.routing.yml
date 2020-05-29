@@ -31,3 +31,19 @@ aa_core.delivery_reject:
     node: \d+
     user: \d+
     _csrf_token: 'TRUE'
+
+aa_core.import_users:
+  path: '/node/{node}/edit/import-users'
+  defaults:
+    _form: '\Drupal\aa_core\Form\NodeImportUsersForm'
+    _title: 'Bulk import users'
+  options:
+    parameters:
+      node:
+        type: entity:node
+  requirements:
+    _custom_access: '\Drupal\aa_core\Form\NodeImportUsersForm::checkAccess'
+    # @TODO: update permission for team leaders.
+    # We should create a custom permission.
+    _permission: 'deliver food'
+    node: \d+
