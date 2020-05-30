@@ -8,7 +8,10 @@ on:
 
 jobs:
   phpcs_fix:
-    image: composer:1.10
+    container:
+      image: composer:1.10
+      env:
+        PHP_ENV: development
     name: phpcs
     steps:
       - name: phpcs
