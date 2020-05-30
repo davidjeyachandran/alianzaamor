@@ -13,7 +13,8 @@ jobs:
         composer: [1.10]
     runs-on: ubuntu-latest
     container:
-      image: composer:${{ matrix.composer }}
+      #image: composer:${{ matrix.composer }}
+      image: 1.10
       env:
         NODE_ENV: production
       ports:
