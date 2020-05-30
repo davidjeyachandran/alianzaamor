@@ -30,7 +30,7 @@ jobs:
       - name: Show files
         run: |
           ls -la
-          chmod +x /tmp
+#          chmod +x /tmp
 
       - name: Setup phpcs
         run: |
@@ -39,7 +39,9 @@ jobs:
           php --version
           composer -V
           composer global require drupal/coder
-          $COMPOSER_HOME
+      - name: Setup phpcs 2
+        run: |
+          echo $COMPOSER_HOME
           which composer
           sed -e "s|vendor|$COMPOSER_HOME/vendor|g" phpcs.ruleset.xml > phpcs-ci.ruleset.xml
           cat phpcs-ci.ruleset.xml
