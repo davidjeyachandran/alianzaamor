@@ -2,15 +2,13 @@
 <ruleset name="TES">
     <description>TES PHPCS rules.</description>
 
-    <file>web/sites/filmq/modules/custom</file>
+    <file>web/modules/custom</file>
 
     <arg name="extensions" value="inc,install,module,php,profile,test,theme,yml"/>
 
     <exclude-pattern>*/tests/_*</exclude-pattern>
     <exclude-pattern>*/tests/*/_bootstrap.php</exclude-pattern>
     <exclude-pattern>*/node_modules/*</exclude-pattern>
-    <exclude-pattern>*/seotools/*</exclude-pattern>
-    <exclude-pattern>*/filmq_content/*</exclude-pattern>
     <exclude-pattern>*/themes/custom/*/css/style.css</exclude-pattern>
 
     <!--Reference Drupal Code Sniffs-->
