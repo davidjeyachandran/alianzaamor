@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'web/modules/custom/**'
+      - '.github/**'
 
 jobs:
   phpcs_fix:
