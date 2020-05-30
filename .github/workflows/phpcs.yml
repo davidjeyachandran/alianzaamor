@@ -8,7 +8,7 @@ on:
 
 jobs:
   phpcs_fix:
-    container: composer:1.10
+    image: composer:1.10
     name: phpcs
     steps:
       - name: phpcs
