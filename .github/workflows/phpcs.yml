@@ -5,7 +5,8 @@ on:
     paths:
       - 'web/modules/custom/**'
       - '.github/**'
-
+    branches:
+      - 'feature/**'
 jobs:
   phpcs_fix:
     strategy:
