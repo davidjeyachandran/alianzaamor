@@ -8,16 +8,28 @@ on:
 
 jobs:
   phpcs_fix:
+    strategy:
+      matrix:
+        composer: [1.10]
+    runs-on: ubuntu-latest
     container:
-      image: composer:1.10
+      image: php:${{ matrix.composer }}-apache
       env:
-        PHP_ENV: development
+        NODE_ENV: production
+      ports:
+        - 80
+      volumes:
+        - $GITHUB_WORKSPACE:/var/www/html
     name: phpcs
     steps:
-      - name: phpcs
-        #uses: docker://composer:1.10
-        env:
-          LAST_NAME: Action
+      - name: Checkout repository
+        uses: actions/checkout@v1
+
+      - name: Show files
+        run: |
+          ls -la
+
+      - name: Setup phpcs
         run: |
           echo $LAST_NAME
           echo $GITHUB_REF
@@ -30,4 +42,7 @@ jobs:
           cat phpcs-ci.ruleset.xml
           $COMPOSER_HOME/vendor/bin/phpcs --config-set installed_paths $COMPOSER_HOME/vendor/drupal/coder/coder_sniffer
           $COMPOSER_HOME/vendor/bin/phpcs -i
+
+      - name: Run phpcs
+        run: |
           $COMPOSER_HOME/vendor/bin/phpcs -p --standard=phpcs-ci.ruleset.xml
