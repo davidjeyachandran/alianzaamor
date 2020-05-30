@@ -1,0 +1,28 @@
+name: Coding standards
+
+on:
+  push:
+    paths:
+      - 'web/modules/custom/**'
+
+jobs:
+  phpcs_fix:
+    name: phpcs
+    steps:
+      - name: phpcs
+        uses: docker://composer:1.10
+        env:
+          LAST_NAME: Action
+        run: |
+          echo $LAST_NAME
+          echo $GITHUB_REF
+          php --version
+          composer -V
+          composer global require drupal/coder
+          $COMPOSER_HOME
+          which composer
+          sed -e "s|vendor|$COMPOSER_HOME/vendor|g" phpcs.ruleset.xml > phpcs-ci.ruleset.xml
+          cat phpcs-ci.ruleset.xml
+          $COMPOSER_HOME/vendor/bin/phpcs --config-set installed_paths $COMPOSER_HOME/vendor/drupal/coder/coder_sniffer
+          $COMPOSER_HOME/vendor/bin/phpcs -i
+          $COMPOSER_HOME/vendor/bin/phpcs -p --standard=phpcs-ci.ruleset.xml
