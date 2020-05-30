@@ -30,6 +30,7 @@ jobs:
       - name: Show files
         run: |
           ls -la
+          chmod +x /tmp
 
       - name: Setup phpcs
         run: |
