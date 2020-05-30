@@ -20,7 +20,7 @@ jobs:
       ports:
         - 80
 #      volumes:
-##        - $(pwd)/docker/tmp:/tmp
+#        - $(pwd)/docker/tmp:/tmp
 #        - $GITHUB_WORKSPACE/docker/tmp:/tmp
     name: phpcs
     steps:
