@@ -12,6 +12,7 @@ jobs:
       matrix:
         composer: ['1.10']
     runs-on: ubuntu-latest
+    continue-on-error: true
     container:
       #image: composer:${{ matrix.composer }}
       image: composer:${{ matrix.composer }}
