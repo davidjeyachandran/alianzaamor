@@ -7,10 +7,11 @@ on:
 
 jobs:
   phpcs_fix:
+    container: composer:1.10
     name: phpcs
     steps:
       - name: phpcs
-        uses: docker://composer:1.10
+        #uses: docker://composer:1.10
         env:
           LAST_NAME: Action
         run: |
