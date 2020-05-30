@@ -10,11 +10,11 @@ jobs:
   phpcs_fix:
     strategy:
       matrix:
-        composer: [1.10]
+        composer: ['1.10']
     runs-on: ubuntu-latest
     container:
       #image: composer:${{ matrix.composer }}
-      image: 1.10
+      image: composer:${{ matrix.composer }}
       env:
         NODE_ENV: production
       ports:
