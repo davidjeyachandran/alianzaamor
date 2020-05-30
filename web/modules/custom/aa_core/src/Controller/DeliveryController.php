@@ -15,7 +15,8 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 /**
  * Controller routines for delivery controller.
  */
-class DeliveryController extends ControllerBase {
+class DeliveryController extends ControllerBase
+{
 
   /**
    * The current user.
@@ -59,7 +60,11 @@ class DeliveryController extends ControllerBase {
    * @return array
    *   A render array representing the administrative page content.
    */
-  public function updateDelivery(NodeInterface $node, UserInterface $user = NULL, $field_name = 'field_delivered') : array {
+  public function updateDelivery(NodeInterface $node, UserInterface $user = NULL, $field_name = 'field_delivered'): array {
+    /*$token = \Drupal::request()->query->get('token');
+    if (!\Drupal::getContainer()->get('csrf_token')->validate($token, $node->id())) {
+      throw new AccessDeniedHttpException("Invalid 'replace_token' query parameter.");
+    }*/
 
     // @TODO: Improve below logic.
     // Move to access node class.
@@ -99,10 +104,6 @@ class DeliveryController extends ControllerBase {
     }
     else {
 
-      // Updating field.
-      $node->$field_name[] = $user->id();
-      $node->save();
-
       switch ($field_name) {
         case 'field_delivered':
           // Update user when food was delivered.
@@ -130,21 +131,41 @@ class DeliveryController extends ControllerBase {
           break;
 
         case 'field_users_check_in':
+          // Exclude value from the other field.
+          $users_check = $node->get('field_users_opt_out')->getValue();
+          $new_value = [];
+          foreach ($users_check as $user_check) {
+            if ($user_check['target_id'] != $user->id()) {
+              $new_value[] = ['target_id' => $user_check['target_id']];
+            }
+          }
+          $node->set('field_users_opt_out', $new_value);
+
           // Update user when confirmation response received.
-          $message = t('Hey Policeman!', [
-            '%id' => $user->getAccountName(),
-          ]);
+          $message = $this->t('We received your confirmation.');
           $this->messenger()->addMessage($message);
           break;
 
         case 'field_users_opt_out':
+          // Exclude value from the other field.
+          $users_check = $node->get('field_users_check_in')->getValue();
+          $new_value = [];
+          foreach ($users_check as $user_check) {
+            if ($user_check['target_id'] != $user->id()) {
+              $new_value[] = ['target_id' => $user_check['target_id']];
+            }
+          }
+          $node->set('field_users_check_in', $new_value);
+
           // Update user when rejection response received.
-          $message = t('My boot goes in your face!', [
-            '%id' => $user->getAccountName(),
-          ]);
+          $message = $this->t('We received your rejection.');
           $this->messenger()->addMessage($message);
           break;
       }
+
+      // Updating field.
+      $node->$field_name[] = $user->id();
+      $node->save();
 
     }
 

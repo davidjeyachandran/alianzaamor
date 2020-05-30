@@ -8,8 +8,9 @@ use Drupal\node\NodeInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Access\AccessResult;
+
 /**
- * 
+ *
  */
 class NodeImportUsersForm extends FormBase {
 
@@ -54,7 +55,7 @@ class NodeImportUsersForm extends FormBase {
   }
 
   /**
-   * CheckAccess 
+   * CheckAccess
    * this  form to be displayed for Delivery content type only
    */
   public function checkAccess($node) {
@@ -68,19 +69,19 @@ class NodeImportUsersForm extends FormBase {
   public function buildForm(array $form, FormStateInterface $form_state, NodeInterface $node = NULL) {
     $this->node = $node;
 
-    $form['users_to_add_csv'] = array(
+    $form['users_to_add_csv'] = [
       '#type' => 'textarea',
       '#required' => TRUE,
       '#title' => $this->t('Usernames (UNICAMENTE la Cédula de identidad para Venezolanos)'),
       '#description' => $this->t('Usernames can be comma separated values or numeric value per new line.'),
-    );
+    ];
 
     $form['actions']['#type'] = 'actions';
-    $form['actions']['submit'] = array(
+    $form['actions']['submit'] = [
       '#type' => 'submit',
       '#value' => $this->t('Save'),
       '#button_type' => 'primary',
-    );
+    ];
 
     return $form;
   }
@@ -108,18 +109,20 @@ class NodeImportUsersForm extends FormBase {
     $new_users_to_deliver_csv = str_replace("\r\n", ',', $new_users_to_deliver_csv);
 
     $new_users_to_deliver_ids = explode(',', $new_users_to_deliver_csv);
-    
+
     // Remove any duplicates.
     $new_users_to_deliver_ids = array_unique($new_users_to_deliver_ids);
-    
+
     // Load current delivery.
     $users_to_deliver = $this->node->field_users_to_deliver->referencedEntities();
-    $users_to_deliver_ids = array_map(function($user) { return $user->getDisplayName() ; }, $users_to_deliver);
-    
+    $users_to_deliver_ids = array_map(function ($user) {
+      return $user->getDisplayName();
+    }, $users_to_deliver);
+
     // Check if some users are already in the delivery list.
     $users_intersect = array_intersect($new_users_to_deliver_ids, $users_to_deliver_ids);
 
-    if ($users_intersect != null) {
+    if ($users_intersect != NULL) {
       $new_users_to_deliver_ids = array_diff($new_users_to_deliver_ids, $users_to_deliver_ids);
     }
 
@@ -130,49 +133,51 @@ class NodeImportUsersForm extends FormBase {
           [
             '%duplicate_users' => implode(', ', $users_intersect),
           ])
-        );
+      );
     }
 
     if (
-      $new_users_to_deliver_ids != null 
+      $new_users_to_deliver_ids != NULL
       && count($new_users_to_deliver_ids) > 0
-      ) {
+    ) {
       // Load new users.
       $new_users_uid = $this->entityTypeManager->getStorage('user')->getQuery()
         ->condition('name', $new_users_to_deliver_ids, 'IN')
         ->condition('status', TRUE)
         ->execute();
-      
+
       $new_users = $this->entityTypeManager->getStorage('user')->loadMultiple($new_users_uid);
-      $new_users_ids = array_map(function($user) { return $user->getDisplayName() ;}, $new_users );
+      $new_users_ids = array_map(function ($user) {
+        return $user->getDisplayName();
+      }, $new_users);
       $excluded_user_ids = array_diff($new_users_to_deliver_ids, $new_users_ids);
 
-      if ($excluded_user_ids != null || count($excluded_user_ids) > 0) {
+      if ($excluded_user_ids != NULL || count($excluded_user_ids) > 0) {
         // Check if some users do not exist or blocked.
         $this->messenger()->addWarning(
           $this->t(
             "Following usernames have not been added to this delivery as users do not exist in the system or are blocked: %invalid_users",
             [
-            '%invalid_users' => implode(', ', $excluded_user_ids)
+              '%invalid_users' => implode(', ', $excluded_user_ids),
             ])
-          );
+        );
       }
 
-      if ($new_users_uid != null && count($new_users_to_deliver_ids) > 0) {
-          // Insert new user ids to delivery.
-          foreach ($new_users_uid as &$user) {
-              $this->node->field_users_to_deliver[] = $user;
-          }
-          $this->node->save();
+      if ($new_users_uid != NULL && count($new_users_to_deliver_ids) > 0) {
+        // Insert new user ids to delivery.
+        foreach ($new_users_uid as &$user) {
+          $this->node->field_users_to_deliver[] = $user;
+        }
+        $this->node->save();
 
-          $this->messenger()->addMessage(
-            $this->t(
-              "Following %count usernames have been assigned to this delivery: %new_users",
-              [
-                '%count' => count($new_users_ids),
-                '%new_users' => implode(', ', $new_users_ids),
-              ])
-          );
+        $this->messenger()->addMessage(
+          $this->t(
+            "Following %count usernames have been assigned to this delivery: %new_users",
+            [
+              '%count' => count($new_users_ids),
+              '%new_users' => implode(', ', $new_users_ids),
+            ])
+        );
       } else {
         $this->messenger()->addMessage(
           $this->t("No new users have been added")

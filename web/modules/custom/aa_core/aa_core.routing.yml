@@ -17,6 +17,7 @@ aa_core.delivery_confirm:
   requirements:
     _role: 'authenticated'
     node: \d+
+    _csrf_token: 'TRUE'
 
 aa_core.delivery_reject:
   path: '/user/delivery/{node}/reject'
@@ -26,6 +27,7 @@ aa_core.delivery_reject:
   requirements:
     _role: 'authenticated'
     node: \d+
+    _csrf_token: 'TRUE'
 
 aa_core.import_users:
   path: '/node/{node}/edit/import-users'

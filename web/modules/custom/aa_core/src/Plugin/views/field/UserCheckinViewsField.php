@@ -2,6 +2,9 @@
 
 namespace Drupal\aa_core\Plugin\views\field;
 
+use Drupal\Core\Access\CsrfTokenGenerator;
+use Drupal\Core\Link;
+use Drupal\Core\Url;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\views\Plugin\views\field\FieldPluginBase;
 use Drupal\views\ResultRow;
@@ -34,6 +37,13 @@ class UserCheckinViewsField extends FieldPluginBase {
   protected $currentUser;
 
   /**
+   * The CSRF token generator.
+   *
+   * @var \Drupal\Core\Access\CsrfTokenGenerator
+   */
+  protected $tokenGenerator;
+
+  /**
    * Constructs a new BulkForm object.
    *
    * @param array $configuration
@@ -44,13 +54,16 @@ class UserCheckinViewsField extends FieldPluginBase {
    *   The plugin implementation definition.
    * @param \Drupal\Core\Session\AccountInterface $current_user
    *   The current user.
+   * @param \Drupal\Core\Access\CsrfTokenGenerator $token_generator
+   *   The CSRF token generator.
    *
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, AccountInterface $current_user) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, AccountInterface $current_user, CsrfTokenGenerator $token_generator) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
 
     $this->currentUser = $current_user;
+    $this->tokenGenerator = $token_generator;
   }
 
   /**
@@ -61,7 +74,8 @@ class UserCheckinViewsField extends FieldPluginBase {
       $configuration,
       $plugin_id,
       $plugin_definition,
-      $container->get('current_user')
+      $container->get('current_user'),
+      $container->get('csrf_token')
     );
   }
 
@@ -107,9 +121,52 @@ class UserCheckinViewsField extends FieldPluginBase {
     $userCheckIn = array_reduce($valueCheckIn, [$this, 'fieldItemReferenceReduce'], FALSE);
     $userOptOut = array_reduce($valueOptOut, [$this, 'fieldItemReferenceReduce'], FALSE);
 
-    dump($userCheckIn);
-    dump($userOptOut);
-    return $node->id();
+    // Generate link original link.
+    $link_accept = Link::fromTextAndUrl(
+      $this->t('Confirm'),
+      Url::fromRoute(
+        'aa_core.delivery_confirm',
+        ['node' => $node->id()],
+        ['query' => ['token' => $this->tokenGenerator->get("user/delivery/{$node->id()}/confirm")]]
+      ))->toString();
+    $link_reject = Link::fromTextAndUrl(
+      $this->t('Reject'),
+      Url::fromRoute(
+        'aa_core.delivery_reject',
+        ['node' => $node->id()],
+        ['query' => ['token' => $this->tokenGenerator->get("user/delivery/{$node->id()}/reject")]]
+      ))->toString();
+    $link = [[
+      '#markup' => $link_accept,
+    ], [
+      '#markup' => ' | ',
+    ], [
+      '#markup' => $link_reject,
+    ]];
+
+    if ($userCheckIn) {
+      // Generate link if user already confirmed.
+      $link = Link::fromTextAndUrl(
+        $this->t('Cancel confirmation and reject'),
+        Url::fromRoute(
+          'aa_core.delivery_reject',
+          ['node' => $node->id()],
+          ['query' => ['token' => $this->tokenGenerator->get("user/delivery/{$node->id()}/reject")]]
+        ))->toString();
+    }
+
+    if ($userOptOut) {
+      // Generate link if user already rejected.
+      $link = Link::fromTextAndUrl(
+        $this->t('Cancel rejection and confirm'),
+        Url::fromRoute(
+          'aa_core.delivery_confirm',
+          ['node' => $node->id()],
+          ['query' => ['token' => $this->tokenGenerator->get("user/delivery/{$node->id()}/confirm")]]
+        ))->toString();
+    }
+
+    return $link;
   }
 
   /**
