@@ -4,16 +4,44 @@ namespace Drupal\aa_core\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Entity\EntityStorageException;
+use Drupal\Core\Session\AccountInterface;
 use Drupal\node\NodeInterface;
 use Drupal\user\UserInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Drupal\Core\Url;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 /**
  * Controller routines for delivery controller.
  */
 class DeliveryController extends ControllerBase {
+
+  /**
+   * The current user.
+   *
+   * @var \Drupal\Core\Session\AccountInterface
+   */
+  protected $currentUser;
+
+  /**
+   * SystemBrandingOffCanvasForm constructor.
+   *
+   * @param \Drupal\Core\Session\AccountInterface $current_user
+   *   The current user.
+   */
+  public function __construct(AccountInterface $current_user) {
+    $this->currentUser = $current_user;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container->get('current_user')
+    );
+  }
 
   /**
    * Page for executing delivering
@@ -31,27 +59,36 @@ class DeliveryController extends ControllerBase {
    * @return array
    *   A render array representing the administrative page content.
    */
-  public function updateDelivery(NodeInterface $node, UserInterface $user, $field_name = 'field_delivered') : array {
+  public function updateDelivery(NodeInterface $node, UserInterface $user = NULL, $field_name = 'field_delivered') : array {
 
     // @TODO: Improve below logic.
     // Move to access node class.
     if ($node->bundle() !== 'delivery') {
-      throw new NotFoundHttpException;
+      throw new AccessDeniedHttpException("Content type is not supported.");
+    }
+
+    if (!$user) {
+      $user = $this->currentUser;
     }
 
     if (!$user->isAuthenticated()) {
-      throw new NotFoundHttpException();
+      throw new AccessDeniedHttpException("User doesn't have permissions.");
     }
 
     // Check that correct field is used.
-    if (in_array($field_name, ['field_delivered', 'field_users_check_in', 'field_users_opt_out'])) {
-      throw new NotFoundHttpException;
+    if (!in_array($field_name, ['field_delivered', 'field_users_check_in', 'field_users_opt_out'])) {
+      throw new AccessDeniedHttpException("Field doesn't exists.");
     }
 
     $users = $node->$field_name->referencedEntities();
     $users_found = array_filter($users, static function (UserInterface $user_reference) use ($user) {
       return $user_reference->id() === $user->id();
     });
+
+    // Define default route.
+    $route = Url::fromRoute('view.user_deliveries.page_user_deliveries', [
+      'user' => $user->id(),
+    ]);
 
     if (!empty($users_found)) {
       // When user was added previously to the field.
@@ -65,11 +102,6 @@ class DeliveryController extends ControllerBase {
       // Updating field.
       $node->$field_name[] = $user->id();
       $node->save();
-
-      // Define default route.
-      $route = Url::fromRoute('user.view', [
-        'user' => $user->id(),
-      ]);
 
       switch ($field_name) {
         case 'field_delivered':
@@ -99,10 +131,18 @@ class DeliveryController extends ControllerBase {
 
         case 'field_users_check_in':
           // Update user when confirmation response received.
+          $message = t('Hey Policeman!', [
+            '%id' => $user->getAccountName(),
+          ]);
+          $this->messenger()->addMessage($message);
           break;
 
         case 'field_users_opt_out':
           // Update user when rejection response received.
+          $message = t('My boot goes in your face!', [
+            '%id' => $user->getAccountName(),
+          ]);
+          $this->messenger()->addMessage($message);
           break;
       }
 
