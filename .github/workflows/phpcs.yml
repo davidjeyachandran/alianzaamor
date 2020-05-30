@@ -20,8 +20,8 @@ jobs:
       ports:
         - 80
       volumes:
-        - $(pwd)/docker/tmp:/tmp
-#        - $GITHUB_WORKSPACE:/var/www/html
+#        - $(pwd)/docker/tmp:/tmp
+        - $GITHUB_WORKSPACE:/var/www/html
     name: phpcs
     steps:
       - name: Checkout repository
