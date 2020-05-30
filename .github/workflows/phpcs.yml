@@ -19,8 +19,8 @@ jobs:
         NODE_ENV: production
       ports:
         - 80
-      volumes:
-        - "$GITHUB_WORKSPACE":"/var/www/html"
+#      volumes:
+#        - $GITHUB_WORKSPACE:/var/www/html
     name: phpcs
     steps:
       - name: Checkout repository
