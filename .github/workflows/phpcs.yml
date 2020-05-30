@@ -15,7 +15,6 @@ jobs:
     runs-on: ubuntu-latest
     continue-on-error: true
     container:
-      #image: composer:${{ matrix.composer }}
       image: composer:${{ matrix.composer }}
       env:
         NODE_ENV: production
