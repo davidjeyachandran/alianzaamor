@@ -42,3 +42,13 @@ aa_core.import_users:
     _custom_access: '\Drupal\aa_core\Form\NodeImportUsersForm::checkAccess'
     _permission: 'deliver food'
     node: \d+
+
+aa_core.admin_settings:
+  path: '/admin/config/aa'
+  defaults:
+    _form: '\Drupal\aa_core\Form\AaCoreSettingsForm'
+    _title: 'AA Settings'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE

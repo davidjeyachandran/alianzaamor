@@ -115,6 +115,8 @@ class UserCheckinViewsField extends FieldPluginBase {
    * {@inheritdoc}
    */
   public function render(ResultRow $values) {
+    $config = $this->config('aa_core.settings');
+
     $node = $values->_entity;
     $valueCheckIn = $node->get('field_users_check_in')->getValue();
     $valueOptOut = $node->get('field_users_opt_out')->getValue();
@@ -123,14 +125,14 @@ class UserCheckinViewsField extends FieldPluginBase {
 
     // Generate link original link.
     $link_accept = Link::fromTextAndUrl(
-      $this->t('Confirm'),
+      $this->t($config->get('delivery.confirm')),
       Url::fromRoute(
         'aa_core.delivery_confirm',
         ['node' => $node->id()],
         ['query' => ['token' => $this->tokenGenerator->get("user/delivery/{$node->id()}/confirm")]]
       ))->toString();
     $link_reject = Link::fromTextAndUrl(
-      $this->t('Reject'),
+      $this->t($config->get('delivery.reject')),
       Url::fromRoute(
         'aa_core.delivery_reject',
         ['node' => $node->id()],
@@ -146,24 +148,40 @@ class UserCheckinViewsField extends FieldPluginBase {
 
     if ($userCheckIn) {
       // Generate link if user already confirmed.
-      $link = Link::fromTextAndUrl(
-        $this->t('Cancel confirmation and reject'),
+      $link_reject = Link::fromTextAndUrl(
+        $this->t($config->get('delivery.reject')),
         Url::fromRoute(
           'aa_core.delivery_reject',
           ['node' => $node->id()],
           ['query' => ['token' => $this->tokenGenerator->get("user/delivery/{$node->id()}/reject")]]
         ))->toString();
+
+        $link = [[
+          '#markup' => $this->t($config->get('delivery.confirmed')),
+        ], [
+          '#markup' => ' | ',
+        ], [
+          '#markup' => $link_reject,
+        ]];
     }
 
     if ($userOptOut) {
       // Generate link if user already rejected.
-      $link = Link::fromTextAndUrl(
-        $this->t('Cancel rejection and confirm'),
+      $link_confirm = Link::fromTextAndUrl(
+        $this->t($config->get('delivery.confirm')),
         Url::fromRoute(
           'aa_core.delivery_confirm',
           ['node' => $node->id()],
           ['query' => ['token' => $this->tokenGenerator->get("user/delivery/{$node->id()}/confirm")]]
         ))->toString();
+
+      $link = [[
+        '#markup' => $this->t($config->get('delivery.rejected')),
+      ], [
+        '#markup' => ' | ',
+      ], [
+        '#markup' => $link_confirm,
+      ]];
     }
 
     return $link;

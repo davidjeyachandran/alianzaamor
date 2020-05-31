@@ -9,18 +9,22 @@ namespace Drupal\aa_core\Form;
 
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\node\Entity\Node;
-use Symfony\Component\DomCrawler\Crawler;
-use Drupal\Core\Link;
 
 class AaCoreSettingsForm extends ConfigFormBase {
+
+  /**
+   * Config settings.
+   *
+   * @var string
+   */
+  const SETTINGS = 'aa_core.settings';
 
   /**
    * {@inheritdoc}
    */
   protected function getEditableConfigNames() {
     return [
-      'aa_core.settings',
+      static::SETTINGS,
     ];
   }
 
@@ -35,30 +39,30 @@ class AaCoreSettingsForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    $config = $this->config('aa_core.settings');
+    $config = $this->config(static::SETTINGS);
 
-    $form['delivery.confirm'] = [
+    $form['delivery_confirm'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Confirm'),
       '#description' => $this->t('Link text to confirm delivery.'),
       '#default_value' => $config->get('delivery.confirm'),
     ];
 
-    $form['delivery.reject'] = [
+    $form['delivery_reject'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Confirm'),
       '#description' => $this->t('Link text to confirm delivery.'),
       '#default_value' => $config->get('delivery.reject'),
     ];
 
-    $form['delivery.confirmed'] = [
+    $form['delivery_confirmed'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Confirmed'),
       '#description' => $this->t('Text to to specify that delivery was confirmed.'),
       '#default_value' => $config->get('delivery.confirmed'),
     ];
 
-    $form['delivery.rejected'] = [
+    $form['delivery_rejected'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Rejected'),
       '#description' => $this->t('Text to to specify that delivery was rejected.'),
@@ -71,14 +75,15 @@ class AaCoreSettingsForm extends ConfigFormBase {
   /**
    * {@inheritdoc}
    */
-  /*public function submitForm(array &$form, FormStateInterface $form_state) {
-    parent::submitForm($form, $form_state);
-
-    $config = $this->config('mecrawl.settings');
-
-    $config
-      ->set('crawl_url', $form_state->getValue('crawl_url'))
+  public function submitForm(array &$form, FormStateInterface $form_state) {
+    $this->configFactory->getEditable(static::SETTINGS)
+      ->set('delivery.confirm', $form_state->getValue('delivery_confirm'))
+      ->set('delivery.confirmed', $form_state->getValue('delivery_confirmed'))
+      ->set('delivery.reject', $form_state->getValue('delivery_reject'))
+      ->set('delivery.rejected', $form_state->getValue('delivery_rejected'))
       ->save();
-  }*/
+
+    parent::submitForm($form, $form_state);
+  }
 
 }
