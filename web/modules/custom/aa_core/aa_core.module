@@ -14,7 +14,6 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
  * Implements hook_form_alter().
  */
 function aa_core_form_alter(&$form, FormStateInterface $form_state, $form_id) {
-
   if ($form_id === 'user_register_form') {
     $form['account']['mail']['#description'] = t("Una dirección de correo electrónico válida.");
     $form['account']['name']['#description'] = t("La Cédula de identidad para Venezolanos o DNI para Peruanos. Por favor SIN letras o puntos");
@@ -23,13 +22,16 @@ function aa_core_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   }
 
   if ($form_id === 'user_login_form') {
+
     $staff = \Drupal::request()->query->get('staff');
     // All Venezolans will have to just log in with their
     // "Cédula de Identidad o DNI" as the password.
     if (!$staff) {
+
       $form['pass']['#required'] = FALSE;
       $form['pass']['#access'] = FALSE;
       array_unshift($form['#validate'], 'aa_core_user_login_validate_pass');
+
       // Disable cache if query argument is ?staff
       $form['#cache']['contexts'][] = 'url.query_args:staff';
     }
@@ -38,7 +40,7 @@ function aa_core_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   if($form_id === 'user_form') {
     $account = \Drupal::service('current_route_match')->getParameter('user');
 
-    if (isLoggedinWithoutRoles($account)) {
+    if (!is_staff_user($account)) {
       // Show username field but hide password and email field.
       $form['account']['name']['#access'] = TRUE;
       $form['account']['pass']['#access'] = FALSE;
@@ -54,10 +56,7 @@ function aa_core_form_alter(&$form, FormStateInterface $form_state, $form_id) {
  */
 function aa_core_user_insert(UserInterface $user) {
   // Assign "Cédula de Identidad o DNI" as the password.
-  if (!$user->hasRole('administrator') ||
-    !$user->hasRole('equipo') ||
-    !$user->hasRole('administrator' ||
-    !$user->hasRole('misionero'))) {
+  if (!is_staff_user($user)) {
     $user->pass->value = $user->label();
     $user->save();
   }
@@ -68,37 +67,53 @@ function aa_core_user_insert(UserInterface $user) {
  */
 function aa_core_user_login_validate_pass(array $form, FormStateInterface $form_state) {
   $name = $form_state->getValue('name');
-  $form_state->setValue('pass', $name);
+
+  // Fix for users: sets password to username is user is not staff.
+  // @TODO: replace in future with more robust functionality.
+  $users = \Drupal::entityTypeManager()
+    ->getStorage('user')
+    ->loadByProperties([
+      'name' => $name,
+    ]);
+
+  $user = $users ? reset($users) : FALSE;
+  if ($user && !is_staff_user($user)) {
+    $user
+      ->set('pass', $name)
+      ->save();
+
+    $form_state->setValue('pass', $name);
+  }
+
 }
 
 /**
- * Redirect after login to the user edit page, if you don't have a special role
+ * Redirect after login to the user edit page, if you don't have a special role.
  *
  * @param \Drupal\user\UserInterface $account
  *   The user object on which the operation was just performed.
  */
-function aa_core_user_login(UserInterface $account) {
-  if (isLoggedinWithoutRoles($account)) {
-    // Redirect to home since nothing to do.
-    $route = Url::fromRoute('entity.user.edit_form', [
-      'user' => $account->id()]
-    );
-    $response = new RedirectResponse($route->toString());
-    $response->send();
-  }
-}
+//function aa_core_user_login(UserInterface $account) {
+//  if (!is_staff_user($account)) {
+//    // Redirect to home since nothing to do.
+//    $route = Url::fromRoute('entity.user.edit_form', [
+//      'user' => $account->id(),
+//    ]);
+//    $response = new RedirectResponse($route->toString());
+//    $response->send();
+//  }
+//}
 
-function isLoggedinWithoutRoles($account) {
-  if (
-    $account->hasRole('authenticated') &&
-    !$account->hasRole('equipo') &&
-    !$account->hasRole('misionero') &&
-    !$account->hasRole('administrator')
-  ) {
-    return TRUE;
-  } else {
-    return FALSE;
-  }
+/**
+ * Callback to check if user belongs to staff.
+ *
+ * @param \Drupal\user\UserInterface $account
+ *   The user object on which the operation was just performed.
+ */
+function is_staff_user(UserInterface $account) {
+  return ($account->hasRole('equipo') ||
+    $account->hasRole('misionero') ||
+    $account->hasRole('administrator'));
 }
 
 /**

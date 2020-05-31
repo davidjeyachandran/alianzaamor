@@ -57,7 +57,6 @@ class UserReportController implements ContainerInjectionInterface {
     $num_rows = $query->countQuery()->execute()->fetchField();
     $result = $query->execute();
     $records = $result->fetchAllKeyed();
-    dump($records);
 
     $phones = [];
     foreach ($records as $index => $record) {
@@ -80,7 +79,6 @@ class UserReportController implements ContainerInjectionInterface {
       ->aggregate('field_celular', '^5[1|6][0-9]{8}', 'NOT REGEXP');
     $result = $query->execute();
     //$total_users = $result[0]['uid_count'];
-    dump($result);
 
     $header = [
       ['data' => $this->t('Phone'), 'field' => 'phone', 'sort' => 'desc'],

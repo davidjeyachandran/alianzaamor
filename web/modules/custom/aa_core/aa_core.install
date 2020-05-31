@@ -1,0 +1,41 @@
+<?php
+
+/**
+ * @file
+ * Install functions for the testing_site_config module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function aa_core_install() {
+  // Set default values.
+  \Drupal::configFactory()->getEditable('aa_core.settings')
+    ->set('delivery.confirm', 'Confirm')
+    ->set('delivery.reject', 'Reject')
+    ->set('delivery.confirmed', 'Confirmed')
+    ->set('delivery.rejected', 'Rejected')
+    ->save(TRUE);
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function aa_core_uninstall() {
+  \Drupal::configFactory()->getEditable('aa_core.settings')->delete();
+}
+
+/**
+ * Implements hook_update_N().
+ *
+ * Creates original configuration.
+ */
+function aa_core_update_8001() {
+  // Set default values.
+  \Drupal::configFactory()->getEditable('aa_core.settings')
+    ->set('delivery.confirm', 'Confirm')
+    ->set('delivery.reject', 'Reject')
+    ->set('delivery.confirmed', 'Confirmed')
+    ->set('delivery.rejected', 'Rejected')
+    ->save(TRUE);
+}
