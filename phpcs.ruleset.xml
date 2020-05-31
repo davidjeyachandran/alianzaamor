@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<ruleset name="TES">
+    <description>TES PHPCS rules.</description>
+
+    <file>web/modules/custom</file>
+
+    <arg name="extensions" value="inc,install,module,php,profile,test,theme,yml"/>
+
+    <exclude-pattern>*/tests/_*</exclude-pattern>
+    <exclude-pattern>*/tests/*/_bootstrap.php</exclude-pattern>
+    <exclude-pattern>*/node_modules/*</exclude-pattern>
+    <exclude-pattern>*/themes/custom/*/css/style.css</exclude-pattern>
+
+    <!--Reference Drupal Code Sniffs-->
+    <rule ref="vendor/drupal/coder/coder_sniffer"/>
+
+    <!--Add Drupal Code Rulesets-->
+    <rule ref="vendor/drupal/coder/coder_sniffer/Drupal/ruleset.xml"/>
+    <rule ref="vendor/drupal/coder/coder_sniffer/DrupalPractice/ruleset.xml"/>
+
+    <!-- Require short array syntax -->
+    <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
+
+    <!-- PHP 7 structure for group namespacing -->
+    <rule ref="PSR2.Namespaces.UseDeclaration">
+        <exclude name="PSR2.Namespaces.UseDeclaration"/>
+    </rule>
+
+    <!-- Exclude: All dependencies must be prefixed with the project name, for example "drupal:" -->
+    <rule ref="DrupalPractice.InfoFiles.NamespacedDependency.NonNamespaced">
+        <exclude name="DrupalPractice.InfoFiles.NamespacedDependency.NonNamespaced"/>
+    </rule>
+
+    <!-- Exclude: Remove "version" from the info file, it will be added by drupal.org packaging automatically -->
+    <rule ref="Drupal.InfoFiles.AutoAddedKeys.Version">
+        <exclude name="Drupal.InfoFiles.AutoAddedKeys.Version"/>
+    </rule>
+</ruleset>

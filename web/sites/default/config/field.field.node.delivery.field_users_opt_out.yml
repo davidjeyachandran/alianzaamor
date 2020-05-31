@@ -1,0 +1,28 @@
+uuid: 5d9ccf9d-1b9d-464b-9e7c-abada27f3753
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_users_opt_out
+    - node.type.delivery
+id: node.delivery.field_users_opt_out
+field_name: field_users_opt_out
+entity_type: node
+bundle: delivery
+label: 'Users Opt-out'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    include_anonymous: true
+    filter:
+      type: _none
+    target_bundles: null
+    sort:
+      field: _none
+    auto_create: false
+field_type: entity_reference

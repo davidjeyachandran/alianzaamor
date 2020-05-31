@@ -89,14 +89,35 @@ function aa_core_user_login(UserInterface $account) {
 }
 
 function isLoggedinWithoutRoles($account) {
-  if(
-    $account->hasRole('authenticated') && 
-    !$account->hasRole('equipo') && 
-    !$account->hasRole('misionero') && 
+  if (
+    $account->hasRole('authenticated') &&
+    !$account->hasRole('equipo') &&
+    !$account->hasRole('misionero') &&
     !$account->hasRole('administrator')
-    ) {
-      return TRUE;
-    } else {
-      return FALSE;
-    }
+  ) {
+    return TRUE;
+  } else {
+    return FALSE;
+  }
+}
+
+/**
+ * Implements hook_views_data().
+ */
+function aa_core_views_data() {
+  $data['views']['table']['group'] = t('AA Global');
+  $data['views']['table']['join'] = [
+    // #glbal is a special flag which allows a table to appear all the time.
+    '#global' => [],
+  ];
+
+  $data['views']['aa_user_checkin_views_field'] = [
+    'title' => t('AA Action: User check-in'),
+    'help' => t('Displays reject of check in for delivery user action.'),
+    'field' => [
+      'id' => 'aa_user_checkin_views_field',
+    ],
+  ];
+  return $data;
+
 }

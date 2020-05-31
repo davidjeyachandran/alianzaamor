@@ -1,13 +1,33 @@
 aa_core.to_deliver:
   path: '/to-deliver/{node}/{user}'
   defaults:
-    _controller: '\Drupal\aa_core\Controller\DeliveryController::toDeliver'
+    _controller: '\Drupal\aa_core\Controller\DeliveryController::updateDelivery'
   requirements:
     # @TODO: update permission for team leaders.
     # We should create a custom permission.
     _permission: 'deliver food'
     node: \d+
     user: \d+
+
+aa_core.delivery_confirm:
+  path: '/user/delivery/{node}/confirm'
+  defaults:
+    _controller: '\Drupal\aa_core\Controller\DeliveryController::updateDelivery'
+    field_name: 'field_users_check_in'
+  requirements:
+    _role: 'authenticated'
+    node: \d+
+    _csrf_token: 'TRUE'
+
+aa_core.delivery_reject:
+  path: '/user/delivery/{node}/reject'
+  defaults:
+    _controller: '\Drupal\aa_core\Controller\DeliveryController::updateDelivery'
+    field_name: 'field_users_opt_out'
+  requirements:
+    _role: 'authenticated'
+    node: \d+
+    _csrf_token: 'TRUE'
 
 aa_core.import_users:
   path: '/node/{node}/edit/import-users'
@@ -20,9 +40,5 @@ aa_core.import_users:
         type: entity:node
   requirements:
     _custom_access: '\Drupal\aa_core\Form\NodeImportUsersForm::checkAccess'
-    # @TODO: update permission for team leaders.
-    # We should create a custom permission.
     _permission: 'deliver food'
     node: \d+
-
-    

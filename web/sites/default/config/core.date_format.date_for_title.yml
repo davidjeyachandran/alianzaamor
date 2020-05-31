@@ -1,0 +1,8 @@
+uuid: 624b3f95-a0c7-4a1c-afc4-87824e0db33f
+langcode: en
+status: true
+dependencies: {  }
+id: date_for_title
+label: 'Date for title'
+locked: false
+pattern: 'D d F g:ia'

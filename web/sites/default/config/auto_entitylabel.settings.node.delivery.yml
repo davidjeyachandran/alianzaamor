@@ -1,5 +1,5 @@
 status: 1
-pattern: '[node:field_location] - [node:field_time:date:custom:D m F H:ia] '
+pattern: '[node:field_location] - [node:field_time:date:date_for_title]'
 escape: false
 dependencies:
   config:

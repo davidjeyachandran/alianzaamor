@@ -1,0 +1,54 @@
+name: Coding standards
+
+on:
+  push:
+    paths:
+      - 'web/modules/custom/**'
+      - '.github/**'
+    branches:
+      - 'feature/**'
+jobs:
+  phpcs_fix:
+    strategy:
+      matrix:
+        composer: ['1.10']
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    container:
+      image: composer:${{ matrix.composer }}
+      env:
+        NODE_ENV: production
+      ports:
+        - 80
+#      volumes:
+#        - $(pwd)/docker/tmp:/tmp
+#        - $GITHUB_WORKSPACE/docker/tmp:/tmp
+    name: phpcs
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v1
+
+      - name: Show files
+        run: |
+          ls -la
+#          chmod +x /tmp
+
+      - name: Setup phpcs
+        run: |
+          echo $LAST_NAME
+          echo $GITHUB_REF
+          php --version
+          composer -V
+          composer global require drupal/coder
+      - name: Setup phpcs 2
+        run: |
+          echo $COMPOSER_HOME
+          which composer
+          sed -e "s|vendor|$COMPOSER_HOME/vendor|g" phpcs.ruleset.xml > phpcs-ci.ruleset.xml
+          cat phpcs-ci.ruleset.xml
+          $COMPOSER_HOME/vendor/bin/phpcs --config-set installed_paths $COMPOSER_HOME/vendor/drupal/coder/coder_sniffer
+          $COMPOSER_HOME/vendor/bin/phpcs -i
+
+      - name: Run phpcs
+        run: |
+          $COMPOSER_HOME/vendor/bin/phpcs -p --standard=phpcs-ci.ruleset.xml
