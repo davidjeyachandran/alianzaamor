@@ -3,6 +3,7 @@
 namespace Drupal\aa_core\Plugin\views\field;
 
 use Drupal\Core\Access\CsrfTokenGenerator;
+use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Url;
 use Drupal\Core\Session\AccountInterface;
@@ -44,6 +45,13 @@ class UserCheckinViewsField extends FieldPluginBase {
   protected $tokenGenerator;
 
   /**
+   * Config factory.
+   *
+   * @var \Drupal\Core\Config\ConfigFactoryInterface
+   */
+  protected $configFactory;
+
+  /**
    * Constructs a new BulkForm object.
    *
    * @param array $configuration
@@ -56,14 +64,17 @@ class UserCheckinViewsField extends FieldPluginBase {
    *   The current user.
    * @param \Drupal\Core\Access\CsrfTokenGenerator $token_generator
    *   The CSRF token generator.
+   * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
+   *   Configuration factory.
    *
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, AccountInterface $current_user, CsrfTokenGenerator $token_generator) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, AccountInterface $current_user, CsrfTokenGenerator $token_generator, ConfigFactoryInterface $config_factory) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
 
     $this->currentUser = $current_user;
     $this->tokenGenerator = $token_generator;
+    $this->configFactory = $config_factory;
   }
 
   /**
@@ -75,7 +86,8 @@ class UserCheckinViewsField extends FieldPluginBase {
       $plugin_id,
       $plugin_definition,
       $container->get('current_user'),
-      $container->get('csrf_token')
+      $container->get('csrf_token'),
+      $container->get('config.factory')
     );
   }
 
@@ -115,7 +127,7 @@ class UserCheckinViewsField extends FieldPluginBase {
    * {@inheritdoc}
    */
   public function render(ResultRow $values) {
-    $config = $this->config('aa_core.settings');
+    $config = $this->configFactory->get('aa_core.settings');
 
     $node = $values->_entity;
     $valueCheckIn = $node->get('field_users_check_in')->getValue();
