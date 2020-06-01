@@ -1,5 +1,7 @@
 delivery:
   confirm: Confirm
-  reject: Reject
-  confirmed: Confirmed
-  rejected: Rejected
+  reject: Opt-out
+  confirmed: COMFIRMED
+  rejected: OPTED-OUT
+  confirmed_message: 'We received your confirmation.'
+  rejected_message: 'We received your rejection.'
