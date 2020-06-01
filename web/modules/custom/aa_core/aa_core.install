@@ -45,7 +45,7 @@ function aa_core_update_8001() {
 /**
  * Implements hook_update_N().
  *
- * Creates original configuration.
+ * Add messages to configuration.
  */
 function aa_core_update_8002() {
   // Set default values.
