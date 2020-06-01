@@ -2,6 +2,7 @@
 
 namespace Drupal\aa_core\Controller;
 
+use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Entity\EntityStorageException;
 use Drupal\Core\Session\AccountInterface;
@@ -15,8 +16,7 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 /**
  * Controller routines for delivery controller.
  */
-class DeliveryController extends ControllerBase
-{
+class DeliveryController extends ControllerBase {
 
   /**
    * The current user.
@@ -26,13 +26,23 @@ class DeliveryController extends ControllerBase
   protected $currentUser;
 
   /**
+   * Config factory.
+   *
+   * @var \Drupal\Core\Config\ConfigFactoryInterface
+   */
+  protected $configFactory;
+
+  /**
    * SystemBrandingOffCanvasForm constructor.
    *
    * @param \Drupal\Core\Session\AccountInterface $current_user
    *   The current user.
+   * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
+   *   Configuration factory.
    */
-  public function __construct(AccountInterface $current_user) {
+  public function __construct(AccountInterface $current_user, ConfigFactoryInterface $config_factory) {
     $this->currentUser = $current_user;
+    $this->configFactory = $config_factory;
   }
 
   /**
@@ -40,7 +50,8 @@ class DeliveryController extends ControllerBase
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('current_user')
+      $container->get('current_user'),
+      $container->get('config.factory')
     );
   }
 
@@ -61,10 +72,7 @@ class DeliveryController extends ControllerBase
    *   A render array representing the administrative page content.
    */
   public function updateDelivery(NodeInterface $node, UserInterface $user = NULL, $field_name = 'field_delivered'): array {
-    /*$token = \Drupal::request()->query->get('token');
-    if (!\Drupal::getContainer()->get('csrf_token')->validate($token, $node->id())) {
-      throw new AccessDeniedHttpException("Invalid 'replace_token' query parameter.");
-    }*/
+    $config = $this->configFactory->get('aa_core.settings');
 
     // @TODO: Improve below logic.
     // Move to access node class.
@@ -142,7 +150,7 @@ class DeliveryController extends ControllerBase
           $node->set('field_users_opt_out', $new_value);
 
           // Update user when confirmation response received.
-          $message = $this->t('We received your confirmation.');
+          $message = $this->t($config->get('delivery.confirmed_message'));
           $this->messenger()->addMessage($message);
           break;
 
@@ -158,7 +166,7 @@ class DeliveryController extends ControllerBase
           $node->set('field_users_check_in', $new_value);
 
           // Update user when rejection response received.
-          $message = $this->t('We received your rejection.');
+          $message = $this->t($config->get('delivery.rejected_message'));
           $this->messenger()->addMessage($message);
           break;
       }

@@ -50,8 +50,8 @@ class AaCoreSettingsForm extends ConfigFormBase {
 
     $form['delivery_reject'] = [
       '#type' => 'textfield',
-      '#title' => $this->t('Confirm'),
-      '#description' => $this->t('Link text to confirm delivery.'),
+      '#title' => $this->t('Reject'),
+      '#description' => $this->t('Link text to confirm rejection.'),
       '#default_value' => $config->get('delivery.reject'),
     ];
 
@@ -69,6 +69,20 @@ class AaCoreSettingsForm extends ConfigFormBase {
       '#default_value' => $config->get('delivery.rejected'),
     ];
 
+    $form['delivery_confirmed_message'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Confirmed message'),
+      '#description' => $this->t('Message to appear after user confirmed the pickup.'),
+      '#default_value' => $config->get('delivery.confirmed_message'),
+    ];
+
+    $form['delivery_rejected_message'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Rejected message'),
+      '#description' => $this->t('Message to appear after user rejected the pickup.'),
+      '#default_value' => $config->get('delivery.rejected_message'),
+    ];
+
     return parent::buildForm($form, $form_state);
   }
 
@@ -81,6 +95,8 @@ class AaCoreSettingsForm extends ConfigFormBase {
       ->set('delivery.confirmed', $form_state->getValue('delivery_confirmed'))
       ->set('delivery.reject', $form_state->getValue('delivery_reject'))
       ->set('delivery.rejected', $form_state->getValue('delivery_rejected'))
+      ->set('delivery.confirmed_message', $form_state->getValue('delivery_confirmed_message'))
+      ->set('delivery.rejected_message', $form_state->getValue('delivery_rejected_message'))
       ->save();
 
     parent::submitForm($form, $form_state);
