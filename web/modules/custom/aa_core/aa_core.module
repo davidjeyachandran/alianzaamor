@@ -6,6 +6,13 @@ use Drupal\Core\Url;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
+ * Implements hook_page_attachments().
+ */
+function aa_core_page_attachments(array &$page) {
+  $page['#attached']['library'][] = 'aa_core/general';
+}
+
+/**
  * @file
  * Customization for user login, registration and more.
  */

@@ -141,14 +141,20 @@ class UserCheckinViewsField extends FieldPluginBase {
       Url::fromRoute(
         'aa_core.delivery_confirm',
         ['node' => $node->id()],
-        ['query' => ['token' => $this->tokenGenerator->get("user/delivery/{$node->id()}/confirm")]]
+        [
+          'query' => ['token' => $this->tokenGenerator->get("user/delivery/{$node->id()}/confirm")],
+          'attributes' => ['class' => ['button']],
+        ]
       ))->toString();
     $link_reject = Link::fromTextAndUrl(
       $this->t($config->get('delivery.reject')),
       Url::fromRoute(
         'aa_core.delivery_reject',
         ['node' => $node->id()],
-        ['query' => ['token' => $this->tokenGenerator->get("user/delivery/{$node->id()}/reject")]]
+        [
+          'query' => ['token' => $this->tokenGenerator->get("user/delivery/{$node->id()}/reject")],
+          'attributes' => ['class' => ['button']],
+        ]
       ))->toString();
     $link = [[
       '#markup' => $link_accept,
@@ -165,7 +171,10 @@ class UserCheckinViewsField extends FieldPluginBase {
         Url::fromRoute(
           'aa_core.delivery_reject',
           ['node' => $node->id()],
-          ['query' => ['token' => $this->tokenGenerator->get("user/delivery/{$node->id()}/reject")]]
+          [
+            'query' => ['token' => $this->tokenGenerator->get("user/delivery/{$node->id()}/reject")],
+            'attributes' => ['class' => ['button']],
+          ]
         ))->toString();
 
         $link = [[
@@ -184,7 +193,10 @@ class UserCheckinViewsField extends FieldPluginBase {
         Url::fromRoute(
           'aa_core.delivery_confirm',
           ['node' => $node->id()],
-          ['query' => ['token' => $this->tokenGenerator->get("user/delivery/{$node->id()}/confirm")]]
+          [
+            'query' => ['token' => $this->tokenGenerator->get("user/delivery/{$node->id()}/confirm")],
+            'attributes' => ['class' => ['button']],
+          ]
         ))->toString();
 
       $link = [[
