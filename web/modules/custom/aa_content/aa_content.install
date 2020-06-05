@@ -10,7 +10,7 @@ use Drupal\user\Entity\User;
 /**
  * Implements hook_update_N().
  *
- * Creates original configuration.
+ * Update field_sexo values.
  */
 function aa_content_update_8001() {
   $user_values = [
