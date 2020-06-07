@@ -32,6 +32,7 @@
     "drupal/google_analytics": "^3.0",
     "drupal/mask": "^1.0@alpha",
     "drupal/masquerade": "^2.0@beta",
+    "drupal/menu_token": "^1.0@alpha",
     "drupal/migrate_plus": "^5.0",
     "drupal/migrate_source_csv": "^3.4",
     "drupal/migrate_tools": "^5.0",
