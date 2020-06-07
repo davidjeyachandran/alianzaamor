@@ -14,3 +14,41 @@
 .text-middle td {
   vertical-align: middle;
 }
+
+nav#block-miembrosmenu .menu-item {
+  /* display: inline-block; */
+  text-decoration: none;
+  color: #0d77b5;
+  font-size: 14px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-font-smoothing: antialiased;
+  padding: 8px 18px;
+  cursor: pointer;
+  text-align: center;
+  border: 2px solid #0d77b5;
+  border-radius: 2px;
+  background-color: #fff;
+}
+
+nav#block-miembrosmenu .menu-item:hover,
+nav#block-miembrosmenu .menu-item:focus {
+  text-decoration: none;
+  color: #2494db;
+}
+
+nav#block-miembrosmenu .menu-item:focus {
+  outline: 2px dotted transparent;
+}
+
+nav#block-miembrosmenu .menu-item:focus {
+  box-shadow: 0 0 36px rgba(83, 176, 235, 0.25), 0 0 0 2px #fff,
+    0 0 0 4px #53b0eb;
+}
+
+nav#block-miembrosmenu .menu-item:active {
+  color: #0d77b5;
+  border-color: #0d77b5;
+  box-shadow: none;
+}

@@ -1,5 +1,8 @@
 general:
-  version: VERSION
+  version: 1.x
+  header: true
+  js:
+    js/scripts: {}
   css:
     theme:
       css/style.css: {}
