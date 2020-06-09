@@ -38,12 +38,12 @@ bundle: user
 mode: register
 content:
   account:
-    weight: 5
+    weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }
   field_address:
-    weight: 9
+    weight: 10
     settings:
       size: 60
       placeholder: ''
@@ -58,46 +58,20 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
-  field_comunidad:
-    weight: 13
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
-    region: content
   field_country:
-    weight: 4
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
-    region: content
-  field_discapacidad:
-    weight: 15
+    weight: 5
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   field_district:
-    weight: 10
+    weight: 11
     settings: {  }
     third_party_settings: {  }
     type: options_select
-    region: content
-  field_embarazada:
-    weight: 14
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
-    region: content
-  field_enfermedad:
-    weight: 16
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
     region: content
   field_esposo:
-    weight: 6
+    weight: 7
     settings:
       size: 60
       placeholder: ''
@@ -114,18 +88,18 @@ content:
     region: content
   field_hostal:
     type: string_textfield
-    weight: 8
+    weight: 9
     region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
   field_iglesia:
-    weight: 12
+    type: options_select
+    weight: 13
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   field_last_names:
     weight: 1
     settings:
@@ -135,20 +109,20 @@ content:
     type: string_textfield
     region: content
   field_numero_de_ninos:
-    weight: 7
+    weight: 8
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: number
     region: content
   field_sexo:
-    weight: 3
+    weight: 4
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   field_ubicacion:
-    weight: 11
+    weight: 12
     settings:
       default_longitude: ''
       default_latitude: ''
@@ -184,13 +158,17 @@ content:
     region: content
   google_analytics:
     weight: 3
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
 hidden:
   contact: true
+  field_comunidad: true
   field_delivery_date: true
+  field_discapacidad: true
   field_distrito: true
+  field_embarazada: true
+  field_enfermedad: true
   field_grupo: true
   field_image_carnet: true
   field_nombre_completa: true
