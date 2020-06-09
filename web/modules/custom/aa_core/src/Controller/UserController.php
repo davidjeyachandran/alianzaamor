@@ -71,7 +71,7 @@ class UserController extends ControllerBase {
     switch ($redirect_path) {
       case 'deliveries':
         // Route for redirecting back.
-        $route = Url::fromRoute('view.user_deliveries.page_user_deliveries', [
+        $route = Url::fromRoute('view.aa_user_deliveries.page_user_deliveries', [
           'user' => $this->currentUser->id(),
         ]);
         break;
