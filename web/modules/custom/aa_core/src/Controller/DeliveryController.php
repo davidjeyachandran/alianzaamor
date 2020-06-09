@@ -99,7 +99,7 @@ class DeliveryController extends ControllerBase {
     });
 
     // Define default route.
-    $route = Url::fromRoute('view.user_deliveries.page_user_deliveries', [
+    $route = Url::fromRoute('view.aa_user_deliveries.page_user_deliveries', [
       'user' => $user->id(),
     ]);
 

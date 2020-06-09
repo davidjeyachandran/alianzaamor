@@ -1,0 +1,25 @@
+uuid: ac1d6063-e32c-41bf-8f47-e7aeabea2875
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:53c453a3-ecfa-4daa-bc70-2a1ae4c6d9c5'
+  module:
+    - block_content
+  theme:
+    - olivero
+id: logo
+theme: olivero
+region: featured_bottom
+weight: 0
+provider: null
+plugin: 'block_content:53c453a3-ecfa-4daa-bc70-2a1ae4c6d9c5'
+settings:
+  id: 'block_content:53c453a3-ecfa-4daa-bc70-2a1ae4c6d9c5'
+  label: Logo
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

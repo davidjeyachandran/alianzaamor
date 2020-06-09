@@ -639,7 +639,7 @@ display:
             label: ''
           granularity: second
           plugin_id: datetime
-      title: Deliveries
+      title: 'Mi Entrega'
       header: {  }
       footer: {  }
       empty:
@@ -1130,7 +1130,7 @@ display:
           empty: true
           tokenize: false
           content:
-            value: 'No items has been delivered previously.'
+            value: 'No tienes entregados anteriores en el sistema.'
             format: basic_html
           plugin_id: text
     cache_metadata:
@@ -1154,13 +1154,29 @@ display:
       path: user/%user/deliveries
       menu:
         type: tab
-        title: Deliveries
+        title: 'Mi Entrega'
         description: ''
         expanded: false
         parent: ''
         weight: 0
         context: '0'
         menu_name: account
+      empty:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content:
+            value: 'Lo siento que no fue añadido a una entrega de víveres esta semana. Por favor intenta la próxima semana. Tenemos más de 3000 personas inscritas y intentamos a ayudar personas cada 3 semanas si es posible.'
+            format: basic_html
+          plugin_id: text
+      defaults:
+        empty: false
     cache_metadata:
       max-age: -1
       contexts:

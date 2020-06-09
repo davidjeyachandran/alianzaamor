@@ -13,7 +13,7 @@ dependencies:
 id: olivero_user_deliveries_past
 theme: olivero
 region: content
-weight: 0
+weight: -2
 provider: null
 plugin: 'views_block:aa_user_deliveries-block_user_deliveries_past'
 settings:
