@@ -1,0 +1,8 @@
+uuid: 31174e35-0f29-4980-8728-b8629fe18536
+langcode: es
+status: true
+dependencies: {  }
+id: time_only
+label: 'Time Only'
+locked: false
+pattern: 'H:i'
