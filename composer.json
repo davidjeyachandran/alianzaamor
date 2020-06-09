@@ -39,7 +39,6 @@
     "drupal/olivero": "^1.0@alpha",
     "drupal/pathauto": "^1.6",
     "drupal/redirect": "^1.6",
-    "drupal/redirect_after_login": "^2.6",
     "drupal/reroute_email": "^1",
     "drupal/rfv": "^1.5",
     "drupal/simple_user_management": "^1.4",

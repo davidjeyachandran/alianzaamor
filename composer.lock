@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7ff774cbb86b4b40e274721bd511942c",
+    "content-hash": "e717dd6360a1516ae81dc855aa8f1042",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3267,63 +3267,6 @@
             }
         },
         {
-            "name": "drupal/redirect_after_login",
-            "version": "2.6.0",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/redirect_after_login.git",
-                "reference": "8.x-2.6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/redirect_after_login-8.x-2.6.zip",
-                "reference": "8.x-2.6",
-                "shasum": "c969cf714f667ad9af72a765ba95fed59ea63160"
-            },
-            "require": {
-                "drupal/core": "^8 || ^9"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "drupal": {
-                    "version": "8.x-2.6",
-                    "datestamp": "1587318962",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "Shamsher Alam",
-                    "homepage": "https://www.drupal.org/u/shamsher_alam",
-                    "role": "Author"
-                },
-                {
-                    "name": "pen",
-                    "homepage": "https://www.drupal.org/user/2435634"
-                },
-                {
-                    "name": "prempatel2447",
-                    "homepage": "https://www.drupal.org/user/3250112"
-                },
-                {
-                    "name": "rahul-kr-sh",
-                    "homepage": "https://www.drupal.org/user/3561577"
-                }
-            ],
-            "description": "Redirect user after login to a configured url",
-            "homepage": "https://drupal.org/project/redirect_after_login",
-            "support": {
-                "source": "https://git.drupalcode.org/project/redirect_after_login"
-            }
-        },
-        {
             "name": "drupal/reroute_email",
             "version": "1.2.0",
             "source": {
@@ -3984,12 +3927,12 @@
             "version": "0.9.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/njh/easyrdf.git",
+                "url": "https://github.com/easyrdf/easyrdf.git",
                 "reference": "acd09dfe0555fbcfa254291e433c45fdd4652566"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/njh/easyrdf/zipball/acd09dfe0555fbcfa254291e433c45fdd4652566",
+                "url": "https://api.github.com/repos/easyrdf/easyrdf/zipball/acd09dfe0555fbcfa254291e433c45fdd4652566",
                 "reference": "acd09dfe0555fbcfa254291e433c45fdd4652566",
                 "shasum": ""
             },
