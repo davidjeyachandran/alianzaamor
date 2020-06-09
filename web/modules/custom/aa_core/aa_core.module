@@ -4,6 +4,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\user\UserInterface;
 use Drupal\Core\Url;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Drupal\user\Entity\User;
 
 /**
  * Implements hook_page_attachments().
@@ -142,4 +143,22 @@ function aa_core_views_data() {
   ];
   return $data;
 
+}
+
+/**
+ * Implements hook_preprocess_region().
+ */
+function aa_core_preprocess_html(&$variables) {
+  $account = User::load(\Drupal::currentUser()->id());
+
+  // if(is_array($account)) {
+    if (
+      $account->hasRole('authenticated') &&
+      !$account->hasRole('equipo') &&
+      !$account->hasRole('misionero') &&
+      !$account->hasRole('administrator')
+    ) {
+      $variables['attributes']['class'][] = 'miembro';
+    }
+  // }
 }
