@@ -52,3 +52,19 @@ aa_core.admin_settings:
     _permission: 'access administration pages'
   options:
     _admin_route: TRUE
+
+aa_core.user_edit:
+  path: '/user/edit'
+  defaults:
+    _controller: '\Drupal\aa_core\Controller\UserController::redirectUser'
+    redirect_path: 'edit'
+  requirements:
+    _role: 'authenticated'
+
+aa_core.user_deliveries:
+  path: 'user/deliveries'
+  defaults:
+    _controller: '\Drupal\aa_core\Controller\UserController::redirectUser'
+    redirect_path: 'deliveries'
+  requirements:
+    _role: 'authenticated'
