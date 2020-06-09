@@ -11,7 +11,7 @@ id: user.user.field_notes
 field_name: field_notes
 entity_type: user
 bundle: user
-label: Notes
+label: 'Apuntes de Administrador'
 description: 'Visible to admin staff only'
 required: false
 translatable: false

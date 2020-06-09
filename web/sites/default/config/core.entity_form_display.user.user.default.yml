@@ -28,7 +28,6 @@ dependencies:
     - field.field.user.user.user_picture
     - image.style.thumbnail
   module:
-    - geolocation
     - image
     - text
     - user
@@ -40,12 +39,12 @@ bundle: user
 mode: default
 content:
   account:
-    weight: 5
+    weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }
   field_address:
-    weight: 9
+    weight: 10
     settings:
       size: 60
       placeholder: ''
@@ -67,7 +66,7 @@ content:
     type: options_select
     region: content
   field_country:
-    weight: 4
+    weight: 5
     settings: {  }
     third_party_settings: {  }
     type: options_select
@@ -79,7 +78,7 @@ content:
     type: options_select
     region: content
   field_district:
-    weight: 10
+    weight: 11
     settings: {  }
     third_party_settings: {  }
     type: options_select
@@ -99,7 +98,7 @@ content:
     type: string_textfield
     region: content
   field_esposo:
-    weight: 6
+    weight: 7
     settings:
       size: 60
       placeholder: ''
@@ -116,7 +115,7 @@ content:
     region: content
   field_hostal:
     type: string_textfield
-    weight: 8
+    weight: 9
     region: content
     settings:
       size: 60
@@ -153,58 +152,23 @@ content:
     type: text_textarea
     region: content
   field_numero_de_ninos:
-    weight: 7
+    weight: 8
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: number
     region: content
   field_sexo:
-    weight: 3
+    weight: 4
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
-  field_ubicacion:
-    weight: 11
-    settings:
-      default_longitude: ''
-      default_latitude: ''
-      auto_client_location: '1'
-      auto_client_location_marker: '1'
-      google_map_settings:
-        height: 400px
-        width: 100%
-        type: ROADMAP
-        zoom: '10'
-        maxZoom: 18
-        minZoom: 0
-        mapTypeControl: 1
-        streetViewControl: 1
-        zoomControl: 1
-        scrollwheel: 1
-        gestureHandling: auto
-        draggable: 1
-        style: ''
-        info_auto_display: 1
-        marker_icon_path: ''
-        disableAutoPan: 1
-        rotateControl: 0
-        fullscreenControl: 0
-        preferScrollingToZooming: 0
-        disableDoubleClickZoom: 0
-      allow_override_map_settings: 0
-      populate_address_field: ''
-      target_address_field: null
-      explicite_actions_address_field: ''
-    third_party_settings: {  }
-    type: geolocation_googlegeocoder
-    region: content
   google_analytics:
     weight: 3
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   user_picture:
     type: image_image
     weight: 18
@@ -219,6 +183,7 @@ hidden:
   field_distrito: true
   field_grupo: true
   field_nombre_completa: true
+  field_ubicacion: true
   langcode: true
   language: true
   path: true

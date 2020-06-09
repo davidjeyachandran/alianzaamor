@@ -28,7 +28,6 @@ dependencies:
     - field.field.user.user.user_picture
     - image.style.thumbnail
   module:
-    - geolocation
     - image
     - options
     - text
@@ -41,154 +40,122 @@ bundle: user
 mode: default
 content:
   field_address:
-    weight: 4
-    label: above
+    weight: 8
+    label: visually_hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
     region: content
   field_celular:
-    weight: 8
-    label: above
+    weight: 2
+    label: inline
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
     region: content
   field_comunidad:
-    weight: 52
-    label: above
+    weight: 11
+    label: inline
     settings: {  }
     third_party_settings: {  }
     type: list_default
     region: content
   field_country:
-    weight: 9
-    label: above
+    weight: 4
+    label: inline
     settings: {  }
     third_party_settings: {  }
     type: list_default
     region: content
-  field_delivery_date:
-    weight: 14
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: content
   field_discapacidad:
-    weight: 54
-    label: above
+    weight: 13
+    label: inline
     settings: {  }
     third_party_settings: {  }
     type: list_default
     region: content
   field_district:
-    weight: 15
-    label: above
+    weight: 9
+    label: inline
     settings: {  }
     third_party_settings: {  }
     type: list_default
     region: content
-  field_distrito:
-    weight: 5
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: content
   field_embarazada:
-    weight: 53
-    label: above
+    weight: 12
+    label: inline
     settings: {  }
     third_party_settings: {  }
     type: list_default
     region: content
   field_enfermedad:
-    weight: 55
-    label: above
+    weight: 14
+    label: inline
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
     region: content
   field_esposo:
-    weight: 57
-    label: above
+    weight: 5
+    label: inline
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
     region: content
   field_first_names:
-    weight: 11
-    label: above
+    weight: 0
+    label: inline
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
     region: content
-  field_grupo:
-    weight: 13
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
   field_hostal:
-    weight: 10
-    label: above
+    weight: 7
+    label: inline
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
     region: content
   field_iglesia:
-    weight: 51
-    label: above
+    weight: 10
+    label: inline
     settings: {  }
     third_party_settings: {  }
     type: list_default
     region: content
   field_image_carnet:
-    weight: 3
-    label: above
+    weight: 15
+    label: visually_hidden
     settings:
-      image_style: ''
+      image_style: medium
       image_link: ''
     third_party_settings: {  }
     type: image
     region: content
   field_last_names:
-    weight: 12
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: content
-  field_nombre_completa:
-    weight: 7
-    label: above
+    weight: 1
+    label: inline
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
     region: content
   field_notes:
-    weight: 58
+    weight: 18
     label: above
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: content
   field_numero_de_ninos:
-    weight: 2
-    label: above
+    weight: 6
+    label: inline
     settings:
       thousand_separator: ''
       prefix_suffix: true
@@ -196,63 +163,31 @@ content:
     type: number_integer
     region: content
   field_sexo:
-    weight: 56
-    label: above
+    weight: 3
+    label: inline
     settings: {  }
     third_party_settings: {  }
     type: list_default
     region: content
-  field_ubicacion:
-    weight: 6
-    label: above
-    settings:
-      set_marker: '1'
-      title: ''
-      info_text: ''
-      google_map_settings:
-        height: 400px
-        width: 100%
-        type: ROADMAP
-        zoom: '10'
-        maxZoom: 18
-        minZoom: 0
-        mapTypeControl: 1
-        streetViewControl: 1
-        zoomControl: 1
-        scrollwheel: 1
-        gestureHandling: auto
-        draggable: 1
-        style: ''
-        info_auto_display: 1
-        marker_icon_path: ''
-        disableAutoPan: 1
-        rotateControl: 0
-        fullscreenControl: 0
-        preferScrollingToZooming: 0
-        disableDoubleClickZoom: 0
-      use_overridden_map_settings: 0
-      common_map: ''
-    third_party_settings: {  }
-    type: geolocation_map
-    region: content
   masquerade:
-    weight: 50
-    settings: {  }
-    third_party_settings: {  }
-    region: content
-  member_for:
-    weight: 1
+    weight: 17
     region: content
     settings: {  }
     third_party_settings: {  }
   user_picture:
     type: image
-    weight: 0
+    weight: 16
     region: content
     settings:
       image_style: thumbnail
       image_link: content
     third_party_settings: {  }
-    label: hidden
+    label: visually_hidden
 hidden:
+  field_delivery_date: true
+  field_distrito: true
+  field_grupo: true
+  field_nombre_completa: true
+  field_ubicacion: true
   langcode: true
+  member_for: true
