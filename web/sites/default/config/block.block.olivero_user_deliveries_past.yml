@@ -1,0 +1,39 @@
+uuid: 71e5e6e9-dd3b-478e-9656-5a9ecb90e895
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.aa_user_deliveries
+  module:
+    - system
+    - user
+    - views
+  theme:
+    - olivero
+id: olivero_user_deliveries_past
+theme: olivero
+region: content
+weight: 0
+provider: null
+plugin: 'views_block:aa_user_deliveries-block_user_deliveries_past'
+settings:
+  id: 'views_block:aa_user_deliveries-block_user_deliveries_past'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+  context_mapping: {  }
+visibility:
+  request_path:
+    id: request_path
+    pages: 'user/*/deliveries'
+    negate: false
+    context_mapping: {  }
+  user_role:
+    id: user_role
+    roles:
+      authenticated: authenticated
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

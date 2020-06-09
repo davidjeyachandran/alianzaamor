@@ -12,6 +12,8 @@ use Drupal\views\ResultRow;
 use Drupal\views\Plugin\views\display\DisplayPluginBase;
 use Drupal\views\ViewExecutable;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\user\UserInterface;
+use Drupal\node\NodeInterface;
 
 /**
  * A handler to provide a field that is completely custom by the administrator.
@@ -129,7 +131,17 @@ class UserCheckinViewsField extends FieldPluginBase {
   public function render(ResultRow $values) {
     $config = $this->configFactory->get('aa_core.settings');
 
-    $node = $values->_entity;
+    $entity = $values->_entity;
+    $node = $entity;
+
+    // For user view. Delivery node should be first delivery.
+    if ($entity instanceof UserInterface) {
+      $node = reset($values->_relationship_entities);
+      if (!(($node instanceof NodeInterface) && ($node->bundle() == 'delivery'))) {
+        return NULL;
+      }
+    }
+
     $valueCheckIn = $node->get('field_users_check_in')->getValue();
     $valueOptOut = $node->get('field_users_opt_out')->getValue();
     $userCheckIn = array_reduce($valueCheckIn, [$this, 'fieldItemReferenceReduce'], FALSE);
