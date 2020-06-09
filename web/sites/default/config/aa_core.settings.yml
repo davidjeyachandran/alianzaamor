@@ -1,7 +1,7 @@
 delivery:
-  confirm: Confirm
-  reject: Opt-out
-  confirmed: COMFIRMED
-  rejected: OPTED-OUT
-  confirmed_message: 'We received your confirmation.'
-  rejected_message: 'We received your rejection.'
+  confirm: Confirmar
+  reject: Rechazar
+  confirmed: Confirmado
+  rejected: Rechazado
+  confirmed_message: 'Gracias por confirmar tu entrega'
+  rejected_message: 'Gracias por rechazar tu entrega. En otra oportunidad. Bendiciones.'

@@ -1,0 +1,39 @@
+uuid: 3805cf1a-ada5-4300-8e3a-4c14dd200039
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:33259bd7-103a-433d-a46b-c7a4634b1719'
+  module:
+    - block_content
+    - system
+    - user
+  theme:
+    - olivero
+id: homeanonymous
+theme: olivero
+region: content
+weight: -7
+provider: null
+plugin: 'block_content:33259bd7-103a-433d-a46b-c7a4634b1719'
+settings:
+  id: 'block_content:33259bd7-103a-433d-a46b-c7a4634b1719'
+  label: 'Home - Anonymous'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: "<front>\r\n/user/login"
+    negate: false
+    context_mapping: {  }
+  user_role:
+    id: user_role
+    roles:
+      anonymous: anonymous
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
