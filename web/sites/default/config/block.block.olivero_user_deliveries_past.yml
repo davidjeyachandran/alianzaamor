@@ -27,7 +27,7 @@ settings:
 visibility:
   request_path:
     id: request_path
-    pages: 'user/*/deliveries'
+    pages: '/user/*/deliveries'
     negate: false
     context_mapping: {  }
   user_role:

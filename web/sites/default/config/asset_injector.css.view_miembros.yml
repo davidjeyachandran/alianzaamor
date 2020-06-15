@@ -1,0 +1,18 @@
+uuid: 9998f676-bf41-481c-b525-03b2f5064ea7
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+id: view_miembros
+label: view-miembros
+code: ".response {\n  display: none;\n}\n\n.response .icon-green {\n  color: green;\n}\n\n.response .icon-red {\n  color: red;\n}\n\n.response.response-diff-0 {\n  display: block;\n}"
+conditions_require_all: true
+conditions:
+  request_path:
+    id: request_path
+    pages: '/node/*/to-deliver'
+    negate: false
+contexts: {  }
+media: all
+preprocess: true

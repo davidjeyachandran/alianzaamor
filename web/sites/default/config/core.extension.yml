@@ -4,6 +4,7 @@ module:
   aa_report: 0
   admin_toolbar: 0
   admin_toolbar_tools: 0
+  asset_injector: 0
   auto_entitylabel: 0
   automated_cron: 0
   backup_migrate: 0
@@ -29,6 +30,7 @@ module:
   field_ui: 0
   file: 0
   filter: 0
+  fontawesome: 0
   geolocation: 0
   google_analytics: 0
   help: 0
