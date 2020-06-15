@@ -11,7 +11,7 @@ dependencies:
 id: olivero_aa_report_users_deliveries_total_block
 theme: olivero
 region: content
-weight: -4
+weight: -5
 provider: null
 plugin: aa_report_user_deliveries_total_block
 settings:

@@ -1,9 +1,9 @@
-uuid: 3805cf1a-ada5-4300-8e3a-4c14dd200039
+uuid: 172af84c-8766-406f-8f7b-31aa424fccdf
 langcode: en
 status: true
 dependencies:
   content:
-    - 'block_content:basic:33259bd7-103a-433d-a46b-c7a4634b1719'
+    - 'block_content:basic:41eda556-96cc-451f-bbdc-4496186dccc6'
   module:
     - block_content
     - system
@@ -13,11 +13,11 @@ dependencies:
 id: homeanonymous
 theme: olivero
 region: content
-weight: -7
+weight: -8
 provider: null
-plugin: 'block_content:33259bd7-103a-433d-a46b-c7a4634b1719'
+plugin: 'block_content:41eda556-96cc-451f-bbdc-4496186dccc6'
 settings:
-  id: 'block_content:33259bd7-103a-433d-a46b-c7a4634b1719'
+  id: 'block_content:41eda556-96cc-451f-bbdc-4496186dccc6'
   label: 'Home - Anonymous'
   provider: block_content
   label_display: '0'

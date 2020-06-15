@@ -1,9 +1,9 @@
-uuid: ac1d6063-e32c-41bf-8f47-e7aeabea2875
+uuid: 22443f74-841d-462f-bce6-e7a645efbda0
 langcode: en
 status: true
 dependencies:
   content:
-    - 'block_content:basic:53c453a3-ecfa-4daa-bc70-2a1ae4c6d9c5'
+    - 'block_content:basic:21b6eee8-708e-440a-b225-acad7e58b18c'
   module:
     - block_content
   theme:
@@ -13,9 +13,9 @@ theme: olivero
 region: featured_bottom
 weight: 0
 provider: null
-plugin: 'block_content:53c453a3-ecfa-4daa-bc70-2a1ae4c6d9c5'
+plugin: 'block_content:21b6eee8-708e-440a-b225-acad7e58b18c'
 settings:
-  id: 'block_content:53c453a3-ecfa-4daa-bc70-2a1ae4c6d9c5'
+  id: 'block_content:21b6eee8-708e-440a-b225-acad7e58b18c'
   label: Logo
   provider: block_content
   label_display: '0'
