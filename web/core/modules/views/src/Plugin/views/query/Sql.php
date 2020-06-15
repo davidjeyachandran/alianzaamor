@@ -1772,6 +1772,7 @@ class Sql extends QueryPluginBase {
           'field' => 'numeric',
           'filter' => 'groupby_numeric',
           'sort' => 'groupby_numeric',
+          'exclude' => ['datetime_default', 'datetime_custom', 'datetime_plain', 'datetime_time_ago'],
         ],
       ],
       'max' => [
@@ -1782,6 +1783,7 @@ class Sql extends QueryPluginBase {
           'field' => 'numeric',
           'filter' => 'groupby_numeric',
           'sort' => 'groupby_numeric',
+          'exclude' => ['datetime_default', 'datetime_custom', 'datetime_plain', 'datetime_time_ago'],
         ],
       ],
       'stddev_pop' => [

@@ -874,7 +874,13 @@ abstract class DisplayPluginBase extends PluginBase implements DisplayPluginInte
             $this->view->initQuery();
           }
           $aggregate = $this->view->query->getAggregationInfo();
-          if (!empty($aggregate[$info['group_type']]['handler'][$type])) {
+          if (
+            !empty($aggregate[$info['group_type']]['handler'][$type])
+            && (
+              empty($aggregate[$info['group_type']]['handler']['exclude']) 
+              || !in_array($info['type'], $aggregate[$info['group_type']]['handler']['exclude'])
+              )
+          ) {
             $override = $aggregate[$info['group_type']]['handler'][$type];
           }
         }

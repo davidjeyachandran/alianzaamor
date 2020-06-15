@@ -2858,6 +2858,9 @@
                     "[web-root]/profiles/README.txt": "assets/scaffold/files/profiles.README.txt",
                     "[web-root]/themes/README.txt": "assets/scaffold/files/themes.README.txt"
                 }
+            },
+            "patches_applied": {
+                "Date field is not displaying correct value on a views with aggregation max/min": "https://www.drupal.org/files/issues/2020-06-15/date_field_views_aggregation_max-3151654-4.patch"
             }
         },
         "installation-source": "dist",

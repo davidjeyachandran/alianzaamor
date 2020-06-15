@@ -136,6 +136,11 @@
         "  * Remove the plugin that prints this message:",
         "      composer remove drupal/core-project-message"
       ]
+    },
+    "patches": {
+      "drupal/core": {
+        "Date field is not displaying correct value on a views with aggregation max/min": "https://www.drupal.org/files/issues/2020-06-15/date_field_views_aggregation_max-3151654-4.patch"
+      }
     }
   }
 }
