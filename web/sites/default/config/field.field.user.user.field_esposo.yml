@@ -10,14 +10,14 @@ dependencies:
 third_party_settings:
   regex_field_validation:
     enable: 1
-    regex: '/^[1-9][0-9]{6,7}/'
-    error_message: 'No es una Cédula de Identidad o DNI valida - no es su Carnet de Extranjeria,PTP, ni Pasaporte'
+    regex: '/^[1-9](\d{6,7})$/'
+    error_message: 'Cédula/DNI de su pareja no es valida - no es su Carnet de Extranjeria,PTP, ni Pasaporte'
 id: user.user.field_esposo
 field_name: field_esposo
 entity_type: user
 bundle: user
-label: '¿Si tienes esposo o esposa, cuál es su Cédula de identidad?'
-description: ''
+label: '¿Si tienes pareja, cuál es su Cédula de identidad o DNI?'
+description: 'Solamente su Cédula en este campo por favor - sin su nombre'
 required: false
 translatable: false
 default_value: {  }
