@@ -10,19 +10,17 @@ dependencies:
 third_party_settings:
   regex_field_validation:
     enable: 1
-    regex: '/^(51[0-9]{9})/'
-    error_message: 'Por favor empezar el número con "51" sin "+". Vamos a contactar usted por WhatsApp con información entonces este campo es import'
+    regex: '/^5(\d{10})/'
+    error_message: 'Por favor empezar el número con "51" sin "+" y sin espacios. '
 id: user.user.field_celular
 field_name: field_celular
 entity_type: user
 bundle: user
 label: 'Celular (WhatsApp)'
-description: 'Por favor empezar el número con "51" sin "+". Vamos a contactar usted por WhatsApp con información entonces este campo es importante. '
+description: 'Por favor empezar el número con "51" sin "+". Usamos WhatsApp entonces este campo es importante.'
 required: true
 translatable: false
-default_value:
-  -
-    value: '51'
+default_value: {  }
 default_value_callback: ''
 settings: {  }
 field_type: string

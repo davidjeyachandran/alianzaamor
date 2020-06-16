@@ -94,12 +94,6 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  field_iglesia:
-    type: options_select
-    weight: 13
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   field_last_names:
     weight: 1
     settings:
@@ -170,6 +164,7 @@ hidden:
   field_embarazada: true
   field_enfermedad: true
   field_grupo: true
+  field_iglesia: true
   field_image_carnet: true
   field_nombre_completa: true
   field_notes: true
