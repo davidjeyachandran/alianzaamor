@@ -4004,6 +4004,9 @@
                     "status": "not-covered",
                     "message": "Project has not opted into security advisory coverage!"
                 }
+            },
+            "patches_applied": {
+                "Move feeds icon to the top of the page": "patches/olivero-views_feeds.patch"
             }
         },
         "installation-source": "dist",
