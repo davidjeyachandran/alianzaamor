@@ -1,0 +1,26 @@
+diff --git a/templates/views/views-view.html.twig b/templates/views/views-view.html.twig
+index 769a86849..8ac6ad26f 100644
+--- a/templates/views/views-view.html.twig
++++ b/templates/views/views-view.html.twig
+@@ -55,6 +55,11 @@
+       {{ exposed }}
+     </div>
+   {% endif %}
++  {% if feed_icons %}
++    <div class="feed-icons">
++      {{ feed_icons }}
++    </div>
++  {% endif %}
+   {% if attachment_before %}
+     <div class="attachment attachment-before">
+       {{ attachment_before }}
+@@ -87,9 +92,4 @@
+       {{ footer }}
+     </div>
+   {% endif %}
+-  {% if feed_icons %}
+-    <div class="feed-icons">
+-      {{ feed_icons }}
+-    </div>
+-  {% endif %}
+ </div>
