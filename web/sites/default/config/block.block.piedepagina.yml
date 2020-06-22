@@ -10,8 +10,8 @@ dependencies:
     - olivero
 id: piedepagina
 theme: olivero
-region: footer
-weight: 0
+region: footer_bottom
+weight: -9
 provider: null
 plugin: 'system_menu_block:footer'
 settings:

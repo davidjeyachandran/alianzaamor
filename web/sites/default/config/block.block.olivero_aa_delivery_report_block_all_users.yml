@@ -1,0 +1,33 @@
+uuid: ea3e6833-6850-4320-bbc8-5af86ebfc434
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.aa_delivery_report
+  module:
+    - node
+    - views
+  theme:
+    - olivero
+id: olivero_aa_delivery_report_block_all_users
+theme: olivero
+region: content
+weight: 0
+provider: null
+plugin: 'views_block:aa_delivery_report-block_all_users'
+settings:
+  id: 'views_block:aa_delivery_report-block_all_users'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: none
+  context_mapping: {  }
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      delivery: delivery
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

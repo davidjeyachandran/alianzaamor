@@ -1,4 +1,4 @@
-uuid: 67c33c89-2d7a-41e5-a65f-02f7cff779fc
+uuid: 490c879d-ba15-450c-8d2c-c24eeccfc547
 langcode: es
 status: true
 dependencies:
@@ -22,8 +22,8 @@ dependencies:
     - node
     - options
     - user
-id: miembros
-label: Miembros
+id: delete_of_miembros
+label: 'DELETE Duplicate of Miembros'
 module: views
 description: ''
 tag: ''
@@ -3294,51 +3294,6 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           plugin_id: string
-        field_delivered_target_id_1:
-          id: field_delivered_target_id_1
-          table: node__field_delivered
-          field: field_delivered_target_id
-          relationship: reverse__node__field_delivered
-          group_type: group
-          admin_label: ''
-          operator: 'not empty'
-          value:
-            min: ''
-            max: ''
-            value: ''
-          group: 1
-          exposed: false
-          expose:
-            operator_id: field_delivered_target_id_1_op
-            label: 'Delivered (field_delivered)'
-            description: null
-            use_operator: false
-            operator: field_delivered_target_id_1_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: field_delivered_target_id_1
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-            placeholder: null
-            min_placeholder: null
-            max_placeholder: null
-            regex: ''
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          plugin_id: numeric
       defaults:
         filters: false
         filter_groups: false
@@ -3869,7 +3824,7 @@ display:
           distinct: true
           replica: false
           query_comment: ''
-          query_tags: {  }
+          query_tags: null
     cache_metadata:
       max-age: -1
       contexts:
