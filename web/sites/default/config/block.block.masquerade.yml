@@ -1,6 +1,6 @@
 uuid: 1c163d25-ea79-4282-9caa-510f46ea838b
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - masquerade
@@ -9,7 +9,7 @@ dependencies:
     - olivero
 id: masquerade
 theme: olivero
-region: footer
+region: header
 weight: 0
 provider: null
 plugin: masquerade
