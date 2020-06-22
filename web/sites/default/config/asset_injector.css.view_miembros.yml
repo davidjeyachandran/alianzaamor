@@ -11,7 +11,7 @@ conditions_require_all: true
 conditions:
   request_path:
     id: request_path
-    pages: '/node/*/to-deliver'
+    pages: '/node/*'
     negate: false
 contexts: {  }
 media: all
