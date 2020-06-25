@@ -3,7 +3,6 @@
 namespace Drupal\aa_whatsapp\whatsapp;
 
 use Drupal\Core\StringTranslation\TranslationInterface;
-use HelloSign\Client;
 use Psr\Log\LoggerInterface;
 
 /**
