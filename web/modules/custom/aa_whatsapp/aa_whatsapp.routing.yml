@@ -1,0 +1,7 @@
+aa_report.report:
+  path: '/admin/reports/aa'
+  defaults:
+    _controller: '\Drupal\aa_report\Controller\UserReportController::content'
+    _title: 'Reports'
+  requirements:
+    _permission: 'access content'

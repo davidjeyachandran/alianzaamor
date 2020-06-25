@@ -266,7 +266,7 @@ $databases = [];
  *   $settings['hash_salt'] = file_get_contents('/home/example/salt.txt');
  * @endcode
  */
-$settings['hash_salt'] = '';
+$settings['hash_salt'] = 'SEtQrQkrKnzGoLFfVbC4OXXF6hz3BPHCmyKohBdTkIVeXWEeN53rZJbJEIQ-alEp2Tg0cDd21w';
 
 /**
  * Deployment identifier.
@@ -781,6 +781,16 @@ if (isset($_ENV['PANTHEON_ENVIRONMENT']) && file_exists($pantheon_settings)) {
  */
 $local_settings = __DIR__ . "/settings.local.php";
 if (file_exists($local_settings)) {
-  $settings['config_sync_directory'] = 'sites/default/config';
+  $settings['config_sync_directory'] = 'sites/default/files/config_Eme2HivwUJeXsf6oxOS4q2ENLjez7RBWV7BNRE_saycghXUKRQrJE3BIHQr1_8JG_Ml0yk_pDg/sync';
   include $local_settings;
 }
+$databases['default']['default'] = array (
+  'database' => 'drupal8',
+  'username' => 'drupal8',
+  'password' => 'drupal8',
+  'prefix' => '',
+  'host' => 'database',
+  'port' => '3306',
+  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
+  'driver' => 'mysql',
+);

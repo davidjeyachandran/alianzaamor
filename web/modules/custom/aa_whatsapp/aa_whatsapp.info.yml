@@ -1,0 +1,5 @@
+name: Alianza de Amor WhatsApp notifications
+type: module
+description: AA WhatsaApp notifications
+package: Custom
+core_version_requirement: ^8 || ^9
