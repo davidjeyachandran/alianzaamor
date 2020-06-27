@@ -1,7 +1,7 @@
 services:
   whatsapp.maytapi:
     class: Drupal\aa_whatsapp\whatsapp\WhatsApp
-    arguments: ['@logger.channel.whatsapp']
+    arguments: ['@logger.channel.whatsapp', '@string_translation']
   logger.channel.whatsapp:
     parent: logger.channel_base
     arguments: ['whatsapp']

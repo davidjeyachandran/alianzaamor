@@ -81,7 +81,7 @@ class WhatsApp {
     // We can get it by executing.
     // So we need to create a http guzzle request.
     // curl -X GET "https://api.maytapi.com/api/102f9c87-3061-49ab-a3ca-488ce4f9fab1/listPhones" -H "accept: application/json" -H "x-maytapi-key: 6f161c44-ca72-49b1-9f8d-9eed6271ea19"
-    return '2987';
+    return '3097';
   }
 
   /**
@@ -96,7 +96,7 @@ class WhatsApp {
    *
    * @throws \Exception
    */
-  private function getCredentials(): array {
+  public function getCredentials(): array {
     $settings = Settings::get('aa_whatsapp');
     if (empty($settings['whatsapp']['credentials']['api_key'])) {
       throw new \RuntimeException($this->t('Could not connect to WhatsAp because no API key has been set.'));
@@ -130,8 +130,7 @@ class WhatsApp {
         'message' => '🤖:' . $message,
       ],
     ]);
-    $body = $response->getBody();
-    $result = json_decode($body->getContents());
-    return !empty($result['success']);
+    $data = json_decode($response->getBody());
+    return !empty($data->success);
   }
 }
