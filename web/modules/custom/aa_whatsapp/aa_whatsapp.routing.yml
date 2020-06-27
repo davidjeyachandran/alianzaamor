@@ -1,7 +1,6 @@
-aa_report.report:
-  path: '/admin/reports/aa'
+aa_whatsapp.form:
+  path: '/aa-whatsapp'
   defaults:
-    _controller: '\Drupal\aa_report\Controller\UserReportController::content'
-    _title: 'Reports'
+    _form: '\Drupal\aa_whatsapp\Form\WhatsAppSendMessageForm'
   requirements:
     _permission: 'access content'

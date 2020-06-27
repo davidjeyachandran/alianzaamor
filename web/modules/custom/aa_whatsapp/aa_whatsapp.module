@@ -1,6 +1,7 @@
 <?php
 
 use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 
 /**
  * Handles all whatsapp hooks.
@@ -27,9 +28,6 @@ function aa_whatsapp_entity_extra_field_info() {
  */
 function aa_whatsapp_node_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
   if ($display->getComponent('whatsapp')) {
-    $build['whatsapp'] = [
-      '#type' => 'markup',
-      '#markup' => 'This is my custom content',
-    ];
+    $build['whatsapp'] = \Drupal::formBuilder()->getForm('Drupal\aa_whatsapp\Form\WhatsAppSendMessageForm');
   }
 }
