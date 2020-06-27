@@ -1,5 +1,35 @@
 <?php
 
+use Drupal\Core\Entity\EntityInterface;
+
 /**
  * Handles all whatsapp hooks.
  */
+
+/**
+ * Implements hook_entity_extra_field_info().
+ */
+function aa_whatsapp_entity_extra_field_info() {
+  $extra = [];
+
+  $extra['node']['delivery']['display']['whatsapp'] = [
+    'label' => t('Send messages to WhatsaApp'),
+    'description' => t('Send multiple messages using whatsApp'),
+    'weight' => 100,
+    'visible' => TRUE,
+  ];
+
+  return $extra;
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_view().
+ */
+function aa_whatsapp_node_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
+  if ($display->getComponent('whatsapp')) {
+    $build['whatsapp'] = [
+      '#type' => 'markup',
+      '#markup' => 'This is my custom content',
+    ];
+  }
+}
