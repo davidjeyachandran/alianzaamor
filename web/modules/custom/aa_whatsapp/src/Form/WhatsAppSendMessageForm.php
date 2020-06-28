@@ -38,10 +38,12 @@ class WhatsAppSendMessageForm extends FormBase {
       return [];
     }
 
+    $was_notified = \Drupal::config('aa_whatsapp.settings')->get('was_notified__node_' . $node->id());
 
     $form['whatsapp_send_message'] = [
       '#type' => 'submit',
       '#value' => t('🤖💬 Send message'),
+      '#disabled' => $was_notified,
     ];
 
     return $form;
@@ -55,7 +57,9 @@ class WhatsAppSendMessageForm extends FormBase {
     if (!$node instanceof NodeInterface) {
       return [];
     }
-
+    $location = $node->field_location->entity;
+    $location__map_uri = $location->field_map_url->uri;
+    $location__name = $location->getName();
     $participants = $node->get('field_users_to_deliver')->referencedEntities();
     $whatsapp = \Drupal::service('whatsapp.maytapi');
     $intro_message = <<<EOF
@@ -67,27 +71,37 @@ Te escribimos del Fundación Proyecto Familia en conjunto con Alianza de Amor.
 Si puedes, por favor colabora con un Sol. Para confirmar tu asistencia por favor ingresa la pagina con tu Cédula/DNI.
 Click en “Mi Entrega” y despues en el butón “Confirmar”. Puedes también confirmar tus datos en tu
 Perfil - hay varios inscritos con el distrito “Arequipa".
-https://alianzadeamoraqp.org/user Yanahuara, Club Internacional https://goo.gl/maps/XeXzQhVKyjgBhNna6
-message
+https://alianzadeamoraqp.org/user @location__name @location__map_uri
 EOF;
     $complete_message = $intro_message . ' ' . $desc_message . ' ';
+    $number_of_people = 0;
     /** @var \Drupal\user\UserInterface $participant */
     foreach ($participants as $participant) {
-      // dpm($participant->field_celular->value);
       $full_name = $participant->field_first_names->value . ' ' . $participant->field_last_names->value;
       $message_args = t($complete_message, [
         '@full_name' => $full_name,
         '@title' => $node->label(),
         '@id_or_dni' => $participant->label(),
         '@uid' => $participant->id(),
+        '@location__name' => $location__name,
+        '@location__map_uri' => $location__map_uri,
       ]);
       // We render since we want the translation ready since
       // the output is whatsapp and drupal doesn't translate it for us.
-      // dpm($message_args->render());
       $message_formatted = $message_args->render();
-      // dpm($whatsapp->sendMessage($participant->field_celular->value, $message_formatted));
-    }
 
+      if ($whatsapp->sendMessage($participant->field_celular->value, $message_formatted)) {
+        \Drupal::messenger()->addMessage(t('I have sent message to participant @id_or_dni with phone number: @phone_number.', [
+          '@id_or_dni' => $participant->label(),
+          '@phone_number' => $participant->field_celular->value,
+        ]));
+        \Drupal::messenger()->addMessage($message_formatted);
+        $number_of_people++;
+      }
+    }
+    \Drupal::messenger()->addMessage(t('I have notified @number_of_people people via whatsapp.', [
+      '@number_of_people' => $number_of_people,
+    ]));
   }
 
 }
