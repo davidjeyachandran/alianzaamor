@@ -210,4 +210,5 @@ if (empty($settings['file_scan_ignore_directories'])) {
 $settings['aa_whatsapp']['whatsapp']['credentials'] = [
   'api_key' => '9a2f662e-9ad9-4b58-81f2-e7b5c47ed8bb',
   'product_id' => '2e0c50ad-540d-400f-91e0-a2efd5ab8da5',
+  'phone_id' => '3116',
 ];
