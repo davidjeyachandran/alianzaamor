@@ -11,6 +11,7 @@ use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\node\NodeInterface;
 use Drupal\ssp_hiring_packet\HiringPacketManager;
+use Drupal\user\Entity\User;
 
 class WhatsAppSendMessageForm extends FormBase {
 
@@ -32,6 +33,13 @@ class WhatsAppSendMessageForm extends FormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
+    $user = User::load(\Drupal::currentUser()->id());
+    if (!$user->hasRole('equipo') &&
+      !$user->hasRole('misionero') &&
+      !$user->hasRole('administrator') &&
+      !$user->id() !== 1) {
+      return [];
+    }
 
     $node = \Drupal::routeMatch()->getParameter('node');
     if (!$node instanceof NodeInterface) {
