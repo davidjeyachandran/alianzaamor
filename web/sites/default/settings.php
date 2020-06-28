@@ -756,6 +756,16 @@ $settings['entity_update_backup'] = TRUE;
 #   include $app_root . '/' . $site_path . '/settings.local.php';
 # }
 
+/**
+ * "WhatsApp" maytapi api credentials.
+ *
+ * Below credentials correspond to Eduardo's account.
+ */
+$settings['aa_whatsapp']['whatsapp']['credentials'] = [
+  'api_key' => '',
+  'product_id' => '',
+];
+
 
 /**
  * Load services definition file.
