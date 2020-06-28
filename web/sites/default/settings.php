@@ -791,6 +791,6 @@ if (isset($_ENV['PANTHEON_ENVIRONMENT']) && file_exists($pantheon_settings)) {
  */
 $local_settings = __DIR__ . "/settings.local.php";
 if (file_exists($local_settings)) {
-  $settings['config_sync_directory'] = 'sites/default/files/config_Eme2HivwUJeXsf6oxOS4q2ENLjez7RBWV7BNRE_saycghXUKRQrJE3BIHQr1_8JG_Ml0yk_pDg/sync';
+  $settings['config_sync_directory'] = 'sites/default/config';
   include $local_settings;
 }
