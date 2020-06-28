@@ -3,4 +3,4 @@ aa_whatsapp.form:
   defaults:
     _form: '\Drupal\aa_whatsapp\Form\WhatsAppSendMessageForm'
   requirements:
-    _permission: 'access content'
+    _role: 'equipo+misionero+administrator'
