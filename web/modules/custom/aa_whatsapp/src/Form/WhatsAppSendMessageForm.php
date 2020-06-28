@@ -37,11 +37,16 @@ class WhatsAppSendMessageForm extends FormBase {
     if (!$node instanceof NodeInterface) {
       return [];
     }
-
     $was_notified = \Drupal::config('aa_whatsapp.settings')->get('was_notified__node_' . $node->id());
-
+    $form['whatsapp_send_message_info'] = [
+      '#type' => 'item',
+      '#plain_text' => $was_notified ? t('A bunch of people have been notified via whatsapp.
+      If you forgot to notify somebody then please do it individually.')
+        : 'By clicking on Send message you will notify a bunch of people via whatsapp. Do it when you are ready.',
+    ];
     $form['whatsapp_send_message'] = [
       '#type' => 'submit',
+      '#title' => 'hey',
       '#value' => t('🤖💬 Send message'),
       '#disabled' => $was_notified,
     ];
@@ -99,9 +104,14 @@ EOF;
         $number_of_people++;
       }
     }
-    \Drupal::messenger()->addMessage(t('I have notified @number_of_people people via whatsapp.', [
-      '@number_of_people' => $number_of_people,
-    ]));
+    if ($number_of_people) {
+      \Drupal::messenger()->addMessage(t('I have notified @number_of_people people via whatsapp.', [
+        '@number_of_people' => $number_of_people,
+      ]));
+      \Drupal::configFactory()->getEditable('aa_whatsapp.settings')
+        ->set('was_notified__node_' . $node->id(), TRUE)
+        ->save();
+    }
   }
 
 }
