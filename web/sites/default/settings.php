@@ -266,7 +266,7 @@ $databases = [];
  *   $settings['hash_salt'] = file_get_contents('/home/example/salt.txt');
  * @endcode
  */
-$settings['hash_salt'] = 'SEtQrQkrKnzGoLFfVbC4OXXF6hz3BPHCmyKohBdTkIVeXWEeN53rZJbJEIQ-alEp2Tg0cDd21w';
+$settings['hash_salt'] = '';
 
 /**
  * Deployment identifier.
@@ -756,6 +756,16 @@ $settings['entity_update_backup'] = TRUE;
 #   include $app_root . '/' . $site_path . '/settings.local.php';
 # }
 
+/**
+ * "WhatsApp" maytapi api credentials.
+ *
+ * Below credentials correspond to Eduardo's account.
+ */
+$settings['aa_whatsapp']['whatsapp']['credentials'] = [
+  'api_key' => '',
+  'product_id' => '',
+];
+
 
 /**
  * Load services definition file.
@@ -784,13 +794,3 @@ if (file_exists($local_settings)) {
   $settings['config_sync_directory'] = 'sites/default/files/config_Eme2HivwUJeXsf6oxOS4q2ENLjez7RBWV7BNRE_saycghXUKRQrJE3BIHQr1_8JG_Ml0yk_pDg/sync';
   include $local_settings;
 }
-$databases['default']['default'] = array (
-  'database' => 'drupal8',
-  'username' => 'drupal8',
-  'password' => 'drupal8',
-  'prefix' => '',
-  'host' => 'database',
-  'port' => '3306',
-  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
-  'driver' => 'mysql',
-);
