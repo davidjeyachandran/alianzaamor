@@ -76,15 +76,23 @@ class WhatsAppSendMessageForm extends FormBase {
     $participants = $node->get('field_users_to_deliver')->referencedEntities();
     $whatsapp = \Drupal::service('whatsapp.maytapi');
     $intro_message = <<<EOF
-Hola @full_name, Tu próxima entrega de víveres es *@title*
-Por favor ven con tu Cédula: @id_or_dni Tu número es: @uid
+Hola *@full_name*, Tu próxima entrega de víveres es
+*@title*
+
+Por favor ven con tu Cédula: *@id_or_dni*. *@full_name* Tu número es: *@uid*
 EOF;
     $desc_message = <<<EOF
-Te escribimos del Fundación Proyecto Familia en conjunto con Alianza de Amor.
-Si puedes, por favor colabora con un Sol. Para confirmar tu asistencia por favor ingresa la pagina con tu Cédula/DNI.
-Click en “Mi Entrega” y despues en el butón “Confirmar”. Puedes también confirmar tus datos en tu
-Perfil - hay varios inscritos con el distrito “Arequipa".
-https://alianzadeamoraqp.org/user @location__name @location__map_uri
+
+Si puedes, por favor colabora con un Sol.
+
+Para confirmar tu asistencia por favor ingresa la página con tu Cédula/DNI.
+
+Click en “Mi Entrega” y despúes en el botón “Confirmar”. Puedes también confirmar tus datos en tu
+Perfil.
+https://alianzadeamoraqp.org/user
+
+@location__name
+@location__map_uri
 EOF;
     $complete_message = $intro_message . ' ' . $desc_message . ' ';
     $number_of_people = 0;
