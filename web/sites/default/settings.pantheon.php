@@ -208,7 +208,7 @@ if (empty($settings['file_scan_ignore_directories'])) {
  * Below credentials correspond to Eduardo's account.
  */
 $settings['aa_whatsapp']['whatsapp']['credentials'] = [
-  'api_key' => '9a2f662e-9ad9-4b58-81f2-e7b5c47ed8bb',
-  'product_id' => '2e0c50ad-540d-400f-91e0-a2efd5ab8da5',
-  'phone_id' => '3116',
+  'api_key' => '5fd3baa6-b686-49fe-9d10-9998920d963b',
+  'product_id' => 'c047b0f4-c4b7-44e0-987b-c3d7dcf571c3',
+  'phone_id' => '3128',
 ];

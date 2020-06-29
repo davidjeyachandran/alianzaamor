@@ -116,7 +116,6 @@ EOF;
           '@id_or_dni' => $participant->label(),
           '@phone_number' => $participant->field_celular->value,
         ]));
-        \Drupal::messenger()->addMessage($message_formatted);
         $number_of_people++;
       }
     }
