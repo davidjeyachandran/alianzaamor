@@ -2,6 +2,7 @@ module:
   aa_content: 0
   aa_core: 0
   aa_report: 0
+  aa_whatsapp: 0
   admin_toolbar: 0
   admin_toolbar_tools: 0
   asset_injector: 0

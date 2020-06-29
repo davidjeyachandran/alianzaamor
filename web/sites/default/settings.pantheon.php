@@ -202,3 +202,13 @@ if (empty($settings['file_scan_ignore_directories'])) {
   ];
 }
 
+/**
+ * "WhatsApp" maytapi api credentials.
+ *
+ * Below credentials correspond to Eduardo's account.
+ */
+$settings['aa_whatsapp']['whatsapp']['credentials'] = [
+  'api_key' => '5fd3baa6-b686-49fe-9d10-9998920d963b',
+  'product_id' => 'c047b0f4-c4b7-44e0-987b-c3d7dcf571c3',
+  'phone_id' => '3128',
+];
