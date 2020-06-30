@@ -5,6 +5,7 @@ use Drupal\user\UserInterface;
 use Drupal\Core\Url;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Drupal\user\Entity\User;
+use Drupal\node\Entity\Node;
 
 /**
  * Implements hook_page_attachments().
@@ -22,6 +23,34 @@ function aa_core_page_attachments(array &$page) {
  * Implements hook_form_alter().
  */
 function aa_core_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+
+  // Process views exposed form.
+  if (
+    ($form_id === 'views_exposed_form')
+    && ($form['#id'] === 'views-exposed-form-miembros-page-users-to-deliver')
+  ) {
+    if (isset($form['uid'])) {
+      // Route processing.
+      $route_match = \Drupal::service('current_route_match');
+      $nid = $route_match->getParameter('node');
+      $node = Node::load($nid);
+
+      // Processed delivered.
+      $field_delivered = $node->get('field_delivered')->getValue();
+      $uids = array_map(function ($v) {
+        return $v['target_id'];
+      }, $field_delivered);
+      $users = User::loadMultiple($uids);
+
+      $autocomplete_users = array_map(function ($user) {
+        return $user->getUsername() . ' (' . $user->id() . ')';
+      }, $users);
+
+      $form_state->setUserInput(['uid' => implode(', ', $autocomplete_users)]);
+    }
+
+  }
+
   if ($form_id === 'user_register_form') {
     $form['account']['mail']['#description'] = t("Una dirección de correo electrónico válida.");
     $form['account']['name']['#description'] = t("La Cédula de identidad para Venezolanos o DNI para Peruanos. Por favor SIN letras o puntos");
