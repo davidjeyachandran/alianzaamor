@@ -141,7 +141,7 @@ display:
         type: table
         options:
           grouping: {  }
-          row_class: ''
+          row_class: 'uid-{{ uid }}'
           default_row_class: true
           override: true
           sticky: false
@@ -149,10 +149,22 @@ display:
           summary: ''
           description: ''
           columns:
+            uid: uid
             field_first_names: field_first_names
             field_last_names: field_last_names
-            edit_user: edit_user
+            nothing: nothing
+            field_users_check_in: field_users_check_in
+            field_users_opt_out: field_users_opt_out
+            nothing_1: nothing_1
+            field_delivered: field_delivered
           info:
+            uid:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
             field_first_names:
               sortable: false
               default_sort_order: asc
@@ -167,9 +179,31 @@ display:
               separator: ''
               empty_column: false
               responsive: ''
-            edit_user:
+            nothing:
               sortable: false
               default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_users_check_in:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_users_opt_out:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            nothing_1:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_delivered:
               align: ''
               separator: ''
               empty_column: false
@@ -761,7 +795,20 @@ display:
           entity_field: uid
           plugin_id: standard
       title: Miembros
-      header: {  }
+      header:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: false
+          tokenize: false
+          content:
+            value: ''
+            format: basic_html
+          plugin_id: text
       footer: {  }
       empty:
         area:
@@ -3567,7 +3614,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<a class=\"btn-deliver\" href=\"#\" data-href=\"/to-deliver/{{ raw_arguments.nid }}/{{ uid }}\">Deliver</a>\r\n<img src=\"/themes/contrib/olivero/images/throbber.svg\">\r\n<div class=\"deliver-{{ raw_arguments.nid }}-{{ uid }}\">\r\n<a class=\"use-ajax\" href=\"/ajax/to-deliver/{{ raw_arguments.nid }}/{{ uid }}\">Deliver new</a>\r\n</div>\r\n"
+            text: "<a class=\"btn-deliver\" href=\"/to-deliver/{{ raw_arguments.nid }}/{{ uid }}\" data-href=\"/to-deliver/{{ raw_arguments.nid }}/{{ uid }}\">Deliver</a>\r\n<img src=\"/themes/contrib/olivero/images/throbber.svg\">\r\n<div class=\"deliver-{{ raw_arguments.nid }}-{{ uid }}\">\r\n<a class=\"use-ajax\" href=\"/ajax/to-deliver/{{ raw_arguments.nid }}/{{ uid }}\">Deliver new</a>\r\n</div>\r\n"
             make_link: false
             path: ''
             absolute: false
