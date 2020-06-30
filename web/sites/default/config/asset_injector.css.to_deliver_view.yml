@@ -1,0 +1,18 @@
+uuid: cf62a523-d8a7-4ffc-98ee-d64877f7ef92
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+id: to_deliver_view
+label: 'To deliver view'
+code: ".view-display-id-page_users_to_deliver .form-item-uid {\n  display: none;\n}\n"
+conditions_require_all: true
+conditions:
+  request_path:
+    id: request_path
+    pages: '/node/*/to-deliver'
+    negate: false
+contexts: {  }
+media: all
+preprocess: true

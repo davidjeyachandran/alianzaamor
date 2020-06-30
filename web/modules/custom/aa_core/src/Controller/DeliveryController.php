@@ -12,6 +12,13 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Drupal\Core\Url;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Drupal\Core\Ajax\AjaxResponse;
+use Drupal\Core\Ajax\ReplaceCommand;
+use Drupal\Core\Ajax\BeforeCommand;
+
+use Drupal\Core\Ajax\RemoveCommand;
+use Symfony\Component\HttpFoundation\Response;
+
 
 /**
  * Controller routines for delivery controller.
@@ -67,11 +74,13 @@ class DeliveryController extends ControllerBase {
    *   The account for which a personal contact form should be generated.
    * @param string $field_name
    *   Field name to update: field_delivered, field_users_check_in or field_users_opt_out.
+   * @param bool $ajax
+   *   Ajax call.
    *
-   * @return array
+   * @return array|\Drupal\Core\Ajax\AjaxResponse
    *   A render array representing the administrative page content.
    */
-  public function updateDelivery(NodeInterface $node, UserInterface $user = NULL, $field_name = 'field_delivered'): array {
+  public function updateDelivery(NodeInterface $node, UserInterface $user = NULL, $field_name = 'field_delivered', $ajax = FALSE) : Response {
     $config = $this->configFactory->get('aa_core.settings');
 
     // @TODO: Improve below logic.
@@ -103,12 +112,24 @@ class DeliveryController extends ControllerBase {
       'user' => $user->id(),
     ]);
 
+    $response = NULL;
+
+    if ($ajax) {
+      $response = new AjaxResponse();
+    }
+
     if (!empty($users_found)) {
       // When user was added previously to the field.
       $message = $this->t('A member with cedula/dni %id is duplicated', [
         '%id' => $user->getAccountName(),
       ]);
-      $this->messenger()->addWarning($message);
+
+      if ($ajax) {
+        $response->addCommand(new ReplaceCommand('.view-header', "<div class='view-header'>$message</div>"));
+      } 
+      else {
+        $this->messenger()->addWarning($message);
+      }
     }
     else {
 
@@ -123,12 +144,24 @@ class DeliveryController extends ControllerBase {
             $message = t('A member with cedula/dni %id has been delivered food', [
               '%id' => $user->getAccountName(),
             ]);
-            $this->messenger()->addMessage($message);
+
+            if ($ajax) {
+              $response->addCommand(new ReplaceCommand('.view-header', "<div class='view-header'>$message</div>"));
+              $response->addCommand(new RemoveCommand('.uid-' . $user->id()));
+            }
+            else {
+              $this->messenger()->addError($message);
+            }
           } catch (EntityStorageException $exception) {
             $message = t('A member with cedula/dni %id COULD NOT been delivered food', [
               '%id' => $user->getAccountName(),
             ]);
-            $this->messenger()->addError($message);
+            if ($ajax) {
+              $response->addCommand(new ReplaceCommand('.view-header', "<div class='view-header'>$message</div>"));
+            }
+            else {
+              $this->messenger()->addError($message);
+            }
           }
 
           // Route for redirecting back.
@@ -177,12 +210,14 @@ class DeliveryController extends ControllerBase {
 
     }
 
-    $response = new RedirectResponse($route->toString());
-    $response->send();
+    if ($ajax) {
+      return $response;
+    }
+    else {
+      $response = new RedirectResponse($route->toString());
+      $response->send();
+    }
 
-    return [
-      '#markup' => 'Processing...',
-    ];
   }
 
 }

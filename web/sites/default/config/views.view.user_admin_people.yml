@@ -295,7 +295,7 @@ display:
           type: boolean
           settings:
             format: custom
-            format_custom_true: Activo
+            format_custom_true: Active
             format_custom_false: Bloqueado
           entity_type: user
           entity_field: status
@@ -661,7 +661,7 @@ display:
             default_group_multiple: {  }
             group_items:
               1:
-                title: Activo
+                title: Active
                 operator: '='
                 value: '1'
               2:
