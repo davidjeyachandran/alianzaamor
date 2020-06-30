@@ -12,6 +12,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Drupal\Core\Url;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Drupal\Core\Ajax\AjaxResponse;
+use Drupal\Core\Ajax\ReplaceCommand;
 
 /**
  * Controller routines for delivery controller.
@@ -67,11 +69,13 @@ class DeliveryController extends ControllerBase {
    *   The account for which a personal contact form should be generated.
    * @param string $field_name
    *   Field name to update: field_delivered, field_users_check_in or field_users_opt_out.
+   * @param bool $ajax
+   *   Ajax call.
    *
-   * @return array
+   * @return array|\Drupal\Core\Ajax\AjaxResponse
    *   A render array representing the administrative page content.
    */
-  public function updateDelivery(NodeInterface $node, UserInterface $user = NULL, $field_name = 'field_delivered'): array {
+  public function updateDelivery(NodeInterface $node, UserInterface $user = NULL, $field_name = 'field_delivered', $ajax = FALSE): array {
     $config = $this->configFactory->get('aa_core.settings');
 
     // @TODO: Improve below logic.
@@ -177,12 +181,31 @@ class DeliveryController extends ControllerBase {
 
     }
 
-    $response = new RedirectResponse($route->toString());
-    $response->send();
+    if ($ajax) {
+      $response = new AjaxResponse();
+      $response->addCommand(new ReplaceCommand(
+        '.deliver-' . $node->id() . '-' . $user->id(),
+        'some markup'
+        ));
 
-    return [
-      '#markup' => 'Processing...',
-    ];
+      //$response->send();
+
+      return [
+        "command" => "insert",
+        "method" => "replace",
+        "selector" => '.deliver-' . $node->id() . '-' . $user->id(),
+        '#markup' => 'Processing...',
+      ];
+    }
+    else {
+      $response = new RedirectResponse($route->toString());
+      $response->send();
+
+      return [
+        '#markup' => 'Processing...',
+      ];
+    }
+
   }
 
 }

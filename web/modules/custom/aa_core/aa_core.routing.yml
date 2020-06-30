@@ -9,6 +9,16 @@ aa_core.to_deliver:
     node: \d+
     user: \d+
 
+aa_core.to_deliver_ajax:
+  path: '/ajax/to-deliver/{node}/{user}'
+  defaults:
+    _controller: '\Drupal\aa_core\Controller\DeliveryController::updateDelivery'
+    ajax: 'TRUE'
+  requirements:
+    _permission: 'deliver food'
+    node: \d+
+    user: \d+
+
 aa_core.delivery_confirm:
   path: '/user/delivery/{node}/confirm'
   defaults:
