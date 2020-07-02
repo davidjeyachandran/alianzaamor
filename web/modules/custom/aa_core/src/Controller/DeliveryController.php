@@ -2,6 +2,8 @@
 
 namespace Drupal\aa_core\Controller;
 
+use Drupal\Core\Ajax\DataCommand;
+use Drupal\Core\Ajax\MessageCommand;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Entity\EntityStorageException;
@@ -146,8 +148,10 @@ class DeliveryController extends ControllerBase {
             ]);
 
             if ($ajax) {
-              $response->addCommand(new ReplaceCommand('.view-header', "<div class='view-header'>$message</div>"));
+              $response->addCommand(new ReplaceCommand('.view-header', "<div class='view-header'><div class='messages messages--status'>$message</div></div>"));
+              // $response->addCommand(new MessageCommand($message, NULL, ['type' => 'info', 'announce' => '']));
               $response->addCommand(new RemoveCommand('.uid-' . $user->id()));
+              //$response->addCommand(new DataCommand('#ajax_selected_color', 'uid', $form_state->getValue('select')));
             }
             else {
               $this->messenger()->addError($message);

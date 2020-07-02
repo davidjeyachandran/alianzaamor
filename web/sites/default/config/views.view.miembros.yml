@@ -3658,7 +3658,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<div class=\"deliver-{{ raw_arguments.nid }}-{{ uid }}\">\r\n<a class=\"use-ajax\" href=\"/ajax/to-deliver/{{ raw_arguments.nid }}/{{ uid }}\">Deliver new</a>\r\n</div>\r\n"
+            text: "<div class=\"deliver-{{ raw_arguments.nid }}-{{ uid }}\">\r\n<a class=\"use-ajax\" href=\"/ajax/to-deliver/{{ raw_arguments.nid }}/{{ uid }}\">Deliver</a>\r\n</div>\r\n"
             make_link: false
             path: ''
             absolute: false
