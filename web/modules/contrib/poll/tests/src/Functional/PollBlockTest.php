@@ -49,7 +49,7 @@ class PollBlockTest extends PollTestBase {
     );
     $this->drupalPostForm('user/' . $this->web_user->id(), $edit, t('Vote'));
     $this->assertText('Your vote has been recorded.');
-    $this->assertText('Total votes:  1');
+    $this->assertText('Total votes: 1');
 
     // Close the poll and verify block doesn't appear.
     $poll->close();

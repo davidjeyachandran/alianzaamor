@@ -70,7 +70,7 @@ class PollTokenReplaceTest extends PollTestBase {
     $token = \Drupal::service('token');
     foreach ($tests as $input => $expected) {
       $output = $token->replace($input, array('poll' => $poll));
-      $this->assertEqual($output, $expected, format_string('Sanitized poll token %token replaced.', array('%token' => $input)));
+      $this->assertEqual($output, $expected, "Sanitized poll token $input replaced.");
     }
 
     // Generate and test unsanitized tokens.
@@ -78,7 +78,7 @@ class PollTokenReplaceTest extends PollTestBase {
 
     foreach ($tests as $input => $expected) {
       $output = $token->replace($input, array('poll' => $poll), array('sanitize' => FALSE));
-      $this->assertEqual($output, $expected, format_string('Unsanitized poll token %token replaced.', array('%token' => $input)));
+      $this->assertEqual($output, $expected, "Unsanitized poll token $input replaced.");
     }
   }
 

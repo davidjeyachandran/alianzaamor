@@ -35,6 +35,12 @@ class PollHtmlSpecialCharactersTest extends PollTestBase {
     // Verify the page title.
     $result = $this->xpath("//div[contains(concat(' ', @class, ' '), ' block-page-title-block ')]/h1");
     $this->assertEqual($this->page_title, $result[0]->getText(), 'HTML entities displayed correctly in page title.');
+
+    // Verify the poll title is escaped correctly in the poll results.
+    $this->drupalPostForm('poll/' . $this->poll->id(), ['choice' => 1], t('Vote'));
+    $this->assertText('Your vote has been recorded.');
+    $this->drupalGet('polls');
+    $this->assertSession()->elementTextContains('css', 'h3.poll-question', $this->page_title);
   }
 
   /**
@@ -57,7 +63,7 @@ class PollHtmlSpecialCharactersTest extends PollTestBase {
     // Vote.
     $this->drupalPostForm('poll/' . $this->poll->id(), ['choice' => 1], t('Vote'));
     $this->assertText('Your vote has been recorded.');
-    $this->assertText('Total votes:  1');
+    $this->assertText('Total votes: 1');
 
     // Verify the results page.
     $result = $this->xpath('//*[@id="poll-view-form-1"]/div/dl/dt[1]/text()');

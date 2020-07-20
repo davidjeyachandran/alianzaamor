@@ -98,7 +98,7 @@ class PollVoteMultilingualTest extends PollTestBase {
     );
     $this->drupalPostForm('poll/' . $this->poll->id(), $edit, t('Vote'));
     $this->assertText('Your vote has been recorded.');
-    $this->assertText('Total votes:  1');
+    $this->assertText('Total votes: 1');
 
     $this->drupalGet('ca/poll/' . $this->poll->id());
     $elements = $this->xpath('//input[@value="Cancel vote"]');
@@ -115,7 +115,7 @@ class PollVoteMultilingualTest extends PollTestBase {
     );
     $this->drupalPostForm('ca/poll/' . $this->poll->id(), $edit, t('Vote'));
     $this->assertText('Your vote has been recorded.');
-    $this->assertText('Total votes:  1');
+    $this->assertText('Total votes: 1');
 
     $this->drupalGet('poll/' . $this->poll->id());
     $elements = $this->xpath('//input[@value="Cancel vote"]');
@@ -150,7 +150,7 @@ class PollVoteMultilingualTest extends PollTestBase {
     );
     $this->drupalPostForm('ca/poll/' . $this->poll->id(), $edit, t('Vote'));
     $this->assertText('Your vote has been recorded.');
-    $this->assertText('Total votes:  2');
+    $this->assertText('Total votes: 2');
     $this->assertNoText('ca choice 1');
     $this->assertText('ca choice 4');
     $elements = $this->xpath('//*[@id="poll-view-form-2"]/div[1]/dl/dd[1]')[0];
@@ -161,7 +161,7 @@ class PollVoteMultilingualTest extends PollTestBase {
     $this->drupalGet('poll/' . $this->poll->id());
     $elements = $this->xpath('//input[@value="Cancel vote"]');
     $this->assertTrue(isset($elements[0]), "'Cancel vote' button appears.");
-    $this->assertText('Total votes:  2');
+    $this->assertText('Total votes: 2');
     $elements = $this->xpath('//*[@id="poll-view-form-2"]/div[1]/dl/dd[1]')[0];
     $this->assertEqual($elements->getText(), '50% (1 vote)');
     $elements = $this->xpath('//*[@id="poll-view-form-2"]/div[1]/dl/dd[3]')[0];

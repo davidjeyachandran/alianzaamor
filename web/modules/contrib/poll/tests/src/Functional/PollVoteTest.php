@@ -27,7 +27,7 @@ class PollVoteTest extends PollTestBase {
     );
     $this->drupalPostForm('poll/' . $this->poll->id(), $edit, t('Vote'));
     $this->assertText('Your vote has been recorded.');
-    $this->assertText('Total votes:  1');
+    $this->assertText('Total votes: 1');
     $elements = $this->xpath('//input[@value="Cancel vote"]');
     $this->assertTrue(isset($elements[0]), "'Cancel your vote' button appears.");
 
@@ -72,7 +72,7 @@ class PollVoteTest extends PollTestBase {
     );
     $this->drupalPostForm('poll/' . $this->poll->id(), $edit, t('Vote'));
     $this->assertText('Your vote has been recorded.');
-    $this->assertText('Total votes:  1');
+    $this->assertText('Total votes: 1');
     $elements = $this->xpath('//input[@value="Cancel your vote"]');
     $this->assertTrue(empty($elements), "'Cancel your vote' button does not appear.");
 
@@ -140,6 +140,17 @@ class PollVoteTest extends PollTestBase {
     $this->drupalGet('admin/content/poll');
     $xpath = "//tr[1]/td[@class='views-field views-field-votes']";
     $this->assertFieldByXPath($xpath, 1);
+
+    // Test for the 'View results' button.
+    $this->drupalLogin($this->admin_user);
+    $this->drupalGet('poll/' . $this->poll->id());
+    $elements = $this->xpath('//input[@value="View results"]');
+    $this->assertTrue(!empty($elements), "'View results' button appears.");
+
+    $this->drupalLogin($this->web_user);
+    $this->drupalGet('poll/' . $this->poll->id());
+    $elements = $this->xpath('//input[@value="View results"]');
+    $this->assertTrue(empty($elements), "'View results' button doesn't appear.");
   }
 
   /**
@@ -196,19 +207,19 @@ class PollVoteTest extends PollTestBase {
     // Logged user votes.
     $this->drupalLogin($this->web_user);
     $this->drupalPostForm('poll/' . $this->poll->id(), $edit, t('Vote'));
-    $this->assertText(t('Total votes:  @votes', array('@votes' => 2)));
+    $this->assertText(t('Total votes: @votes', array('@votes' => 2)));
 
     // Second anonymous user votes from same IP than the logged.
     $this->drupalLogout();
     $this->drupalPostForm('poll/' . $this->poll->id(), $edit, t('Vote'));
-    $this->assertText(t('Total votes:  @votes', array('@votes' => 3)));
+    $this->assertText(t('Total votes: @votes', array('@votes' => 3)));
 
     // Second anonymous user cancels own vote.
     $this->drupalPostForm(NULL, array(), t('Cancel vote'));
 
     // Vote again to see the results, resulting in three votes again.
     $this->drupalPostForm('poll/' . $this->poll->id(), $edit, t('Vote'));
-    $this->assertText(t('Total votes:  @votes', array('@votes' => 3)));
+    $this->assertText(t('Total votes: @votes', array('@votes' => 3)));
   }
 
 }

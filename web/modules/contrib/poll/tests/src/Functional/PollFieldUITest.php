@@ -91,7 +91,7 @@ class PollFieldUITest extends PollTestBase {
     $this->drupalGet('admin/help/poll');
 
     $this->clickLink('Poll module');
-    $this->assertUrl('https://www.drupal.org/docs/8/modules/poll');
+    $this->assertUrl('https://www.drupal.org/docs/contributed-modules/poll');
     $this->drupalGet('admin/help/poll');
 
     $this->clickLink('Add a poll');

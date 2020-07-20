@@ -59,6 +59,11 @@ class PollVoteJavascriptTest extends WebDriverTestBase {
   /**
    * {@inheritdoc}
    */
+  protected $defaultTheme = 'stark';
+
+  /**
+   * {@inheritdoc}
+   */
   protected function setUp() {
     parent::setUp();
 
@@ -203,6 +208,12 @@ class PollVoteJavascriptTest extends WebDriverTestBase {
     $this->assertCount(1, $this->cssSelect('.choice-title.is-current-selection'));
     $this->assertCount(4, $this->cssSelect('.choice-title.not-current-selection'));
     $this->assertTrue($page->hasButton('Cancel vote'), "'Cancel your vote' button appears.");
+    // Reload the page so that the messages are reset.
+    $this->drupalGet('poll/' . $this->poll->id());
+    $page->pressButton('Cancel vote');
+    $session->wait(1000, 'jQuery(".messages--status").length > 0');
+    $this->assertTrue($page->hasContent('Your vote was cancelled.'));
+    $this->assertTrue($page->hasButton('Vote'), "Vote button appears.");
   }
 
 }

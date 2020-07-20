@@ -93,7 +93,7 @@ class PollViewForm extends FormBase implements BaseFormIdInterface {
       }
       $form['#theme'] = 'poll_vote';
       $form['#entity'] = $this->poll;
-      $form['#action'] = $this->poll->url('canonical', ['query' => \Drupal::destination()->getAsArray()]);
+      $form['#action'] = $this->poll->toUrl()->setOption('query', \Drupal::destination()->getAsArray())->toString();
       // Set a flag to hide results which will be removed if we want to view
       // results when the form is rebuilt.
       $form_state->set('show_results', FALSE);
@@ -208,7 +208,7 @@ class PollViewForm extends FormBase implements BaseFormIdInterface {
       $actions['vote']['#weight'] = '0';
 
       // View results before voting.
-      if ($poll->result_vote_allow->value) {
+      if ($poll->result_vote_allow->value || $this->currentUser()->hasPermission('view poll results')) {
         $actions['result']['#type'] = 'submit';
         $actions['result']['#button_type'] = 'primary';
         $actions['result']['#value'] = t('View results');
@@ -262,6 +262,10 @@ class PollViewForm extends FormBase implements BaseFormIdInterface {
       );
     }
 
+    /** @var \Drupal\poll\PollVoteStorageInterface $vote_storage */
+    $vote_storage = \Drupal::service('poll_vote.storage');
+    $user_vote = $vote_storage->getUserVote($poll);
+
     $output = array(
       '#theme' => 'poll_results',
       '#raw_question' => $poll->label(),
@@ -271,7 +275,7 @@ class PollViewForm extends FormBase implements BaseFormIdInterface {
       '#pid' => $poll->id(),
       '#poll' => $poll,
       '#view_mode' => $view_mode,
-      '#vote' => isset($poll->vote) ? $poll->vote : NULL,
+      '#vote' => isset($user_vote['chid']) ? $user_vote['chid'] : NULL,
     );
 
     return $output;
@@ -338,7 +342,7 @@ class PollViewForm extends FormBase implements BaseFormIdInterface {
     $options['uid'] = $this->currentUser()->id();
     $options['pid'] = $form_state->getValue('poll')->id();
     $options['hostname'] = \Drupal::request()->getClientIp();
-    $options['timestamp'] = REQUEST_TIME;
+    $options['timestamp'] = \Drupal::time()->getRequestTime();
     // Save vote.
     /** @var \Drupal\poll\PollVoteStorage $vote_storage */
     $vote_storage = \Drupal::service('poll_vote.storage');

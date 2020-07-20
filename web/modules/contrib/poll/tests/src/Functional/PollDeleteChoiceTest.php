@@ -13,9 +13,6 @@ class PollDeleteChoiceTest extends PollTestBase {
    * Tests removing a choice from a poll.
    */
   function testChoiceRemoval() {
-    // Set up a poll with three choices.
-    $this->assertTrue($this->poll->id(), 'Poll for choice deletion logic test created.');
-
     $ids = \Drupal::entityQuery('poll_choice')
       ->condition('choice', $this->poll->choice[0]->entity->label())
       ->execute();

@@ -45,12 +45,12 @@ class PollVoteCheckHostnameTest extends PollTestBase {
     // User1 vote on Poll.
     $this->drupalPostForm('poll/' . $this->poll->id(), $edit, t('Vote'));
     $this->assertText(t('Your vote has been recorded.'));
-    $this->assertText(t('Total votes:  @votes', array('@votes' => 1)));
+    $this->assertText(t('Total votes: @votes', array('@votes' => 1)));
 
     // Check to make sure User1 cannot vote again.
     $this->drupalGet('poll/' . $this->poll->id());
     $elements = $this->xpath('//input[@value="Vote"]');
-    $this->assertTrue(empty($elements), format_string("%user is not able to vote again.", array('%user' => $this->web_user->getUserName())));
+    $this->assertTrue(empty($elements), $this->web_user->getAccountName() . " is not able to vote again.");
     $elements = $this->xpath('//input[@value="Cancel vote"]');
     $this->assertTrue(!empty($elements), "'Cancel vote' button appears.");
 
@@ -66,13 +66,13 @@ class PollVoteCheckHostnameTest extends PollTestBase {
     // Anonymous user vote on Poll.
     $this->drupalPostForm(NULL, $edit, t('Vote'));
     $this->assertText(t('Your vote has been recorded.'));
-    $this->assertText(t('Total votes:  @votes', array('@votes' => 2)));
+    $this->assertText(t('Total votes: @votes', array('@votes' => 2)));
     $elements = $this->xpath('//input[@value="Cancel vote"]');
     $this->assertTrue(!empty($elements), "'Cancel vote' button appears.");
 
     // Check to make sure Anonymous user cannot vote again.
     $this->drupalGet('poll/' . $this->poll->id());
-    $this->assertFalse($this->drupalGetHeader('x-drupal-cache'), 'Page was not cacheable.');
+    $this->assertNull($this->drupalGetHeader('x-drupal-cache'), 'Page was not cacheable.');
     $elements = $this->xpath('//input[@value="Vote"]');
     $this->assertTrue(empty($elements), "Anonymous is not able to vote again.");
     $elements = $this->xpath('//input[@value="Cancel vote"]');
@@ -84,7 +84,7 @@ class PollVoteCheckHostnameTest extends PollTestBase {
     // User2 vote on poll.
     $this->drupalPostForm('poll/' . $this->poll->id(), $edit, t('Vote'));
     $this->assertText(t('Your vote has been recorded.'));
-    $this->assertText(t('Total votes:  @votes', array('@votes' => 3)));
+    $this->assertText(t('Total votes: @votes', array('@votes' => 3)));
     $elements = $this->xpath('//input[@value="Cancel vote"]');
     $this->assertTrue(empty($elements), "'Cancel vote' button does not appear.");
 
@@ -105,7 +105,7 @@ class PollVoteCheckHostnameTest extends PollTestBase {
     $this->assertEqual($this->drupalGetHeader('x-drupal-cache'), 'HIT', 'Cached page return.');
     $this->drupalPostForm(NULL, $edit, t('Vote'));
     $this->assertText(t('Your vote has been recorded.'));
-    $this->assertText(t('Total votes:  @votes', array('@votes' => 4)));
+    $this->assertText(t('Total votes: @votes', array('@votes' => 4)));
     $elements = $this->xpath('//input[@value="Cancel vote"]');
     $this->assertTrue(!empty($elements), "'Cancel vote' button appears.");
 
@@ -127,7 +127,7 @@ class PollVoteCheckHostnameTest extends PollTestBase {
     // Check to make sure User1 still cannot vote even after hostname changed.
     $this->drupalGet('poll/' . $this->poll->id());
     $elements = $this->xpath('//input[@value="Vote"]');
-    $this->assertTrue(empty($elements), format_string("%user is not able to vote again.", array('%user' => $this->web_user->getUserName())));
+    $this->assertTrue(empty($elements), $this->web_user->getAccountName() . " is not able to vote again.");
     $elements = $this->xpath('//input[@value="Cancel vote"]');
     $this->assertTrue(!empty($elements), "'Cancel vote' button appears.");
   }

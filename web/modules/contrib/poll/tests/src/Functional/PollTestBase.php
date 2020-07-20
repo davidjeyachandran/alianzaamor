@@ -50,6 +50,11 @@ abstract class PollTestBase extends BrowserTestBase {
   /**
    * {@inheritdoc}
    */
+  protected $defaultTheme = 'classy';
+
+  /**
+   * {@inheritdoc}
+   */
   protected function setUp() {
     parent::setUp();
 
@@ -61,6 +66,7 @@ abstract class PollTestBase extends BrowserTestBase {
       'administer polls',
       'access polls',
       'access poll overview',
+      'view poll results',
     ], $this->adminPermissions));
     $this->web_user = $this->drupalCreateUser(array_merge([
       'access polls',
@@ -120,7 +126,7 @@ abstract class PollTestBase extends BrowserTestBase {
       ->loadByProperties(array('question' => $question));
     $poll = reset($polls);
     $this->assertText(t('The poll @question has been added.', array('@question' => $question)));
-    $this->assertTrue($poll->id, 'Poll has been found in the database.');
+    $this->assertInstanceOf(PollInterface::class, $poll);
 
     return $poll instanceof PollInterface ? $poll : FALSE;
   }
@@ -229,9 +235,7 @@ abstract class PollTestBase extends BrowserTestBase {
       $expected_order = $expected;
       foreach ($elements as $element) {
         $next_label = array_shift($expected_order);
-        $this->assertEqual((string) $element, $next_label, format_string('Found choice @label in preview.', array(
-          '@label' => $next_label,
-        )));
+        $this->assertEqual((string) $element, $next_label, "Found choice $next_label in preview.");
       }
     }
   }

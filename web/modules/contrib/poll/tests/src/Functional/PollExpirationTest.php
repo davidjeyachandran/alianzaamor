@@ -18,7 +18,6 @@ class PollExpirationTest extends PollTestBase {
 
     // Set up a poll.
     $poll = $this->poll;
-    $this->assertTrue($poll->id(), 'Poll for auto-expire test created.');
 
     // Visit the poll edit page and verify that by default, expiration
     // is set to unlimited.

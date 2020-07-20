@@ -63,7 +63,7 @@ class PollForm extends ContentEntityForm {
       $this->messenger()->addMessage($this->t('The poll %poll has been updated.', array('%poll' => $poll->label())));
     }
     else {
-      \Drupal::logger('poll')->notice('Poll %poll added.', array('%poll' => $poll->label(), 'link' => $poll->link($poll->label())));
+      \Drupal::logger('poll')->notice('Poll %poll added.', array('%poll' => $poll->label(), 'link' => $poll->toLink()->toString()));
       $this->messenger()->addMessage($this->t('The poll %poll has been added.', array('%poll' => $poll->label())));
     }
 
