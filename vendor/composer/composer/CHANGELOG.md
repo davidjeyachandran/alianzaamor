@@ -1,6 +1,19 @@
+### [1.10.9] 2020-07-16
+
+  * Fixed Bitbucket redirect loop when credentials are outdated
+  * Fixed GitLab auth prompt wording
+  * Fixed `self-update` handling of files requiring admin permissions to write to on Windows (it now does a UAC prompt)
+  * Fixed parsing issues in funding.yml files
+
+### [1.10.8] 2020-06-24
+
+  * Fixed compatibility issue with git being configured to show signatures by default
+  * Fixed discarding of local changes when updating packages to include untracked files
+  * Several minor fixes
+
 ### [1.10.7] 2020-06-03
 
-  * Fix PHP 8 deprecations
+  * Fixed PHP 8 deprecations
   * Fixed detection of pcntl_signal being in disabled_functions when pcntl_async_signal is allowed
 
 ### [1.10.6] 2020-05-06
@@ -860,6 +873,8 @@
 
   * Initial release
 
+[1.10.9]: https://github.com/composer/composer/compare/1.10.8...1.10.9
+[1.10.8]: https://github.com/composer/composer/compare/1.10.7...1.10.8
 [1.10.7]: https://github.com/composer/composer/compare/1.10.6...1.10.7
 [1.10.6]: https://github.com/composer/composer/compare/1.10.5...1.10.6
 [1.10.5]: https://github.com/composer/composer/compare/1.10.4...1.10.5
