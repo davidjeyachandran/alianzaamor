@@ -79,8 +79,19 @@ class WhatsAppSendMessageForm extends FormBase {
 Hola *@full_name*, Tu próxima entrega de víveres es
 *@title*
 
-Por favor ven con tu Cédula: *@id_or_dni*. *@full_name* Tu número es: *@uid*
+Por favor ven con tu Cédula: *@id_or_dni*.
+Tu número es: *@uid*
+
 EOF;
+
+    $covid_message = "Por favor, si usted o un familiar suyo sospecha " . 
+    "(si tiene fiebre, tos, o dolor de la garganta, dolor de la cabeza, " .
+    "malestar general, diarrea o cansancio excesivo)  o sabe que tiene " .
+    "COVID-19, háganos saber y NO vaya a recoger la bolsa. Si no tienen " .
+    "quien recoja la bolsa por usted, comuníquese con nosotros para poder " .
+    "ayudarlo/a, pero NO se presente al recojo de la bolsa, pues de conocer " .
+    "otro caso serán suspendidas las entregas.";
+
     $desc_message = <<<EOF
 
 Si puedes, por favor colabora con un Sol.
@@ -94,7 +105,7 @@ https://alianzadeamoraqp.org/user
 @location__name
 @location__map_uri
 EOF;
-    $complete_message = $intro_message . ' ' . $desc_message . ' ';
+    $complete_message = $intro_message . $covid_message . $desc_message . ' ';
     $number_of_people = 0;
     /** @var \Drupal\user\UserInterface $participant */
     foreach ($participants as $participant) {
