@@ -1,0 +1,26 @@
+uuid: e599b8f2-bdfe-42ef-9cde-39699341ad4d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_message
+    - node.type.message_baord_item
+  module:
+    - regex_field_validation
+third_party_settings:
+  regex_field_validation:
+    enable: 0
+    regex: ''
+    error_message: ''
+id: node.message_baord_item.field_message
+field_name: field_message
+entity_type: node
+bundle: message_baord_item
+label: Message
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

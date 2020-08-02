@@ -1,0 +1,11 @@
+uuid: c8b8f26f-2c1b-48d6-be12-c5c902a5b13c
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.message_baord_item
+id: node.message_baord_item
+target_entity_type_id: node
+target_bundle: message_baord_item
+default_langcode: site_default
+language_alterable: false

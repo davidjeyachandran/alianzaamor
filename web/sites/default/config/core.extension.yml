@@ -59,6 +59,7 @@ module:
   rdf: 0
   regex_field_validation: 0
   rest: 0
+  scheduler: 0
   search: 0
   serialization: 0
   shortcut: 0

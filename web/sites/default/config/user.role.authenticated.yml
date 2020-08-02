@@ -13,6 +13,8 @@ permissions:
   - 'access content'
   - 'access polls'
   - 'access shortcuts'
+  - 'create message_baord_item content'
+  - 'edit own message_baord_item content'
   - 'opt-in or out of google analytics tracking'
   - 'post comments'
   - 'search content'

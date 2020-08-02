@@ -1,0 +1,27 @@
+uuid: 7128446a-3173-4728-a9b2-1e532555c869
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.message_baord_item.field_location
+    - field.field.node.message_baord_item.field_message
+    - field.field.node.message_baord_item.field_phone_number
+    - node.type.message_baord_item
+  module:
+    - user
+id: node.message_baord_item.teaser
+targetEntityType: node
+bundle: message_baord_item
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_location: true
+  field_message: true
+  field_phone_number: true
+  langcode: true
