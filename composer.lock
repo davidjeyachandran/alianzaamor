@@ -1770,7 +1770,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/auto_entitylabel.git",
-                "reference": "e0b8ab3b66b64607f6ae83bb0cc9d74803512a9d"
+                "reference": "da767c7786b971c4155227b4d06c347c209208d9"
             },
             "require": {
                 "drupal/core": "^8 || ^9"
@@ -1781,8 +1781,8 @@
                     "dev-3.x": "3.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-3.0-beta2+4-dev",
-                    "datestamp": "1587802004",
+                    "version": "8.x-3.0-beta2+6-dev",
+                    "datestamp": "1595624476",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
@@ -1791,7 +1791,7 @@
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
-                "GPL-2.0+"
+                "GPL-2.0-or-later"
             ],
             "authors": [
                 {
@@ -1824,7 +1824,8 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/auto_entitylabel",
                 "issues": "https://www.drupal.org/project/issues/auto_entitylabel"
-            }
+            },
+            "time": "2020-07-27T17:51:33+00:00"
         },
         {
             "name": "drupal/backup_migrate",
