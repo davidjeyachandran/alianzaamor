@@ -2392,20 +2392,20 @@
         },
         {
             "name": "drupal/csv_serialization",
-            "version": "2.0.0-beta1",
+            "version": "2.0.0-beta3",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/csv_serialization.git",
-                "reference": "8.x-2.0-beta1"
+                "reference": "8.x-2.0-beta3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/csv_serialization-8.x-2.0-beta1.zip",
-                "reference": "8.x-2.0-beta1",
-                "shasum": "211b048b4f37a38626fa3c89b2833bd79a7bd70e"
+                "url": "https://ftp.drupal.org/files/projects/csv_serialization-8.x-2.0-beta3.zip",
+                "reference": "8.x-2.0-beta3",
+                "shasum": "b22f8a11c87cbaa16dab61da5c1cf0a6af48a024"
             },
             "require": {
-                "drupal/core": "^8.0.4",
+                "drupal/core": "^8 || ^9",
                 "league/csv": "^9.1"
             },
             "require-dev": {
@@ -2414,12 +2414,9 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-2.x": "2.x-dev"
-                },
                 "drupal": {
-                    "version": "8.x-2.0-beta1",
-                    "datestamp": "1568995088",
+                    "version": "8.x-2.0-beta3",
+                    "datestamp": "1595876761",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Beta releases are not covered by Drupal security advisories."
@@ -2428,18 +2425,19 @@
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
-                "GPL-2.0+"
+                "GPL-2.0-or-later"
             ],
             "authors": [
                 {
-                    "name": "grasmash",
+                    "name": "Matthew Grasmick",
                     "homepage": "https://www.drupal.org/user/455714"
                 }
             ],
             "description": "Provides CSV as a serialization format.",
             "homepage": "https://www.drupal.org/project/csv_serialization",
             "support": {
-                "source": "https://git.drupalcode.org/project/csv_serialization"
+                "source": "http://cgit.drupalcode.org/csv_serialization",
+                "issues": "https://www.drupal.org/project/issues/csv_serialization"
             }
         },
         {
