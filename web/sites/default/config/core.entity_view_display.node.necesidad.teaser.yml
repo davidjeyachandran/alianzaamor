@@ -1,0 +1,23 @@
+uuid: 59cc9c1b-1171-4cf9-8c65-3bcff60e53d3
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.necesidad.field_description
+    - node.type.necesidad
+  module:
+    - user
+id: node.necesidad.teaser
+targetEntityType: node
+bundle: necesidad
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_description: true
+  langcode: true
