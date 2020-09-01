@@ -1,0 +1,11 @@
+uuid: a3c4ae5e-59c3-40ad-80e7-7ef8c6c5756b
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.necesidad
+id: node.necesidad
+target_entity_type_id: node
+target_bundle: necesidad
+default_langcode: site_default
+language_alterable: false

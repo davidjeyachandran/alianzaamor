@@ -1,0 +1,18 @@
+uuid: 49b51e77-8582-4b02-b3db-c4a163277638
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.necesidad
+id: node.necesidad.title
+field_name: title
+entity_type: node
+bundle: necesidad
+label: 'Cédula o DNI'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -2749,6 +2749,7 @@ display:
         filter_groups: false
         fields: false
         header: false
+        exposed_form: false
       filter_groups:
         operator: AND
         groups:
@@ -3152,6 +3153,16 @@ display:
             value: '<br><a href="/admin/people/create" class="button button--primary">Agrega un Miembro</a>'
             format: full_html
           plugin_id: text
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Apply
+          reset_button: false
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: false
+          sort_asc_label: Asc
+          sort_desc_label: Desc
     cache_metadata:
       max-age: -1
       contexts:

@@ -37,7 +37,7 @@ display:
       exposed_form:
         type: basic
         options:
-          submit_button: Filter
+          submit_button: Filtro
           reset_button: true
           reset_button_label: Reset
           exposed_sorts_label: 'Sort by'
@@ -250,7 +250,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Status
+          label: Estado
           exclude: false
           alter:
             alter_text: false
@@ -650,7 +650,7 @@ display:
             operator_list: {  }
           is_grouped: true
           group_info:
-            label: Status
+            label: Estado
             description: ''
             identifier: status
             optional: true

@@ -1,0 +1,26 @@
+uuid: 6205f8e6-072d-4a49-bcae-d6c68cd8ed96
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_description
+    - node.type.necesidad
+  module:
+    - regex_field_validation
+third_party_settings:
+  regex_field_validation:
+    enable: 0
+    regex: ''
+    error_message: ''
+id: node.necesidad.field_description
+field_name: field_description
+entity_type: node
+bundle: necesidad
+label: '¿Por que estas en necesidad extrema?'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

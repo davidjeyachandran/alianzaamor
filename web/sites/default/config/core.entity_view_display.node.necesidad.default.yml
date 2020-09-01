@@ -1,0 +1,28 @@
+uuid: 2b07d562-eed9-47ce-83f0-11ffc7b54104
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.necesidad.field_description
+    - node.type.necesidad
+  module:
+    - user
+id: node.necesidad.default
+targetEntityType: node
+bundle: necesidad
+mode: default
+content:
+  field_description:
+    weight: 102
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true
