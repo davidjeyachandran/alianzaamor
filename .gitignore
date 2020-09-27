@@ -70,7 +70,7 @@ services.local.yml
 
 # Ignore Drupal's file directory
 web/sites/default/files
-
+sites/default/files
 # Pantheon commits a settings.php for environment-specific settings.
 # Place local settings in settings.local.php
 web/sites/*/settings.local.php
