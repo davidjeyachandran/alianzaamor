@@ -8,8 +8,6 @@ use Drupal\Tests\node\Traits\ContentTypeCreationTrait;
 use Drupal\Tests\node\Traits\NodeCreationTrait;
 
 /**
- * Tests for auto entity label.
- *
  * @group auto_entitylabel
  */
 class AutoEntityLabelTest extends EntityKernelTestBase {
@@ -18,18 +16,11 @@ class AutoEntityLabelTest extends EntityKernelTestBase {
   use NodeCreationTrait;
 
   /**
-   * Node type.
-   *
    * @var \Drupal\node\Entity\NodeType
    */
   protected $nodeType;
 
-  /**
-   * Modules to enable.
-   *
-   * @var array
-   */
-  public static $modules = [
+  static $modules = [
     'system',
     'user',
     'node',
@@ -39,7 +30,7 @@ class AutoEntityLabelTest extends EntityKernelTestBase {
   ];
 
   /**
-   * {@inheritdoc}
+   * @inheritDoc
    */
   protected function setUp() {
     parent::setUp();

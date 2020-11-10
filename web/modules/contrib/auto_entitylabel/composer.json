@@ -6,7 +6,7 @@
   "support": {
     "issues": "https://www.drupal.org/project/issues/auto_entitylabel"
    },
-  "license": "GPL-2.0-or-later",
+  "license": "GPL-2.0+",
   "repositories": [{
     "type": "package",
     "package": {
