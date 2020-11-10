@@ -9,3 +9,10 @@ php_version: 7.3
 enforce_https: transitional
 web_docroot: true
 drush_version: 10
+
+# See https://pantheon.io/docs/pantheon-yml#protected-web-paths for usage.
+protected_web_paths:
+  - /private/
+  - /web/sites/default/files/private/
+  - /web/sites/default/config/
+  - /web/sites/default/files/config/
