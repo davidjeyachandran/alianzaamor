@@ -7,7 +7,6 @@
 
 (function () {
   var isDesktopNav = drupalSettings.olivero.isDesktopNav;
-
   var secondLevelNavMenus = document.querySelectorAll('.primary-nav__menu-item--has-children');
 
   function toggleSubNav(topLevelMenuITem, toState) {
@@ -24,24 +23,19 @@
   }
 
   drupalSettings.olivero.toggleSubNav = toggleSubNav;
-
   secondLevelNavMenus.forEach(function (el) {
     var button = el.querySelector('.primary-nav__button-toggle, .primary-nav__menu-link--button');
-
     button.removeAttribute('aria-hidden');
     button.removeAttribute('tabindex');
-
     button.addEventListener('click', function (e) {
       var topLevelMenuITem = e.currentTarget.parentNode;
       toggleSubNav(topLevelMenuITem);
     });
-
     el.addEventListener('mouseover', function (e) {
       if (isDesktopNav()) {
         toggleSubNav(e.currentTarget, true);
       }
     });
-
     el.addEventListener('mouseout', function (e) {
       if (isDesktopNav()) {
         toggleSubNav(e.currentTarget, false);
@@ -59,7 +53,6 @@
 
   function areAnySubnavsOpen() {
     var subNavsAreOpen = false;
-
     secondLevelNavMenus.forEach(function (el) {
       var button = el.querySelector('.primary-nav__button-toggle');
       var state = button.getAttribute('aria-expanded') === 'true';
@@ -68,12 +61,10 @@
         subNavsAreOpen = true;
       }
     });
-
     return subNavsAreOpen;
   }
 
   drupalSettings.olivero.areAnySubnavsOpen = areAnySubnavsOpen;
-
   document.addEventListener('keyup', function (e) {
     if (e.keyCode === 27 && isDesktopNav()) {
       closeAllSubNav();

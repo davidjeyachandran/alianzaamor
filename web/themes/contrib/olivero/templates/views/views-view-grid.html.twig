@@ -47,7 +47,9 @@
   {% for row in items %}
     {% for column in row.content %}
       <div class="views-view-grid__item">
-        {{- column.content -}}
+        <div class="views-view-grid__item-inner">
+          {{- column.content -}}
+        </div>
       </div>
     {% endfor %}
   {% endfor %}

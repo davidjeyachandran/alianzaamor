@@ -107,18 +107,25 @@
     const debugElement = document.createElement('div');
     debugElement.classList.add('olivero-debug');
     debugElement.innerHTML = `
+      <button class="olivero-debug__close">Close</button>
       <h2 class="visually-hidden">Theme debug options</h2>
-      <div><input id="logo-toggle" type="checkbox"><label for="logo-toggle">Logo</label></div>
-      <div><input id="edit-name-toggle" type="checkbox"><label for="edit-name-toggle">Editable Site Name</label></div>
-      <div><input id="rtl-toggle" type="checkbox"><label for="rtl-toggle">RTL</label></div>
-      <div><input id="nav-toggle" type="checkbox"><label for="nav-toggle">Always on mobile nav</label></div>
-      <div><input id="required-toggle" type="checkbox"><label for="required-toggle">Clear required attribute on form elements</label></div>
+      <div class="olivero-debug__row"><input id="logo-toggle" type="checkbox"><label for="logo-toggle">Logo</label></div>
+      <div class="olivero-debug__row"><input id="edit-name-toggle" type="checkbox"><label for="edit-name-toggle">Editable Site Name</label></div>
+      <div class="olivero-debug__row"><input id="rtl-toggle" type="checkbox"><label for="rtl-toggle">RTL</label></div>
+      <div class="olivero-debug__row"><input id="nav-toggle" type="checkbox"><label for="nav-toggle">Always on mobile nav</label></div>
+      <div class="olivero-debug__row"><input id="required-toggle" type="checkbox"><label for="required-toggle">Clear required attribute on form elements</label></div>
       <div class="description">Disable debug in <a href="${window.drupalSettings.path.baseUrl}admin/appearance/settings/olivero">Theme Settings</a>.</div>
     `;
     document.querySelector('body').appendChild(debugElement);
     document
       .querySelector('.olivero-debug')
       .addEventListener('change', handleChange);
+
+    document
+      .querySelector('.olivero-debug__close')
+      .addEventListener('click', () => {
+        document.querySelector('.olivero-debug').remove();
+      });
 
     // Get values from sessionStorage, and make changes to DOM.
     if (sessionStorage.getItem('olivero.debug.toggleLogo') != null) {

@@ -8,11 +8,12 @@
 (function () {
   function toggleLogo(isChecked) {
     var headerInner = document.querySelector('.site-branding__inner');
+
     if (headerInner) {
       var currentLogo = headerInner.querySelector('.site-branding__logo');
 
       if (isChecked) {
-        var logoHTML = '\n        <a href="/" rel="home" class="site-branding__logo">\n          <img src="/themes/contrib/olivero/logo.svg" alt="Home">\n        </a>';
+        var logoHTML = "\n        <a href=\"/\" rel=\"home\" class=\"site-branding__logo\">\n          <img src=\"/themes/contrib/olivero/logo.svg\" alt=\"Home\">\n        </a>";
 
         if (currentLogo) {
           headerInner.removeChild(currentLogo);
@@ -47,6 +48,7 @@
 
   function toggleEditableSiteName(isChecked) {
     var siteNameText = document.querySelector('.site-branding__name a');
+
     if (siteNameText) {
       siteNameText.contentEditable = isChecked;
 
@@ -90,15 +92,19 @@
       case 'logo-toggle':
         toggleLogo(e.target.checked);
         break;
+
       case 'edit-name-toggle':
         toggleEditableSiteName(e.target.checked);
         break;
+
       case 'rtl-toggle':
         toggleRtl(e.target.checked);
         break;
+
       case 'nav-toggle':
         toggleAlwaysOnMobileNav(e.target.checked);
         break;
+
       case 'required-toggle':
         toggleRequiredAttr(e.target.checked);
         break;
@@ -108,9 +114,12 @@
   function init() {
     var debugElement = document.createElement('div');
     debugElement.classList.add('olivero-debug');
-    debugElement.innerHTML = '\n      <h2 class="visually-hidden">Theme debug options</h2>\n      <div><input id="logo-toggle" type="checkbox"><label for="logo-toggle">Logo</label></div>\n      <div><input id="edit-name-toggle" type="checkbox"><label for="edit-name-toggle">Editable Site Name</label></div>\n      <div><input id="rtl-toggle" type="checkbox"><label for="rtl-toggle">RTL</label></div>\n      <div><input id="nav-toggle" type="checkbox"><label for="nav-toggle">Always on mobile nav</label></div>\n      <div><input id="required-toggle" type="checkbox"><label for="required-toggle">Clear required attribute on form elements</label></div>\n      <div class="description">Disable debug in <a href="' + window.drupalSettings.path.baseUrl + 'admin/appearance/settings/olivero">Theme Settings</a>.</div>\n    ';
+    debugElement.innerHTML = "\n      <button class=\"olivero-debug__close\">Close</button>\n      <h2 class=\"visually-hidden\">Theme debug options</h2>\n      <div class=\"olivero-debug__row\"><input id=\"logo-toggle\" type=\"checkbox\"><label for=\"logo-toggle\">Logo</label></div>\n      <div class=\"olivero-debug__row\"><input id=\"edit-name-toggle\" type=\"checkbox\"><label for=\"edit-name-toggle\">Editable Site Name</label></div>\n      <div class=\"olivero-debug__row\"><input id=\"rtl-toggle\" type=\"checkbox\"><label for=\"rtl-toggle\">RTL</label></div>\n      <div class=\"olivero-debug__row\"><input id=\"nav-toggle\" type=\"checkbox\"><label for=\"nav-toggle\">Always on mobile nav</label></div>\n      <div class=\"olivero-debug__row\"><input id=\"required-toggle\" type=\"checkbox\"><label for=\"required-toggle\">Clear required attribute on form elements</label></div>\n      <div class=\"description\">Disable debug in <a href=\"".concat(window.drupalSettings.path.baseUrl, "admin/appearance/settings/olivero\">Theme Settings</a>.</div>\n    ");
     document.querySelector('body').appendChild(debugElement);
     document.querySelector('.olivero-debug').addEventListener('change', handleChange);
+    document.querySelector('.olivero-debug__close').addEventListener('click', function () {
+      document.querySelector('.olivero-debug').remove();
+    });
 
     if (sessionStorage.getItem('olivero.debug.toggleLogo') != null) {
       toggleLogo(sessionStorage.getItem('olivero.debug.toggleLogo') === 'true');

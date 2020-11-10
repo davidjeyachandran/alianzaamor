@@ -1,100 +1,132 @@
 (() => {
-  const { isDesktopNav } = drupalSettings.olivero;
-
-  const mobileNavButton = document.querySelector('.mobile-nav-button');
-  const mobileNavWrapperId = 'header-nav';
-  const mobileNavWrapper = document.getElementById(mobileNavWrapperId);
-  const body = document.querySelector('body');
-  const overlay = document.querySelector('.overlay');
-
-  const focusableNavElements = mobileNavWrapper.querySelectorAll(
-    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
-  );
-  const firstFocusableEl = focusableNavElements[0];
-  const lastFocusableEl = focusableNavElements[focusableNavElements.length - 1];
-
-  function init() {
-    mobileNavButton.setAttribute('aria-controls', mobileNavWrapperId);
-    mobileNavButton.setAttribute('aria-expanded', 'false');
-  }
-
-  function isMobileNavOpen() {
-    return mobileNavWrapper.classList.contains('is-active');
+  /**
+   * Checks if navWrapper contains "is-active" class.
+   * @param {object} navWrapper
+   *   Header navigation.
+   * @return {boolean}
+   *   True if navWrapper contains "is-active" class, false if not.
+   */
+  function isNavOpen(navWrapper) {
+    return navWrapper.classList.contains('is-active');
   }
 
   /**
-   * Opens or closes the mobile navigation.
-   * @param {boolean} state - State which to transition the mobile navigation menu into.
+   * Opens or closes the header navigation.
+   * @param {object} props
+   *   Navigation props.
+   * @param {boolean} state
+   *   State which to transition the header navigation menu into.
    */
-  function toggleMobileNav(state) {
+  function toggleNav(props, state) {
     const value = !!state;
-    mobileNavButton.setAttribute('aria-expanded', value);
+    props.navButton.setAttribute('aria-expanded', value);
 
     if (value) {
-      body.classList.add('js-overlay-active');
-      body.classList.add('js-fixed');
-      mobileNavWrapper.classList.add('is-active');
+      props.body.classList.add('js-overlay-active');
+      props.body.classList.add('js-fixed');
+      props.navWrapper.classList.add('is-active');
     } else {
-      body.classList.remove('js-overlay-active');
-      body.classList.remove('js-fixed');
-      mobileNavWrapper.classList.remove('is-active');
+      props.body.classList.remove('js-overlay-active');
+      props.body.classList.remove('js-fixed');
+      props.navWrapper.classList.remove('is-active');
     }
   }
 
-  // Initialize everything.
+  /**
+   * Init function for header navigation.
+   * @param {object} props
+   *   Navigation props.
+   */
+  function init(props) {
+    props.navButton.setAttribute('aria-controls', props.navWrapperId);
+    props.navButton.setAttribute('aria-expanded', 'false');
 
-  init();
+    props.navButton.addEventListener('click', () => {
+      toggleNav(props, !isNavOpen(props.navWrapper));
+    });
 
-  mobileNavButton.addEventListener('click', () => {
-    toggleMobileNav(!isMobileNavOpen());
-  });
-
-  // Closes any open subnavigation first, then close mobile navigation slideout.
-  document.addEventListener('keyup', e => {
-    if (e.keyCode === 27) {
-      if (drupalSettings.olivero.areAnySubnavsOpen()) {
-        drupalSettings.olivero.closeAllSubNav();
-      } else {
-        toggleMobileNav(false);
+    // Closes any open subnavigation first, then close header navigation slideout.
+    document.addEventListener('keyup', e => {
+      if (e.key === 'Escape') {
+        if (props.settings.olivero.areAnySubnavsOpen()) {
+          props.settings.olivero.closeAllSubNav();
+        } else {
+          toggleNav(props, false);
+        }
       }
-    }
-  });
+    });
 
-  overlay.addEventListener('click', () => {
-    toggleMobileNav(false);
-  });
+    props.overlay.addEventListener('click', () => {
+      toggleNav(props, false);
+    });
 
-  overlay.addEventListener('touchstart', () => {
-    toggleMobileNav(false);
-  });
+    props.overlay.addEventListener('touchstart', () => {
+      toggleNav(props, false);
+    });
 
-  // Focus trap.
-  mobileNavWrapper.addEventListener('keydown', e => {
-    if (e.key === 'Tab' || e.keyCode === 9) {
-      if (e.shiftKey) {
-        /* shift + tab */ if (
-          document.activeElement === firstFocusableEl &&
-          !isDesktopNav()
+    // Focus trap.
+    props.navWrapper.addEventListener('keydown', e => {
+      if (e.key === 'Tab') {
+        if (e.shiftKey) {
+          if (
+            document.activeElement === props.firstFocusableEl &&
+            !props.settings.olivero.isDesktopNav()
+          ) {
+            props.navButton.focus();
+            e.preventDefault();
+          }
+        } else if (
+          document.activeElement === props.lastFocusableEl &&
+          !props.settings.olivero.isDesktopNav()
         ) {
-          mobileNavButton.focus();
+          props.navButton.focus();
           e.preventDefault();
         }
-      } /* tab */ else if (
-        document.activeElement === lastFocusableEl &&
-        !isDesktopNav()
-      ) {
-        mobileNavButton.focus();
-        e.preventDefault();
       }
-    }
-  });
+    });
 
-  // Remove overlays when browser is resized and desktop nav appears.
-  // @todo Use core/drupal.debounce library to throttle when we move into theming.
-  window.addEventListener('resize', () => {
-    if (isDesktopNav()) {
-      toggleMobileNav(false);
-      body.classList.remove('js-overlay-active', 'js-fixed');
-    }
-  });
+    // Remove overlays when browser is resized and desktop nav appears.
+    // @todo Use core/drupal.debounce library to throttle when we move into theming.
+    window.addEventListener('resize', () => {
+      if (props.settings.olivero.isDesktopNav()) {
+        toggleNav(props, false);
+        props.body.classList.remove('js-overlay-active', 'js-fixed');
+      }
+    });
+  }
+
+  /**
+   * Initialise the navigation JS.
+   */
+  Drupal.behaviors.oliveroNavigation = {
+    attach(context, settings) {
+      const navWrapperId = 'header-nav';
+      const navWrapper = context.querySelector(
+        `#${navWrapperId}:not(.${navWrapperId}-processed)`,
+      );
+      if (navWrapper) {
+        navWrapper.classList.add(`${navWrapperId}-processed`);
+        const navButton = context.querySelector('.mobile-nav-button');
+        const body = context.querySelector('body');
+        const overlay = context.querySelector('.overlay');
+        const focusableNavElements = navWrapper.querySelectorAll(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+        );
+        const firstFocusableEl = focusableNavElements[0];
+        const lastFocusableEl =
+          focusableNavElements[focusableNavElements.length - 1];
+
+        init({
+          settings,
+          navWrapperId,
+          navWrapper,
+          navButton,
+          body,
+          overlay,
+          firstFocusableEl,
+          lastFocusableEl,
+        });
+      }
+    },
+  };
 })();

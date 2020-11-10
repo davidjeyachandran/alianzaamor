@@ -40,7 +40,7 @@
     {%- endif -%}
   {%- endif -%}
   <ul{{ attributes }}>
-    {%- for item in links -%}
+    {% for item in links %}
       <li{{ item.attributes }}>
         {%- if item.link -%}
           {{ item.link }}
@@ -50,6 +50,6 @@
           {{ item.text }}
         {%- endif -%}
       </li>
-    {%- endfor -%}
+    {% endfor %}
   </ul>
 {%- endif %}

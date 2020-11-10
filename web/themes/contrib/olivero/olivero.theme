@@ -5,6 +5,7 @@
  * Functions to support theming in the Olivero theme.
  */
 
+use Drupal\user\Entity\User;
 use Drupal\olivero\OliveroPreRender;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Form\FormStateInterface;
@@ -26,10 +27,11 @@ function olivero_preprocess_html(&$variables) {
   }
 
   if (theme_get_setting('debug') === 1) {
-    $variables['#attached']['library'][] =  'olivero/debug';
+    $variables['#attached']['library'][] = 'olivero/debug';
   }
 
-  // So fonts can be preloaded from base theme in the event Olivero is subthemed.
+  // So fonts can be preloaded from base theme in the event Olivero is
+  // subthemed.
   $variables['olivero_path'] = drupal_get_path('theme', 'olivero');
 }
 
@@ -74,7 +76,7 @@ function olivero_preprocess_maintenance_page(&$variables) {
     $variables['site_name'] = '';
   }
 
-  // olivero has custom styling for the maintenance page.
+  // Olivero has custom styling for the maintenance page.
   $variables['#attached']['library'][] = 'olivero/maintenance_page';
 }
 
@@ -105,19 +107,23 @@ function olivero_preprocess_block(&$variables) {
       ->load($variables['elements']['#id']);
     if ($block) {
       $region = $block->getRegion();
-
       if ($region == 'primary_menu') {
         if ($variables['base_plugin_id'] == 'system_menu_block') {
           $variables['content']['#attributes']['region'] = $region;
         }
         elseif ($variables['base_plugin_id'] == 'search_form_block') {
-          //Attaching library for search block if present at primary menu region.
+          // Attaching library for search block if present at primary menu
+          // region.
           $variables['#attached']['library'][] = 'olivero/search-narrow';
         }
       }
       elseif ($region == 'secondary_menu' && $variables['base_plugin_id'] == 'search_form_block') {
-        // Attaching library for search block if present at secondary menu region.
+        // Attaching library for search block if present at secondary menu
+        // region.
         $variables['#attached']['library'][] = 'olivero/search-wide';
+      }
+      if ($variables['base_plugin_id'] == 'search_form_block' && in_array($region, ['primary_menu', 'secondary_menu'])) {
+        $variables['content']['actions']['submit']['#olivero_is_header_search_submit'] = TRUE;
       }
     }
   }
@@ -134,7 +140,7 @@ function olivero_preprocess_block(&$variables) {
  */
 function olivero_theme_suggestions_menu_alter(&$suggestions, array $variables) {
   if (isset($variables['attributes']['region']) && $variables['attributes']['region'] == 'primary_menu') {
-    $suggestions[] = 'menu' . '__' . $variables['attributes']['region'];
+    $suggestions[] = 'menu__' . $variables['attributes']['region'];
   }
 }
 
@@ -151,13 +157,13 @@ function olivero_theme_suggestions_form_alter(array &$suggestions, array $variab
  * Implements hook_theme_suggestions_HOOK_alter() for field templates.
  */
 function olivero_theme_suggestions_field_alter(array &$suggestions, array $variables) {
-   if ($variables["element"]["#field_type"] == 'entity_reference' && $variables["element"]["#formatter"] == "entity_reference_label") {
+  if ($variables["element"]["#field_type"] == 'entity_reference' && $variables["element"]["#formatter"] == "entity_reference_label") {
     $suggestions[] = 'field__type_entity_reference__formatter_entity_reference_label';
   }
 }
 
 /**
- * Implements hook_form_alter() to add classes and placeholder text to the search forms.
+ * Implements hook_form_alter() for adding classes and placeholder text to the search forms.
  */
 function olivero_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   if (isset($form['actions']) && (count($form['actions'])) <= 2) {
@@ -171,7 +177,6 @@ function olivero_form_alter(&$form, FormStateInterface $form_state, $form_id) {
 
       // Add classes to the search form submit input.
       $form['actions']['submit']['#attributes']['class'][] = 'search-form__submit';
-      $form['actions']['submit']['#olivero_is_header_search_submit'] = TRUE;
       break;
 
     case 'search_form':
@@ -199,8 +204,8 @@ function olivero_theme_suggestions_block_alter(&$suggestions, array $variables) 
         ->getRegion();
 
       $suggestions[] = 'block__' . $region;
-      $suggestions[] = 'block__' . $region . '__' . $variables['elements']['#plugin_id'];
-      $suggestions[] = 'block__' . $region . '__' . $variables['elements']['#id'];
+      $suggestions[] = 'block__' . $region . '__' . 'plugin_id' . '__' . $variables['elements']['#plugin_id'];
+      $suggestions[] = 'block__' . $region . '__' . 'id' . '__' . $variables['elements']['#id'];
     }
   }
 }
@@ -368,6 +373,7 @@ function olivero_preprocess_field_multiple_value_form(&$variables) {
     }
     // Using array_key_first() for addressing the first header cell would be
     // more elegant here, but we can rely on the related theme.inc preprocess.
+    // @todo change this after https://www.drupal.org/node/3099026 has landed.
     $variables['table']['#header'][0]['data'] = [
       '#type' => 'html_tag',
       '#tag' => 'h4',
@@ -482,7 +488,7 @@ function olivero_preprocess_field__node__field_image__article(&$variables) {
  * Implements hook_preprocess_HOOK() for setting classes.
  */
 function olivero_preprocess_filter_caption(&$variables) {
-  $variables['classes'] = isset($variables['classes']) && !empty( $variables['classes']) ? $variables['classes'] . ' caption' : 'caption';
+  $variables['classes'] = isset($variables['classes']) && !empty($variables['classes']) ? $variables['classes'] . ' caption' : 'caption';
 }
 
 /**
@@ -492,9 +498,10 @@ function olivero_form_comment_form_alter(&$form, FormStateInterface $form_state,
   $comment = $form_state->getFormObject()
     ->getEntity();
   /* @var \Drupal\comment\Entity\Comment $comment */
-  if ($comment->hasParentComment()){
-    $form['actions']['submit']['#value']=t('Reply to comment');
-  }else{
+  if ($comment->hasParentComment()) {
+    $form['actions']['submit']['#value'] = t('Reply to comment');
+  }
+  else {
     $form['actions']['submit']['#value'] = t('Post comment');
   }
 }
@@ -510,7 +517,6 @@ function olivero_form_node_preview_form_select_alter(&$form, FormStateInterface 
   $form['view_mode']['#attributes']['class'][] = 'form-element--small';
 }
 
-
 /**
  * Implements hook_preprocess_HOOK() for comment.html.twig.
  */
@@ -518,7 +524,7 @@ function olivero_preprocess_comment(&$variables) {
   // Getting the node creation time stamp from the comment object.
   $date = $variables['comment']->getCreatedTime();
   // Formatting "created" as "X days ago".
-  $variables['created'] = \Drupal::service('date.formatter')->formatInterval(REQUEST_TIME - $date) . ' ago';
+  $variables['created'] = \Drupal::service('date.formatter')->formatInterval(REQUEST_TIME - $date) . t(' ago');
 }
 
 /**
@@ -528,10 +534,11 @@ function olivero_preprocess_field__comment(&$variables) {
   // Add a comment_count.
   $variables['comment_count'] = count(array_filter($variables['comments'], 'is_numeric', ARRAY_FILTER_USE_KEY));
 
-  // Add user.compact to field-comment if profile's avatar of current user exist.
+  // Add user.compact to field-comment if profile's avatar of current user
+  // exist.
   $uid = \Drupal::currentUser()->id();
   if ($uid) {
-    $user = \Drupal\user\Entity\User::load($uid);
+    $user = User::load($uid);
     if (!empty($user->user_picture) && $user->user_picture->isEmpty() === FALSE) {
       $variables['user_picture'] = \Drupal::entityTypeManager()
         ->getViewBuilder('user')
@@ -566,11 +573,11 @@ function olivero_preprocess_text_format_wrapper(&$variables) {
 }
 
 /**
- * Implements HOOK_preprocess_search_result().
+ * Implements hook_preprocess_search_result().
  */
 function olivero_preprocess_search_result(&$variables) {
   // Apply custom date formatter to "date" field.
   if (!empty($variables['result']['date'])) {
-   $variables['info_date'] = \Drupal::service('date.formatter')->format($variables['result']['node']->getCreatedTime(), 'custom', 'j  F,  Y');
+    $variables['info_date'] = \Drupal::service('date.formatter')->format($variables['result']['node']->getCreatedTime(), 'custom', 'j  F,  Y');
   }
 }

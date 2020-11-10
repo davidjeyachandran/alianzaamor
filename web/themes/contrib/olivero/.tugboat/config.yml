@@ -1,6 +1,6 @@
 services:
   php:
-    image: tugboatqa/drupal:8.8
+    image: tugboatqa/drupal:9.0
     default: true
     http: false
     depends: mysql
@@ -28,10 +28,10 @@ services:
         # Now we can require this theme, specifing the branch name we created
         # above that uses the $TUGBOAT_REPO_ID environment variable.
         composer require drupal/olivero:dev-$TUGBOAT_REPO_ID -vvv
-        composer require drupal/webform -vvv
+        composer require drupal/webform:6.0.0-alpha9 -vvv
         composer require drupal/admin_toolbar -vvv
         composer require drupal/metatag -vvv
-        composer require drupal/devel -vvv
+        composer require drupal/devel:4.0.0 -vvv
 
         # Install Drupal on the minimal site.
         vendor/bin/drush \
@@ -89,8 +89,7 @@ services:
         # Update this module, including all dependencies.
         composer update drupal/olivero --with-all-dependencies
         $TUGBOAT_ROOT/.tugboat/build.sh preloaded
-        # Temporarily skip build on minimal until Olivero supports it.
-        #$TUGBOAT_ROOT/.tugboat/build.sh minimal
+        $TUGBOAT_ROOT/.tugboat/build.sh minimal
         $TUGBOAT_ROOT/.tugboat/build.sh standard
 
   mysql:

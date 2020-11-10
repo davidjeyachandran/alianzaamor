@@ -2,51 +2,54 @@ global-styling:
   version: VERSION
   css:
     base:
-      css/dist/base/fonts.css: {}
-      css/dist/base/variables.css: {}
-      css/dist/base/base.css: {}
-      css/dist/base/utility.css: {}
+      css/base/fonts.css: {}
+      css/base/variables.css: {}
+      css/base/base.css: {}
+      css/base/utility.css: {}
     layout:
-      css/dist/layout/layout.css: {}
-      css/dist/layout/grid.css: {}
-      css/dist/layout/layout-content-narrow.css: {}
-      css/dist/layout/layout-content-medium.css: {}
-      css/dist/layout/layout-footer.css: {}
-      css/dist/layout/region.css: {}
-      css/dist/layout/views.css: {}
+      css/layout/layout.css: {}
+      css/layout/grid.css: {}
+      css/layout/layout-content-narrow.css: {}
+      css/layout/layout-content-medium.css: {}
+      css/layout/layout-footer.css: {}
+      css/layout/region.css: {}
+      css/layout/region-content.css: {}
+      css/layout/region-hero.css: {}
+      css/layout/social-bar.css: {}
+      css/layout/views.css: {}
     component:
-      css/dist/components/block.css: {}
-      css/dist/components/breadcrumb.css: {}
-      css/dist/components/embedded-media.css: {}
-      css/dist/components/featured-bottom.css: {}
-      css/dist/components/footer.css: {}
-      css/dist/components/button.css: {}
-      css/dist/components/fieldset.css: {}
-      css/dist/components/field.css: {}
-      css/dist/components/field-image.css: {}
-      css/dist/components/form.css: {}
-      css/dist/components/form-boolean.css: {}
-      css/dist/components/form-text.css: {}
-      css/dist/components/form-textarea.css: {}
-      css/dist/components/form-select.css: {}
-      css/dist/components/header.css: {}
-      css/dist/components/header-buttons-mobile.css: {}
-      css/dist/components/header-navigation.css: {}
-      css/dist/components/header-site-branding.css: {}
-      css/dist/components/hero.css: {}
-      css/dist/components/nav-button-mobile.css: {}
-      css/dist/components/nav-button-wide.css: {}
-      css/dist/components/nav-primary-button.css: {}
-      css/dist/components/nav-primary.css: {}
-      css/dist/components/nav-secondary.css: {}
-      css/dist/components/node.css: {}
-      css/dist/components/node-teaser.css: {}
-      css/dist/components/page-title.css: {}
-      css/dist/components/skip-link.css: {}
-      css/dist/components/pager.css: {}
-      css/dist/components/social-container.css: {}
-      css/dist/components/table.css: {}
-      css/dist/components/text-content.css: {}
+      css/components/block.css: {}
+      css/components/breadcrumb.css: {}
+      css/components/embedded-media.css: {}
+      css/components/footer.css: {}
+      css/components/button.css: {}
+      css/components/fieldset.css: {}
+      css/components/field.css: {}
+      css/components/field-image.css: {}
+      css/components/form.css: {}
+      css/components/form-boolean.css: {}
+      css/components/form-text.css: {}
+      css/components/form-textarea.css: {}
+      css/components/form-select.css: {}
+      css/components/header.css: {}
+      css/components/header-buttons-mobile.css: {}
+      css/components/header-navigation.css: {}
+      css/components/header-site-branding.css: {}
+      css/components/hero.css: {}
+      css/components/links.css: {}
+      css/components/nav-button-mobile.css: {}
+      css/components/nav-button-wide.css: {}
+      css/components/nav-primary-button.css: {}
+      css/components/nav-primary.css: {}
+      css/components/nav-secondary.css: {}
+      css/components/node.css: {}
+      css/components/node-teaser.css: {}
+      css/components/page-title.css: {}
+      css/components/skip-link.css: {}
+      css/components/pager.css: {}
+      css/components/table.css: {}
+      css/components/text-content.css: {}
+      css/components/tabledrag.css: {}
 
   js:
     js/checkbox.js: {}
@@ -57,120 +60,154 @@ global-styling:
   dependencies:
     - core/drupal
 
+book:
+  css:
+    theme:
+      css/components/book.css: {}
+
+local-actions:
+  css:
+    component:
+      css/components/action-links.css: {}
 comments:
   css:
     component:
-      css/dist/components/comments.css: {}
+      css/components/comments.css: {}
   js:
     js/comments.js: {}
+
+content-below:
+  css:
+    layout:
+      css/layout/region-content-below.css: {}
 
 filter.theme:
   css:
     component:
-      css/dist/theme/filter.theme.css: {}
+      css/theme/filter.theme.css: {}
 
 details:
   css:
     theme:
-      css/dist/components/details.css: {}
+      css/components/details.css: {}
 
 layout_discovery_section:
   css:
     layout:
-      css/dist/layout/layout-discovery-section-layout.css: {}
+      css/layout/layout-discovery-section-layout.css: {}
 
 layout_builder_twocol_section:
   css:
     layout:
-      css/dist/layout/layout-builder-twocol-section.css: {}
+      css/layout/layout-builder-twocol-section.css: {}
   dependencies:
     - olivero/layout_discovery_section
 
 layout_builder_threecol_section:
   css:
     layout:
-      css/dist/layout/layout-builder-threecol-section.css: {}
+      css/layout/layout-builder-threecol-section.css: {}
   dependencies:
     - olivero/layout_discovery_section
 
 layout_builder_fourcol_section:
   css:
     layout:
-      css/dist/layout/layout-builder-fourcol-section.css: {}
+      css/layout/layout-builder-fourcol-section.css: {}
   dependencies:
     - olivero/layout_discovery_section
 
 messages:
   css:
     component:
-      css/dist/components/messages.css: {}
+      css/components/messages.css: {}
   js:
     js/messages.js: {}
 
 sidebar:
   css:
     component:
-      css/dist/components/sidebar.css: {}
+      css/components/sidebar.css: {}
     layout:
-      css/dist/layout/layout-sidebar.css: {}
+      css/layout/layout-sidebar.css: {}
 
 tabs:
   css:
     theme:
-      css/dist/components/tabs.css: {}
+      css/components/tabs.css: {}
   js:
     js/tabs.js: {}
 
 tags:
   css:
     theme:
-      css/dist/components/tags.css: {}
+      css/components/tags.css: {}
 
 debug:
   css:
     theme:
-      css/dist/components/_debug.css: {}
+      css/components/_debug.css: {}
   js:
     js/debug.js: {}
+
+feed:
+  css:
+    theme:
+      css/components/feed.css: {}
 
 search-narrow:
   css:
     component:
-      css/dist/components/header-search-narrow.css: {}
+      css/components/header-search-narrow.css: {}
 
 search-wide:
   css:
     component:
-      css/dist/components/header-search-wide.css: {}
+      css/components/header-search-wide.css: {}
   js:
     js/search.js: {}
 
 search-results:
   css:
     theme:
-      css/dist/components/search-results.css: {}
+      css/components/search-results.css: {}
 
 drupal.node.preview:
   css:
     theme:
-      css/dist/components/node-preview-container.css: {}
+      css/components/node-preview-container.css: {}
 
 powered-by-block:
   css:
     theme:
-      css/dist/components/powered-by-block.css: {}
+      css/components/powered-by-block.css: {}
 
 layout-views-grid-horizontal:
   css:
     layout:
-      css/dist/layout/layout-views-grid-horizontal.css: {}
+      css/layout/layout-views-grid-horizontal.css: {}
 
 layout-views-grid-vertical:
   css:
     layout:
-      css/dist/layout/layout-views-grid-vertical.css: {}
+      css/layout/layout-views-grid-vertical.css: {}
 
 cke-dialog:
   css:
     component:
-      css/dist/components/cke-dialog.css: {}
+      css/components/cke-dialog.css: {}
+
+progress:
+  css:
+    component:
+      css/components/progress.css: {}
+
+forum:
+  css:
+    component:
+      css/components/forum.css: {}
+
+dropbutton:
+  css:
+    component:
+      css/components/dropbutton.css: { }
