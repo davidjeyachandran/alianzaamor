@@ -1,19 +1,15 @@
 <?php
-/**
- * @file
- * Contains \Drupal\noreqnewpass\noreqnewpassSettingsForm
- */
+
 namespace Drupal\noreqnewpass\Form;
 
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Url;
-use Drupal\Core\Database\Query;
 
 /**
  * Configure hello settings for this site.
  */
-class noreqnewpassSettingsForm extends ConfigFormBase {
+class NoReqNewPassSettingsForm extends ConfigFormBase {
+
   /**
    * {@inheritdoc}
    */
@@ -34,14 +30,13 @@ class noreqnewpassSettingsForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-
     $config = $this->config('noreqnewpass.settings_form');
-    $form['noreqnewpass_disable'] = array(
+    $form['noreqnewpass_disable'] = [
       '#type' => 'checkbox',
       '#title' => 'Disable Request new password link',
       '#default_value' => $config->get('noreqnewpass_disable'),
-      '#description' => 'If checked, Request new password link will be disabled.'
-    );
+      '#description' => 'If checked, Request new password link will be disabled.',
+    ];
     return parent::buildForm($form, $form_state);
   }
 
@@ -54,4 +49,5 @@ class noreqnewpassSettingsForm extends ConfigFormBase {
       ->save();
     parent::submitForm($form, $form_state);
   }
+
 }
