@@ -1,18 +1,17 @@
-uuid: c050c74d-ca2e-4744-acfe-8e5a49149a37
+uuid: df6be9c3-5733-413a-9c96-819c604a8c9c
 langcode: es
 status: true
 dependencies:
   config:
-    - field.storage.node.field_location
-    - field.storage.node.field_message
-    - field.storage.node.field_phone_number
-    - node.type.message_baord_item
-    - system.menu.main
+    - field.storage.node.field_description
+    - node.type.necesidad
+    - user.role.administrator
+    - user.role.misionero
   module:
     - node
     - user
-id: message_board
-label: 'Message board'
+id: necesidad_extrema
+label: 'Necesidad Extrema'
 module: views
 description: ''
 tag: ''
@@ -26,9 +25,11 @@ display:
     position: 0
     display_options:
       access:
-        type: perm
+        type: role
         options:
-          perm: 'access content'
+          role:
+            administrator: administrator
+            misionero: misionero
       cache:
         type: tag
         options: {  }
@@ -51,12 +52,17 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       pager:
-        type: mini
+        type: full
         options:
-          items_per_page: 25
+          items_per_page: 100
           offset: 0
           id: 0
           total_pages: null
+          tags:
+            previous: ‹‹
+            next: ››
+            first: '« First'
+            last: 'Last »'
           expose:
             items_per_page: false
             items_per_page_label: 'Items per page'
@@ -65,87 +71,25 @@ display:
             items_per_page_options_all_label: '- All -'
             offset: false
             offset_label: Offset
-          tags:
-            previous: ‹‹
-            next: ››
+          quantity: 9
       style:
-        type: table
+        type: default
       row:
         type: fields
-      fields:
-        title:
-          id: title
-          table: node_field_data
-          field: title
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: Title
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: false
-            ellipsis: false
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
+        options:
+          default_field_elements: true
+          inline: {  }
+          separator: ''
           hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: false
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          entity_type: node
-          entity_field: title
-          plugin_id: field
-        field_location:
-          id: field_location
-          table: node__field_location
-          field: field_location
+      fields:
+        uid:
+          id: uid
+          table: node_field_data
+          field: uid
           relationship: none
           group_type: group
           admin_label: ''
-          label: Location
+          label: ''
           exclude: false
           alter:
             alter_text: false
@@ -178,7 +122,7 @@ display:
           element_class: ''
           element_label_type: ''
           element_label_class: ''
-          element_label_colon: true
+          element_label_colon: false
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
@@ -189,7 +133,7 @@ display:
           click_sort_column: target_id
           type: entity_reference_label
           settings:
-            link: false
+            link: true
           group_column: target_id
           group_columns: {  }
           group_rows: true
@@ -200,15 +144,17 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+          entity_type: node
+          entity_field: uid
           plugin_id: field
-        field_message:
-          id: field_message
-          table: node__field_message
-          field: field_message
+        field_description:
+          id: field_description
+          table: node__field_description
+          field: field_description
           relationship: none
           group_type: group
           admin_label: ''
-          label: Message
+          label: ''
           exclude: false
           alter:
             alter_text: false
@@ -241,7 +187,7 @@ display:
           element_class: ''
           element_label_type: ''
           element_label_class: ''
-          element_label_colon: true
+          element_label_colon: false
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
@@ -252,70 +198,6 @@ display:
           click_sort_column: value
           type: basic_string
           settings: {  }
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
-        field_phone_number:
-          id: field_phone_number
-          table: node__field_phone_number
-          field: field_phone_number
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: 'Phone number'
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: number_integer
-          settings:
-            thousand_separator: ''
-            prefix_suffix: true
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -346,7 +228,7 @@ display:
           table: node_field_data
           field: type
           value:
-            message_baord_item: message_baord_item
+            necesidad: necesidad
           entity_type: node
           entity_field: type
           plugin_id: bundle
@@ -354,23 +236,32 @@ display:
             operator_limit_selection: false
             operator_list: {  }
       sorts:
-        created:
-          id: created
+        uid:
+          id: uid
           table: node_field_data
-          field: created
-          order: DESC
-          entity_type: node
-          entity_field: created
-          plugin_id: date
+          field: uid
           relationship: none
           group_type: group
           admin_label: ''
+          order: ASC
           exposed: false
           expose:
             label: ''
-          granularity: second
-      title: 'Message board'
-      header: {  }
+          entity_type: node
+          entity_field: uid
+          plugin_id: standard
+      title: 'Necesidad Extrema'
+      header:
+        result:
+          id: result
+          table: views
+          field: result
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: false
+          content: 'Displaying @start - @end of @total'
+          plugin_id: result
       footer: {  }
       empty: {  }
       relationships: {  }
@@ -383,11 +274,9 @@ display:
         - 'languages:language_interface'
         - url.query_args
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       tags:
-        - 'config:field.storage.node.field_location'
-        - 'config:field.storage.node.field_message'
-        - 'config:field.storage.node.field_phone_number'
+        - 'config:field.storage.node.field_description'
   page_1:
     display_plugin: page
     id: page_1
@@ -395,12 +284,7 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
-      path: board
-      menu:
-        type: normal
-        title: 'Message board'
-        menu_name: main
-        enabled: false
+      path: necesidad-extrema
     cache_metadata:
       max-age: -1
       contexts:
@@ -408,8 +292,6 @@ display:
         - 'languages:language_interface'
         - url.query_args
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       tags:
-        - 'config:field.storage.node.field_location'
-        - 'config:field.storage.node.field_message'
-        - 'config:field.storage.node.field_phone_number'
+        - 'config:field.storage.node.field_description'

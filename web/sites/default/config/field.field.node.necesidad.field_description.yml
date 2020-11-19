@@ -17,7 +17,7 @@ field_name: field_description
 entity_type: node
 bundle: necesidad
 label: '¿Por que estas en necesidad extrema?'
-description: ''
+description: "Solamente para personas que estuvieron en la lista de necesidad extrema en el mes de Septiembre. \r\nPor favor, no llenar el formulario más de una vez."
 required: true
 translatable: false
 default_value: {  }

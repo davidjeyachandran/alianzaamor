@@ -1,28 +1,26 @@
 uuid: d8f68077-000f-4910-923c-53c7f88e8522
 langcode: es
 status: true
-dependencies: {}
+dependencies: {  }
 _core:
   default_config_hash: btW6TFHajhy7Eo6YUvdFiPh4TcPggo8GBXYctjV6zag
 id: authenticated
-label: "Authenticated user"
+label: 'Authenticated user'
 weight: 1
 is_admin: false
 permissions:
-  - "access comments"
-  - "access content"
-  - "access polls"
-  - "access shortcuts"
-  - "create message_baord_item content"
-  - "create field_description"
-  - "edit own message_baord_item content"
-  - "create field_description"
-  - "create necesidad content"
-  - "delete own necesidad content"
-  - "edit own field_description"
-  - "opt-in or out of google analytics tracking"
-  - "post comments"
-  - "search content"
-  - "skip comment approval"
-  - "use text format basic_html"
-  - "view own field_description"
+  - 'access comments'
+  - 'access content'
+  - 'access polls'
+  - 'access shortcuts'
+  - 'create field_description'
+  - 'create field_description'
+  - 'create message_baord_item content'
+  - 'edit own field_description'
+  - 'edit own message_baord_item content'
+  - 'opt-in or out of google analytics tracking'
+  - 'post comments'
+  - 'search content'
+  - 'skip comment approval'
+  - 'use text format basic_html'
+  - 'view own field_description'
