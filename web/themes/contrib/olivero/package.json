@@ -63,7 +63,7 @@
     "postcss-rtl": "^1.5",
     "postcss-pxtorem": "^5.1.1",
     "prettier": "^1.14.0",
-    "stylelint": "^13.0.0",
+    "stylelint": "^15.10.1",
     "stylelint-checkstyle-formatter": "^0.1.1",
     "stylelint-config-standard": "^19.0.0",
     "stylelint-no-browser-hacks": "^1.2.1",
